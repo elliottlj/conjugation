@@ -1060,8 +1060,8 @@
     const ppClass = highlightForm === 'pastParticiple' ? ' fv-highlight' : '';
     row.innerHTML = `
       <div class="fv-col"><span class="fv-label">Base</span><span class="fv-value">${entry.base}</span></div>
-      <div class="fv-col"><span class="fv-label">Past simple</span><span class="fv-value${psClass}">${formatAnswer(entry.pastSimple)}</span></div>
-      <div class="fv-col"><span class="fv-label">Past participle</span><span class="fv-value${ppClass}">${formatAnswer(entry.pastParticiple)}</span></div>
+      <div class="fv-col"><span class="fv-label">Simple</span><span class="fv-value${psClass}">${formatAnswer(entry.pastSimple)}</span></div>
+      <div class="fv-col"><span class="fv-label">Participle</span><span class="fv-value${ppClass}">${formatAnswer(entry.pastParticiple)}</span></div>
     `;
   }
 
