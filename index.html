@@ -523,6 +523,22 @@
       white-space: nowrap;
     }
 
+    .speak-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--accent);
+      padding: 2px;
+      margin-left: 5px;
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      transition: color 0.15s;
+    }
+
+    .speak-btn:hover { color: #155D60; }
+    .speak-btn svg { width: 13px; height: 13px; }
+
     table.data-table tr:last-child td { border-bottom: none; }
 
     td.mono { font-family: 'DM Mono', monospace; }
@@ -1219,6 +1235,22 @@
   // ── LOOKUP ──
   let lookupSorted = [];
 
+  const SPEAKER_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>';
+
+  function speakWord(text) {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-GB';
+    utter.rate = 0.88;
+    window.speechSynthesis.speak(utter);
+  }
+
+  function wordCell(word) {
+    const safe = word.replace(/"/g, '&quot;');
+    return `<span>${word}</span><button class="speak-btn" data-word="${safe}" aria-label="Pronounce ${safe}">${SPEAKER_SVG}</button>`;
+  }
+
   function initLookup() {
     lookupSorted = [...irregularVerbs].sort((a, b) => a.base.localeCompare(b.base));
     renderLookupRows(lookupSorted);
@@ -1230,12 +1262,20 @@
         v.pastParticiple.toLowerCase().includes(q)
       ));
     });
+    document.getElementById('lookup-table-body').addEventListener('click', e => {
+      const btn = e.target.closest('.speak-btn');
+      if (btn) speakWord(btn.dataset.word);
+    });
   }
 
   function renderLookupRows(rows) {
-    document.getElementById('lookup-table-body').innerHTML = rows.map(v =>
-      `<tr><td class="mono">${v.base}</td><td class="mono">${formatAnswer(v.pastSimple)}</td><td class="mono">${formatAnswer(v.pastParticiple)}</td></tr>`
-    ).join('');
+    document.getElementById('lookup-table-body').innerHTML = rows.map(v => `
+      <tr>
+        <td class="mono">${wordCell(v.base)}</td>
+        <td class="mono">${wordCell(formatAnswer(v.pastSimple))}</td>
+        <td class="mono">${wordCell(formatAnswer(v.pastParticiple))}</td>
+      </tr>
+    `).join('');
   }
 
   // ── TABS / SCREENS ──
