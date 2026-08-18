@@ -539,10 +539,10 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      overflow: hidden;
+      overflow-x: auto;
     }
 
-    table.data-table { width: 100%; border-collapse: collapse; }
+    table.data-table { width: auto; min-width: 100%; border-collapse: collapse; }
 
     table.data-table th {
       text-align: left;
@@ -554,6 +554,7 @@
       padding: 10px 14px;
       border-bottom: 1px solid var(--border);
       background: var(--bg);
+      white-space: nowrap;
     }
 
     table.data-table td {
@@ -561,6 +562,7 @@
       border-bottom: 1px solid var(--border);
       font-size: 0.85rem;
       vertical-align: top;
+      white-space: nowrap;
     }
 
     table.data-table tr:last-child td { border-bottom: none; }
@@ -805,7 +807,7 @@
     <div class="data-table-wrap">
       <table class="data-table">
         <thead>
-          <tr><th>Base</th><th>Past simple</th><th>Past participle</th></tr>
+          <tr><th>Base</th><th>Simple</th><th>Participle</th></tr>
         </thead>
         <tbody id="lookup-table-body"></tbody>
       </table>
@@ -869,7 +871,7 @@
   }
 
   function formLabel(form) {
-    return form === 'pastSimple' ? 'past simple' : 'past participle';
+    return form === 'pastSimple' ? 'simple' : 'participle';
   }
 
   // ── SETTINGS ──
@@ -1052,8 +1054,8 @@
     const ppClass = highlightForm === 'pastParticiple' ? ' fv-highlight' : '';
     row.innerHTML = `
       <div class="fv-col"><span class="fv-label">Base</span><span class="fv-value">${entry.base}</span></div>
-      <div class="fv-col"><span class="fv-label">Past simple</span><span class="fv-value${psClass}">${formatAnswer(entry.pastSimple)}</span></div>
-      <div class="fv-col"><span class="fv-label">Past participle</span><span class="fv-value${ppClass}">${formatAnswer(entry.pastParticiple)}</span></div>
+      <div class="fv-col"><span class="fv-label">Simple</span><span class="fv-value${psClass}">${formatAnswer(entry.pastSimple)}</span></div>
+      <div class="fv-col"><span class="fv-label">Participle</span><span class="fv-value${ppClass}">${formatAnswer(entry.pastParticiple)}</span></div>
     `;
   }
 
