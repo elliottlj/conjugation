@@ -283,12 +283,32 @@
       margin-bottom: 16px;
     }
 
+    .quiz-base-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
     .quiz-base-verb {
       font-family: 'DM Serif Display', serif;
       font-size: 2.4rem;
       color: var(--text);
-      margin-bottom: 28px;
     }
+
+    .points-badge {
+      display: none;
+      background: var(--green-lt);
+      color: var(--green);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .points-badge.show { display: inline-block; }
 
     .input-area { margin-top: 8px; }
 
@@ -349,36 +369,14 @@
       margin-top: 20px;
       padding: 14px 18px;
       border-radius: var(--radius);
-      font-size: 0.9rem;
-      font-weight: 500;
       display: none;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px 14px;
-      text-align: left;
     }
 
-    .feedback.show { display: flex; }
+    .feedback.show { display: block; }
     .feedback.correct { background: var(--green-lt); color: var(--green); }
     .feedback.wrong   { background: var(--red-lt);   color: var(--red);   }
 
-    .feedback-icon { font-size: 1.2rem; }
-
-    .feedback-status {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-      white-space: nowrap;
-      margin-left: auto;
-    }
-
-    .retry-note {
-      font-size: 0.78rem;
-      opacity: 0.85;
-    }
-
-    .feedback-verb-row { display: flex; gap: 18px; flex: 1 1 220px; min-width: 0; }
+    .feedback-verb-row { display: flex; gap: 18px; }
     .feedback-verb-row .fv-col { flex: 1; min-width: 0; }
 
     .feedback-verb-row .fv-label {
@@ -618,7 +616,8 @@
          has to auto-scroll to reveal it above the keyboard on focus */
       .quiz-header { margin-bottom: 16px; }
       .quiz-instruction { margin-bottom: 10px; }
-      .quiz-base-verb { font-size: 1.9rem; margin-bottom: 16px; }
+      .quiz-base-verb { font-size: 1.9rem; }
+      .quiz-base-row { margin-bottom: 16px; }
     }
   </style>
 </head>
@@ -725,7 +724,10 @@
 
     <div class="quiz-card">
       <p class="quiz-instruction" id="card-form-label">Past simple</p>
-      <p class="quiz-base-verb" id="card-base"></p>
+      <div class="quiz-base-row">
+        <p class="quiz-base-verb" id="card-base"></p>
+        <span class="points-badge" id="points-badge"></span>
+      </div>
 
       <div class="input-area">
         <input
@@ -741,10 +743,6 @@
         <button class="check-btn" id="check-btn" onclick="checkAnswer()" disabled>Check</button>
         <div class="feedback" id="feedback">
           <div class="feedback-verb-row" id="feedback-verb-row"></div>
-          <div class="feedback-status">
-            <span class="feedback-icon" id="feedback-icon"></span>
-            <span class="retry-note" id="retry-note"></span>
-          </div>
         </div>
         <button class="next-btn" id="next-btn" onclick="nextCard()">Next →</button>
       </div>
@@ -1026,6 +1024,7 @@
 
     document.getElementById('card-form-label').textContent = formLabel(currentCard.form);
     document.getElementById('card-base').textContent = currentCard.base;
+    document.getElementById('points-badge').classList.remove('show');
 
     const input = document.getElementById('answer-input');
     input.value = '';
@@ -1075,16 +1074,18 @@
     if (correct) {
       correctCards.add(key);
       bumpVerbStat(currentCard.base, currentCard.form, -1);
-      totalPoints += POINTS_BY_ATTEMPT[currentCard.attempts];
+      const pointsEarned = POINTS_BY_ATTEMPT[currentCard.attempts];
+      totalPoints += pointsEarned;
       input.className = 'spelling-input correct';
       feedback.className = 'feedback correct show';
-      document.getElementById('feedback-icon').textContent = '✓';
-      document.getElementById('retry-note').textContent = `+${POINTS_BY_ATTEMPT[currentCard.attempts]} points`;
       renderFeedbackVerbTable(currentCard.base, null);
+
+      const badge = document.getElementById('points-badge');
+      badge.textContent = `+${pointsEarned}`;
+      badge.classList.add('show');
     } else {
       input.className = 'spelling-input wrong';
       feedback.className = 'feedback wrong show';
-      document.getElementById('feedback-icon').textContent = '✗';
       renderFeedbackVerbTable(currentCard.base, currentCard.form);
 
       const tallyEntry = missedTally.get(key) || { base: currentCard.base, form: currentCard.form, answer: currentCard.answer, misses: 0 };
@@ -1098,10 +1099,6 @@
         // missed card can't come back as the very next question
         const insertAt = queue.length === 0 ? 0 : 1 + Math.floor(Math.random() * queue.length);
         queue.splice(insertAt, 0, currentCard);
-        document.getElementById('retry-note').textContent =
-          retriesLeft === 1 ? '1 more try remaining' : `${retriesLeft} more tries remaining`;
-      } else {
-        document.getElementById('retry-note').textContent = 'No more tries for this word';
       }
     }
   }
