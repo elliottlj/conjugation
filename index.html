@@ -1246,9 +1246,20 @@
     window.speechSynthesis.speak(utter);
   }
 
-  function wordCell(word) {
-    const safe = word.replace(/"/g, '&quot;');
-    return `<span>${word}</span><button class="speak-btn" data-word="${safe}" aria-label="Pronounce ${safe}">${SPEAKER_SVG}</button>`;
+  // The Web Speech API has no pronunciation-hint mechanism (no SSML support
+  // in browsers), so homographs that share spelling across forms but not
+  // pronunciation - "read" present /ri:d/ vs past "read" /rɛd/ - get
+  // spoken the same way by default. The standard workaround is to feed the
+  // engine a different (phonetically-spelled) string than what's displayed.
+  const TTS_HINTS = {
+    'read|pastSimple': 'red',
+    'read|pastParticiple': 'red'
+  };
+
+  function wordCell(word, ttsWord) {
+    const safeDisplay = word.replace(/"/g, '&quot;');
+    const safeTts = (ttsWord ?? word).replace(/"/g, '&quot;');
+    return `<span>${word}</span><button class="speak-btn" data-word="${safeTts}" aria-label="Pronounce ${safeDisplay}">${SPEAKER_SVG}</button>`;
   }
 
   function initLookup() {
@@ -1272,8 +1283,8 @@
     document.getElementById('lookup-table-body').innerHTML = rows.map(v => `
       <tr>
         <td class="mono">${wordCell(v.base)}</td>
-        <td class="mono">${wordCell(formatAnswer(v.pastSimple))}</td>
-        <td class="mono">${wordCell(formatAnswer(v.pastParticiple))}</td>
+        <td class="mono">${wordCell(formatAnswer(v.pastSimple), TTS_HINTS[`${v.base}|pastSimple`])}</td>
+        <td class="mono">${wordCell(formatAnswer(v.pastParticiple), TTS_HINTS[`${v.base}|pastParticiple`])}</td>
       </tr>
     `).join('');
   }
