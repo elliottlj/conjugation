@@ -16,15 +16,17 @@ Then open **http://localhost:8080** in your browser. Leave the terminal window o
 
 ## Data files
 
-`verbs/irregular.json` (180 entries) and `verbs/regular.json` (200 entries) share the same shape, pre-sorted ascending by `rank` (1 = most common):
+`verbs/irregular.json` (183 entries) has a `core` boolean instead of a frequency `rank` — `true` for the ~100 verbs an A2/B1 learner should prioritize for everyday use, `false` for the rest (advanced/formal/literary verbs not yet split into their own category — see below). Boundary was set by cross-referencing actual ESL frequency/level references (e.g. englishpage.com's "100 Most Common English Irregular Verbs", speakspeak's A1-A2 70-verb list), not guessed:
 
 ```json
-{ "base": "go", "pastSimple": "went", "pastParticiple": "gone", "rank": 1 }
+{ "base": "go", "pastSimple": "went", "pastParticiple": "gone", "core": true }
 ```
 
-For regular verbs, `pastSimple` and `pastParticiple` are always equal — kept as separate fields so the app can treat both lists uniformly. One entry ("be") has multiple accepted answers, written as `"was/were"` — `isCorrectAnswer()` in `index.html` splits on `/` and accepts any listed form.
+`verbs/regular.json` (200 entries) still uses the older frequency-tier shape (`rank`, 1 = most common), sliced into Top 25/50/100/All by the regular-verb pool selector — this hasn't had the same research pass as the irregular list yet.
 
-## Not yet done
+For regular verbs, `pastSimple` and `pastParticiple` are always equal — kept as separate fields so the app can treat both lists uniformly. One irregular entry ("be") has multiple accepted answers, written as `"was/were"` — `isCorrectAnswer()` in `index.html` splits on `/` and accepts any listed form.
 
-- Shared `liamteacher.com` header/footer — deliberately not wired up yet so the site can be tested standalone first (see the other sites for the pattern once ready).
-- Not yet a git repo, not deployed.
+## Known follow-up
+
+- The 83 non-core irregular verbs are currently one undifferentiated bucket. Next pass: split into "Advanced" (B2/C1, still in real use — e.g. undergo, withstand, override) vs "Archaic/Literary" (rare/dated regardless of level — e.g. partake, dwell, forgo, tread, stride, slay, strive) using the same real-source approach as the core cut, not guesswork.
+- `regular.json`'s Top 25/50/100/All tiers are still the original unverified one-pass ranking — same research treatment could be applied there too.

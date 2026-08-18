@@ -652,10 +652,8 @@
         <div class="setting-row">
           <span class="setting-label">Irregular verb pool</span>
           <select id="irregular-population-select" onchange="onSettingsChanged()">
-            <option value="25">Top 25</option>
-            <option value="50">Top 50</option>
-            <option value="100" selected>Top 100</option>
-            <option value="all">All (180)</option>
+            <option value="core" selected>Core (100 words)</option>
+            <option value="all">All (183 words)</option>
           </select>
         </div>
 
@@ -863,7 +861,7 @@
       includeRegular: document.getElementById('include-regular-toggle').checked,
       prioritizeWeak: document.getElementById('prioritize-weak-toggle').checked,
       forms: document.getElementById('forms-select').value,
-      irregularPopulation: parsePopulation(document.getElementById('irregular-population-select').value),
+      irregularPopulation: document.getElementById('irregular-population-select').value, // 'core' | 'all'
       regularPopulation: parsePopulation(document.getElementById('regular-population-select').value),
       verbCount: parseInt(document.getElementById('verb-count-select').value, 10)
     };
@@ -885,7 +883,9 @@
     document.getElementById('include-regular-toggle').checked = !!settings.includeRegular;
     document.getElementById('prioritize-weak-toggle').checked = settings.prioritizeWeak !== false;
     document.getElementById('forms-select').value = settings.forms || 'both';
-    document.getElementById('irregular-population-select').value = String(settings.irregularPopulation ?? 100);
+    // guards against a stale saved value from the old numeric-tier selector (e.g. 100)
+    const irrPop = settings.irregularPopulation;
+    document.getElementById('irregular-population-select').value = (irrPop === 'core' || irrPop === 'all') ? irrPop : 'core';
     document.getElementById('regular-population-select').value = String(settings.regularPopulation ?? 50);
     document.getElementById('regular-population-select').disabled = !settings.includeRegular;
     document.getElementById('verb-count-select').value = String(settings.verbCount ?? 20);
@@ -913,7 +913,7 @@
 
   // ── POOL / QUEUE BUILDING ──
   function buildPool(settings) {
-    let pool = sliceTier(irregularVerbs, settings.irregularPopulation);
+    let pool = settings.irregularPopulation === 'core' ? irregularVerbs.filter(v => v.core) : irregularVerbs;
     if (settings.includeRegular) {
       pool = pool.concat(sliceTier(regularVerbs, settings.regularPopulation));
     }
@@ -1186,7 +1186,7 @@
     const parts = [];
     parts.push(s.forms === 'both' ? 'both forms' : formLabelShort(s.forms));
     parts.push(s.includeRegular ? 'irregular + regular' : 'irregular only');
-    parts.push(`irr: ${s.irregularPopulation === 'all' ? 'all' : 'top ' + s.irregularPopulation}`);
+    parts.push(`irr: ${s.irregularPopulation === 'all' ? 'all' : s.irregularPopulation === 'core' ? 'core' : 'top ' + s.irregularPopulation}`);
     if (s.includeRegular) parts.push(`reg: ${s.regularPopulation === 'all' ? 'all' : 'top ' + s.regularPopulation}`);
     parts.push(`${s.verbCount} questions`);
     return parts.join(' · ');
