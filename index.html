@@ -626,16 +626,6 @@
       .quiz-instruction { margin-bottom: 10px; }
       .quiz-base-verb { font-size: 1.9rem; }
       .quiz-base-row { margin-bottom: 16px; }
-
-      /* long verb + long badge text can overflow the card side-by-side on
-         narrow screens - stack the badge below instead */
-      .points-badge {
-        position: static;
-        display: none;
-        transform: none;
-        margin: 8px auto 0;
-      }
-      .points-badge.show { display: block; width: fit-content; }
     }
   </style>
 </head>
@@ -1122,7 +1112,7 @@
       }
 
       const badge = document.getElementById('points-badge');
-      badge.textContent = `✗ ${retriesLeft === 1 ? '1 try remaining' : `${retriesLeft} tries remaining`}`;
+      badge.textContent = '✗';
       badge.className = 'points-badge show wrong';
     }
   }
