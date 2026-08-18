@@ -429,16 +429,6 @@
       margin-bottom: 12px;
     }
 
-    .score-ring {
-      width: 130px;
-      height: 130px;
-      margin: 0 auto 20px;
-    }
-
-    .score-ring circle { fill: none; stroke-width: 10; }
-    .score-ring .bg    { stroke: var(--border); }
-    .score-ring .value { stroke: var(--accent); stroke-linecap: round; transition: stroke-dashoffset 0.8s ease; }
-
     .score-number {
       font-family: 'DM Serif Display', serif;
       font-size: 2.6rem;
@@ -767,12 +757,6 @@
     <h2 class="screen-title" id="results-title">Well done</h2>
 
     <div class="results-score">
-      <svg class="score-ring" viewBox="0 0 44 44">
-        <circle class="bg" cx="22" cy="22" r="17"/>
-        <circle class="value" id="score-arc" cx="22" cy="22" r="17"
-          stroke-dasharray="106.8" stroke-dashoffset="106.8"
-          transform="rotate(-90 22 22)"/>
-      </svg>
       <div class="score-number" id="score-number">–</div>
       <div class="score-label" id="score-label">verbs correct</div>
     </div>
@@ -1133,15 +1117,6 @@
     const correctCount = correctCards.size;
     const maxPoints = totalCards * 5;
     const pct = totalCards === 0 ? 0 : Math.round((totalPoints / maxPoints) * 100);
-
-    const arc = document.getElementById('score-arc');
-    const circ = 106.8;
-    setTimeout(() => {
-      arc.style.strokeDashoffset = circ - (circ * pct / 100);
-      if (pct === 100) arc.style.stroke = 'var(--green)';
-      else if (pct < 50) arc.style.stroke = 'var(--red)';
-      else arc.style.stroke = 'var(--accent)';
-    }, 100);
 
     document.getElementById('score-number').textContent = `${correctCount} / ${totalCards}`;
     document.getElementById('score-label').textContent = `verbs correct`;
