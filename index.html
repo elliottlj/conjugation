@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verb Conjugation Practice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #F0EEE9;
+      --surface:   #FFFFFF;
+      --border:    #DDD9D0;
+      --text:      #1A1917;
+      --muted:     #7A756C;
+      --accent:    #1D7A7E;
+      --accent-lt: #E4F2F2;
+      --green:     #1D6848;
+      --green-lt:  #E6F3EC;
+      --red:       #9B2418;
+      --red-lt:    #FAEAE8;
+      --must:      #C99A3C;
+      --must-dark: #6B5210;
+      --must-lt:   #FBF4E2;
+      --radius:    10px;
+      --shadow:    0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.6rem;
+      font-weight: 400;
+      color: #3D2459;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 40px 0 10px;
+      text-align: center;
+    }
+
+    /* ── TAB BAR ── */
+    .tab-bar {
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      gap: 6px;
+      padding: 0 24px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 10px 14px 12px;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    main {
+      width: 100%;
+      max-width: 680px;
+      padding: 32px 24px 60px;
+      flex: 1;
+    }
+
+    /* ── SCREENS ── */
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    .screen-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .screen-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .screen-sub {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 28px;
+    }
+
+    /* ── SETUP SCREEN ── */
+    .setup-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .setting-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .setting-row:last-of-type { border-bottom: none; }
+    #questions-row { border-bottom: 1px solid var(--border); }
+
+    .setting-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .setting-hint {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    select {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 7px 10px;
+      cursor: pointer;
+      outline: none;
+      min-width: 140px;
+    }
+
+    select:disabled { opacity: 0.45; cursor: default; }
+    select:focus { border-color: var(--accent); }
+
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .toggle-wrap input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .pool-note {
+      font-size: 0.78rem;
+      color: var(--must-dark);
+      background: var(--must-lt);
+      border: 1px solid var(--must);
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-top: 16px;
+      display: none;
+    }
+
+    .pool-note.show { display: block; }
+
+    .advanced-options { margin-top: 4px; }
+
+    .advanced-options summary {
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      padding: 14px 0;
+      list-style: none;
+      user-select: none;
+    }
+
+    .advanced-options summary::-webkit-details-marker { display: none; }
+
+    .advanced-options summary::before {
+      content: '▸';
+      display: inline-block;
+      margin-right: 6px;
+      font-size: 0.7em;
+      transition: transform 0.15s;
+    }
+
+    .advanced-options[open] summary::before { transform: rotate(90deg); }
+    .advanced-options[open] summary { border-bottom: 1px solid var(--border); }
+
+    .start-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .start-btn:hover { background: #155D60; }
+
+    /* ── QUIZ SCREEN ── */
+    .quiz-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      gap: 16px;
+    }
+
+
+    .progress-wrap { flex: 1; }
+
+    .progress-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .progress-label {
+      text-align: right;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 5px;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .quiz-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 40px 36px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .quiz-instruction {
+      font-size: 1.05rem;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .quiz-base-verb {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .input-area { margin-top: 8px; }
+
+    .spelling-input {
+      width: 100%;
+      font-family: 'DM Mono', monospace;
+      font-size: 1.4rem;
+      text-align: center;
+      padding: 14px 16px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--text);
+      letter-spacing: 0.05em;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .spelling-input:focus { border-color: var(--accent); }
+    .spelling-input.correct { border-color: var(--green); background: var(--green-lt); }
+    .spelling-input.wrong   { border-color: var(--red);   background: var(--red-lt);   }
+
+    .check-btn {
+      margin-top: 14px;
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .check-btn:hover:not(:disabled) { background: #155D60; }
+    .check-btn:disabled { opacity: 0.45; cursor: default; }
+
+    .end-game-btn {
+      flex-shrink: 0;
+      padding: 6px 12px;
+      background: var(--surface);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .end-game-btn:hover { background: var(--bg); color: var(--text); border-color: var(--muted); }
+
+    .feedback {
+      margin-top: 20px;
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: none;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      text-align: left;
+    }
+
+    .feedback.show { display: flex; }
+    .feedback.correct { background: var(--green-lt); color: var(--green); }
+    .feedback.wrong   { background: var(--red-lt);   color: var(--red);   }
+
+    .feedback-icon { font-size: 1.2rem; }
+
+    .feedback-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    .retry-note {
+      font-size: 0.78rem;
+      opacity: 0.85;
+    }
+
+    .feedback-verb-row { display: flex; gap: 18px; flex: 1 1 220px; min-width: 0; }
+    .feedback-verb-row .fv-col { flex: 1; min-width: 0; }
+
+    .feedback-verb-row .fv-label {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      opacity: 0.7;
+      margin-bottom: 2px;
+    }
+
+    .feedback-verb-row .fv-value {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .feedback-verb-row .fv-value.fv-highlight {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+
+    .next-btn {
+      margin-top: 14px;
+      width: 100%;
+      padding: 13px;
+      background: var(--surface);
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .next-btn:hover { background: var(--accent-lt); }
+    .next-btn.show { display: block; }
+
+    /* ── RESULTS SCREEN ── */
+    .results-score {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .score-ring {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 20px;
+    }
+
+    .score-ring circle { fill: none; stroke-width: 10; }
+    .score-ring .bg    { stroke: var(--border); }
+    .score-ring .value { stroke: var(--accent); stroke-linecap: round; transition: stroke-dashoffset 0.8s ease; }
+
+    .score-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.6rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .score-label { color: var(--muted); font-size: 0.9rem; }
+
+    .points-label {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 32px;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .results-section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .failed-list {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .failed-item {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88rem;
+      color: var(--red);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .failed-item:last-child { border-bottom: none; }
+    .failed-item::before { content: '✗'; font-style: normal; opacity: 0.6; }
+
+    .failed-item-misses {
+      margin-left: auto;
+      font-size: 0.78rem;
+      opacity: 0.75;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .empty-failed {
+      text-align: center;
+      padding: 20px;
+      color: var(--green);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .restart-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background 0.15s;
+    }
+
+    .restart-btn:hover { background: #155D60; }
+
+    .home-btn {
+      width: 100%;
+      padding: 13px;
+      background: var(--surface);
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .home-btn:hover { background: var(--accent-lt); }
+
+    /* ── HISTORY / LOOKUP TABLES ── */
+    .data-table-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    table.data-table { width: 100%; border-collapse: collapse; }
+
+    table.data-table th {
+      text-align: left;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    table.data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      vertical-align: top;
+    }
+
+    table.data-table tr:last-child td { border-bottom: none; }
+
+    td.mono { font-family: 'DM Mono', monospace; }
+    td.muted-cell { color: var(--muted); font-size: 0.78rem; }
+
+    .clear-history-btn {
+      margin-top: 16px;
+      background: none;
+      border: 1px solid var(--red);
+      color: var(--red);
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .clear-history-btn:hover { background: var(--red-lt); }
+
+    .empty-state {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    #lookup-search {
+      width: 100%;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      outline: none;
+      margin-bottom: 16px;
+    }
+
+    #lookup-search:focus { border-color: var(--accent); }
+
+    @media (max-width: 480px) {
+      .quiz-card { padding: 28px 20px; }
+      .screen-title { font-size: 1.6rem; }
+      .page-title { font-size: 2rem; }
+      .setting-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+      select { width: 100%; }
+      table.data-table { font-size: 0.78rem; }
+      .feedback-verb-row .fv-label { white-space: normal; }
+      .tab-bar { padding: 0 12px; gap: 0; }
+      .tab-btn { font-size: 0.74rem; padding: 8px 6px 10px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="shared-header" style="width:100%;display:block;"></div>
+
+<h1 class="page-title">Verb Conjugation</h1>
+
+<nav class="tab-bar">
+  <button class="tab-btn active" data-tab="practice" onclick="selectTab('practice')">Practice</button>
+  <button class="tab-btn" data-tab="review" onclick="selectTab('review')">Verbs to review</button>
+  <button class="tab-btn" data-tab="history" onclick="selectTab('history')">History</button>
+  <button class="tab-btn" data-tab="lookup" onclick="selectTab('lookup')">Lookup</button>
+</nav>
+
+<main>
+
+  <!-- SETUP SCREEN -->
+  <div id="screen-setup" class="screen active">
+    <p class="screen-label">Practice</p>
+    <h2 class="screen-title">Past simple &amp; past participle</h2>
+    <p class="screen-sub">Type the correct form of each verb. Get one wrong and it comes back later in the round — up to 3 more tries.</p>
+
+    <div class="setup-card">
+      <div class="setting-row" id="questions-row">
+        <span class="setting-label">Questions per round</span>
+        <select id="verb-count-select" onchange="onSettingsChanged()">
+          <option value="10">10</option>
+          <option value="20" selected>20</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+
+      <details class="advanced-options">
+        <summary>Advanced options</summary>
+
+        <div class="setting-row">
+          <span class="setting-label">Forms to test</span>
+          <select id="forms-select" onchange="onSettingsChanged()">
+            <option value="both" selected>Both</option>
+            <option value="pastSimple">Past simple only</option>
+            <option value="pastParticiple">Past participle only</option>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <span class="setting-label">Irregular verb pool</span>
+          <select id="irregular-population-select" onchange="onSettingsChanged()">
+            <option value="25">Top 25</option>
+            <option value="50">Top 50</option>
+            <option value="100" selected>Top 100</option>
+            <option value="all">All (180)</option>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <label class="toggle-wrap" for="include-regular-toggle">
+            <input type="checkbox" id="include-regular-toggle" onchange="onSettingsChanged()" />
+            <span>
+              <span class="setting-label">Include regular verbs</span><br />
+              <span class="setting-hint">Mix regular verbs in with the irregular ones</span>
+            </span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <span class="setting-label">Regular verb pool</span>
+          <select id="regular-population-select" onchange="onSettingsChanged()" disabled>
+            <option value="25">Top 25</option>
+            <option value="50" selected>Top 50</option>
+            <option value="100">Top 100</option>
+            <option value="all">All (200)</option>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <label class="toggle-wrap" for="prioritize-weak-toggle">
+            <input type="checkbox" id="prioritize-weak-toggle" checked onchange="onSettingsChanged()" />
+            <span>
+              <span class="setting-label">Prioritize verbs I've struggled with</span><br />
+              <span class="setting-hint">Verbs you've missed before are more likely to come up</span>
+            </span>
+          </label>
+        </div>
+      </details>
+
+      <p class="pool-note" id="pool-note"></p>
+
+      <button class="start-btn" id="start-btn" onclick="startRound()" disabled>Loading verbs…</button>
+    </div>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="screen-quiz" class="screen">
+    <div class="quiz-header">
+      <button class="end-game-btn" onclick="endGameEarly()">End game</button>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+        <div class="progress-label" id="progress-label">0 / 0</div>
+      </div>
+    </div>
+
+    <div class="quiz-card">
+      <p class="quiz-instruction" id="card-form-label">Past simple</p>
+      <p class="quiz-base-verb" id="card-base"></p>
+
+      <div class="input-area">
+        <input
+          type="text"
+          class="spelling-input"
+          id="answer-input"
+          placeholder="type the correct form…"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        />
+        <button class="check-btn" id="check-btn" onclick="checkAnswer()" disabled>Check</button>
+        <div class="feedback" id="feedback">
+          <div class="feedback-verb-row" id="feedback-verb-row"></div>
+          <div class="feedback-status">
+            <span class="feedback-icon" id="feedback-icon"></span>
+            <span class="retry-note" id="retry-note"></span>
+          </div>
+        </div>
+        <button class="next-btn" id="next-btn" onclick="nextCard()">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS SCREEN -->
+  <div id="screen-results" class="screen">
+    <p class="screen-label">Round complete</p>
+    <h2 class="screen-title" id="results-title">Well done</h2>
+
+    <div class="results-score">
+      <svg class="score-ring" viewBox="0 0 44 44">
+        <circle class="bg" cx="22" cy="22" r="17"/>
+        <circle class="value" id="score-arc" cx="22" cy="22" r="17"
+          stroke-dasharray="106.8" stroke-dashoffset="106.8"
+          transform="rotate(-90 22 22)"/>
+      </svg>
+      <div class="score-number" id="score-number">–</div>
+      <div class="score-label" id="score-label">verbs correct</div>
+    </div>
+    <p class="points-label" id="points-label"></p>
+
+    <p class="results-section-title" id="failed-label">Verbs to review</p>
+    <div class="failed-list" id="failed-list"></div>
+
+    <button class="restart-btn" id="restart-btn" onclick="startRound()">Practice again</button>
+    <button class="home-btn" onclick="showScreen('setup')">Change settings</button>
+  </div>
+
+  <!-- REVIEW SCREEN -->
+  <div id="screen-review" class="screen">
+    <p class="screen-label">Review</p>
+    <h2 class="screen-title">Verbs to review</h2>
+    <p class="screen-sub">Ordered by how many times you've gotten them wrong — these are also the verbs prioritized when "Prioritize verbs I've struggled with" is on.</p>
+
+    <div class="failed-list" id="review-list-content"></div>
+  </div>
+
+  <!-- HISTORY SCREEN -->
+  <div id="screen-history" class="screen">
+    <p class="screen-label">History</p>
+    <h2 class="screen-title">Past rounds</h2>
+    <p class="screen-sub">Most recent first.</p>
+
+    <div id="history-content"></div>
+    <button class="clear-history-btn" id="clear-history-btn" onclick="clearHistory()">Clear history</button>
+  </div>
+
+  <!-- LOOKUP SCREEN -->
+  <div id="screen-lookup" class="screen">
+    <p class="screen-label">Lookup</p>
+    <h2 class="screen-title">Irregular verb table</h2>
+    <p class="screen-sub">All irregular verbs, A–Z. Search to filter.</p>
+
+    <input type="text" id="lookup-search" placeholder="Search verbs…" />
+
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Base</th><th>Past simple</th><th>Past participle</th></tr>
+        </thead>
+        <tbody id="lookup-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<div id="shared-footer" style="width:100%;display:block;margin-top:auto;"></div>
+
+<script>
+  // ── DATA ──
+  let irregularVerbs = [];
+  let regularVerbs   = [];
+
+  async function loadVerbData() {
+    const startBtn = document.getElementById('start-btn');
+    try {
+      const [irr, reg] = await Promise.all([
+        fetch('verbs/irregular.json').then(r => r.json()),
+        fetch('verbs/regular.json').then(r => r.json())
+      ]);
+      irregularVerbs = irr;
+      regularVerbs   = reg;
+      updatePoolNote();
+      initLookup();
+      startBtn.disabled = false;
+      startBtn.textContent = 'Start';
+    } catch (e) {
+      startBtn.textContent = 'Could not load verb data';
+    }
+  }
+
+  // ── STATE ──
+  let queue          = [];   // { base, form, answer, attempts }
+  let currentCard     = null;
+  let totalCards      = 0;
+  let correctCards    = new Set(); // keyed `${base}|${form}`
+  let missedTally     = new Map(); // keyed `${base}|${form}` -> { base, form, answer, misses }
+  let totalPoints     = 0;
+  let currentSettings = null;
+
+  const MAX_ATTEMPTS = 4; // 1 original + 3 retries
+  const POINTS_BY_ATTEMPT = { 1: 5, 2: 3, 3: 2, 4: 1 };
+
+  // ── NORMALISE / ANSWER MATCHING ──
+  // strip combining diacritical marks (U+0300 to U+036F) after NFD decomposition
+  var DIACRITIC_RE = new RegExp('[' + String.fromCharCode(768) + '-' + String.fromCharCode(879) + ']', 'g');
+  function normalise(str) {
+    return str.trim().toLowerCase().normalize('NFD').replace(DIACRITIC_RE, '');
+  }
+
+  // answer fields may contain multiple accepted forms separated by "/", e.g. "was/were"
+  function isCorrectAnswer(typed, answerField) {
+    const accepted = answerField.split('/').map(a => normalise(a));
+    return accepted.includes(normalise(typed));
+  }
+
+  function formatAnswer(answerField) {
+    return answerField.split('/').join(' or ');
+  }
+
+  function formLabel(form) {
+    return form === 'pastSimple' ? 'past simple' : 'past participle';
+  }
+
+  // ── SETTINGS ──
+  function sliceTier(list, tier) {
+    return tier === 'all' ? list : list.slice(0, tier);
+  }
+
+  function parsePopulation(v) {
+    return v === 'all' ? 'all' : parseInt(v, 10);
+  }
+
+  function readSettings() {
+    return {
+      includeRegular: document.getElementById('include-regular-toggle').checked,
+      prioritizeWeak: document.getElementById('prioritize-weak-toggle').checked,
+      forms: document.getElementById('forms-select').value,
+      irregularPopulation: parsePopulation(document.getElementById('irregular-population-select').value),
+      regularPopulation: parsePopulation(document.getElementById('regular-population-select').value),
+      verbCount: parseInt(document.getElementById('verb-count-select').value, 10)
+    };
+  }
+
+  const SETTINGS_KEY = 'conjugationSettings';
+
+  function saveSettings(settings) {
+    try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); } catch {}
+  }
+
+  function loadSavedSettings() {
+    try { return JSON.parse(localStorage.getItem(SETTINGS_KEY)); }
+    catch { return null; }
+  }
+
+  function applySettingsToForm(settings) {
+    if (!settings) return;
+    document.getElementById('include-regular-toggle').checked = !!settings.includeRegular;
+    document.getElementById('prioritize-weak-toggle').checked = settings.prioritizeWeak !== false;
+    document.getElementById('forms-select').value = settings.forms || 'both';
+    document.getElementById('irregular-population-select').value = String(settings.irregularPopulation ?? 100);
+    document.getElementById('regular-population-select').value = String(settings.regularPopulation ?? 50);
+    document.getElementById('regular-population-select').disabled = !settings.includeRegular;
+    document.getElementById('verb-count-select').value = String(settings.verbCount ?? 20);
+  }
+
+  function onSettingsChanged() {
+    const includeRegular = document.getElementById('include-regular-toggle').checked;
+    document.getElementById('regular-population-select').disabled = !includeRegular;
+    updatePoolNote();
+    saveSettings(readSettings());
+  }
+
+  function updatePoolNote() {
+    if (irregularVerbs.length === 0) return; // data not loaded yet
+    const settings = readSettings();
+    const maxPairs = buildAllPairs(settings).length;
+    const note = document.getElementById('pool-note');
+    if (settings.verbCount > maxPairs) {
+      note.textContent = `Only ${maxPairs} question${maxPairs === 1 ? '' : 's'} available with these settings — the round will use all of them.`;
+      note.classList.add('show');
+    } else {
+      note.classList.remove('show');
+    }
+  }
+
+  // ── POOL / QUEUE BUILDING ──
+  function buildPool(settings) {
+    let pool = sliceTier(irregularVerbs, settings.irregularPopulation);
+    if (settings.includeRegular) {
+      pool = pool.concat(sliceTier(regularVerbs, settings.regularPopulation));
+    }
+    return pool;
+  }
+
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  }
+
+  // every (verb, form) combination the current settings could test — a verb
+  // contributes one pair per active form, so it can be drawn more than once
+  // in a round (once per form), just never the same pair twice.
+  function buildAllPairs(settings) {
+    const pool = buildPool(settings);
+    const formList = settings.forms === 'both' ? ['pastSimple', 'pastParticiple'] : [settings.forms];
+    const pairs = [];
+    pool.forEach(v => {
+      formList.forEach(f => pairs.push({ base: v.base, form: f, answer: v[f] }));
+    });
+    return pairs;
+  }
+
+  // Efraimidis-Spirakis weighted sampling: assign each item a key of
+  // random()^(1/weight), then sort descending — equivalent to a weighted
+  // Fisher-Yates shuffle, picking heavier items first on average.
+  function weightedShuffle(arr, weightFn) {
+    return arr
+      .map(item => ({ item, key: Math.pow(Math.random(), 1 / weightFn(item)) }))
+      .sort((a, b) => b.key - a.key)
+      .map(x => x.item);
+  }
+
+  function buildQueue(settings) {
+    const pairs = [...buildAllPairs(settings)];
+    let ordered;
+    if (settings.prioritizeWeak) {
+      const stats = loadVerbStats();
+      ordered = weightedShuffle(pairs, p => 1 + (stats[`${p.base}|${p.form}`] || 0));
+    } else {
+      ordered = pairs;
+      shuffle(ordered);
+    }
+    return ordered.slice(0, Math.min(settings.verbCount, ordered.length))
+      .map(p => ({ ...p, attempts: 0 }));
+  }
+
+  // ── ROUND FLOW ──
+  function startRound() {
+    currentSettings = readSettings();
+    queue = buildQueue(currentSettings);
+    totalCards   = queue.length;
+    correctCards = new Set();
+    missedTally  = new Map();
+    totalPoints  = 0;
+    showScreen('quiz');
+    loadNextCard();
+  }
+
+  // Ends the round early. Once ended, no more retries are coming, so any
+  // card that was ever checked counts: correct if it's in correctCards,
+  // otherwise wrong (whether it had retries left or not). Cards that were
+  // never attempted at all (still sitting untouched in the queue) are
+  // excluded entirely rather than counted as wrong.
+  function endGameEarly() {
+    const attemptedKeys = new Set([...correctCards, ...missedTally.keys()]);
+    totalCards = attemptedKeys.size;
+    queue = [];
+    showResults();
+  }
+
+  function loadNextCard() {
+    if (queue.length === 0) {
+      showResults();
+      return;
+    }
+
+    currentCard = queue.shift();
+
+    const done = totalCards - queue.length - 1;
+    const pct = (done / totalCards) * 100;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-label').textContent = `${done} / ${totalCards}`;
+
+    document.getElementById('card-form-label').textContent = formLabel(currentCard.form);
+    document.getElementById('card-base').textContent = currentCard.base;
+
+    const input = document.getElementById('answer-input');
+    input.value = '';
+    input.className = 'spelling-input';
+    input.disabled = false;
+
+    document.getElementById('check-btn').disabled = false;
+    document.getElementById('feedback').className = 'feedback';
+    document.getElementById('feedback-verb-row').innerHTML = '';
+    document.getElementById('next-btn').className = 'next-btn';
+
+    input.focus();
+  }
+
+  function findVerbEntry(base) {
+    return irregularVerbs.find(v => v.base === base) || regularVerbs.find(v => v.base === base);
+  }
+
+  function renderFeedbackVerbTable(base, highlightForm) {
+    const entry = findVerbEntry(base);
+    const row = document.getElementById('feedback-verb-row');
+    if (!entry) { row.innerHTML = ''; return; }
+    const psClass = highlightForm === 'pastSimple' ? ' fv-highlight' : '';
+    const ppClass = highlightForm === 'pastParticiple' ? ' fv-highlight' : '';
+    row.innerHTML = `
+      <div class="fv-col"><span class="fv-label">Base</span><span class="fv-value">${entry.base}</span></div>
+      <div class="fv-col"><span class="fv-label">Past simple</span><span class="fv-value${psClass}">${formatAnswer(entry.pastSimple)}</span></div>
+      <div class="fv-col"><span class="fv-label">Past participle</span><span class="fv-value${ppClass}">${formatAnswer(entry.pastParticiple)}</span></div>
+    `;
+  }
+
+  function checkAnswer() {
+    const input    = document.getElementById('answer-input');
+    const typed    = input.value;
+    const feedback = document.getElementById('feedback');
+    const nextBtn  = document.getElementById('next-btn');
+
+    currentCard.attempts++;
+    const key = `${currentCard.base}|${currentCard.form}`;
+    const correct = isCorrectAnswer(typed, currentCard.answer);
+
+    document.getElementById('check-btn').disabled = true;
+    input.disabled = true;
+    nextBtn.textContent = queue.length === 0 ? 'See results →' : 'Next →';
+    nextBtn.className = 'next-btn show';
+
+    if (correct) {
+      correctCards.add(key);
+      bumpVerbStat(currentCard.base, currentCard.form, -1);
+      totalPoints += POINTS_BY_ATTEMPT[currentCard.attempts];
+      input.className = 'spelling-input correct';
+      feedback.className = 'feedback correct show';
+      document.getElementById('feedback-icon').textContent = '✓';
+      document.getElementById('retry-note').textContent = `+${POINTS_BY_ATTEMPT[currentCard.attempts]} points`;
+      renderFeedbackVerbTable(currentCard.base, null);
+    } else {
+      input.className = 'spelling-input wrong';
+      feedback.className = 'feedback wrong show';
+      document.getElementById('feedback-icon').textContent = '✗';
+      renderFeedbackVerbTable(currentCard.base, currentCard.form);
+
+      const tallyEntry = missedTally.get(key) || { base: currentCard.base, form: currentCard.form, answer: currentCard.answer, misses: 0 };
+      tallyEntry.misses++;
+      missedTally.set(key, tallyEntry);
+      bumpVerbStat(currentCard.base, currentCard.form, 1);
+
+      const retriesLeft = MAX_ATTEMPTS - currentCard.attempts;
+      if (retriesLeft > 0) {
+        // never reinsert at position 0 (unless it's the only card left) so a
+        // missed card can't come back as the very next question
+        const insertAt = queue.length === 0 ? 0 : 1 + Math.floor(Math.random() * queue.length);
+        queue.splice(insertAt, 0, currentCard);
+        document.getElementById('retry-note').textContent =
+          retriesLeft === 1 ? '1 more try remaining' : `${retriesLeft} more tries remaining`;
+      } else {
+        document.getElementById('retry-note').textContent = 'No more tries for this word';
+      }
+    }
+  }
+
+  function nextCard() {
+    loadNextCard();
+  }
+
+  // ── RESULTS ──
+  function showResults() {
+    showScreen('results');
+
+    const correctCount = correctCards.size;
+    const maxPoints = totalCards * 5;
+    const pct = totalCards === 0 ? 0 : Math.round((totalPoints / maxPoints) * 100);
+
+    const arc = document.getElementById('score-arc');
+    const circ = 106.8;
+    setTimeout(() => {
+      arc.style.strokeDashoffset = circ - (circ * pct / 100);
+      if (pct === 100) arc.style.stroke = 'var(--green)';
+      else if (pct < 50) arc.style.stroke = 'var(--red)';
+      else arc.style.stroke = 'var(--accent)';
+    }, 100);
+
+    document.getElementById('score-number').textContent = `${correctCount} / ${totalCards}`;
+    document.getElementById('score-label').textContent = `verbs correct`;
+    document.getElementById('points-label').textContent = `${totalPoints} / ${maxPoints} points (${pct}%)`;
+
+    const title = pct === 100 ? 'Perfect score!' : pct >= 80 ? 'Well done' : pct >= 60 ? 'Good effort' : 'Keep practising';
+    document.getElementById('results-title').textContent = title;
+
+    const missedList = [...missedTally.values()].sort((a, b) => b.misses - a.misses);
+
+    const failedList = document.getElementById('failed-list');
+    if (missedList.length === 0) {
+      failedList.innerHTML = '<div class="empty-failed">✓ No verbs to review — excellent!</div>';
+      document.getElementById('failed-label').style.display = 'none';
+    } else {
+      document.getElementById('failed-label').style.display = 'block';
+      failedList.innerHTML = missedList.map(c =>
+        `<div class="failed-item">
+          <span>${c.base} — ${formLabel(c.form)}: ${formatAnswer(c.answer)}</span>
+          <span class="failed-item-misses">×${c.misses}</span>
+        </div>`
+      ).join('');
+    }
+
+    logRoundResult({
+      date: new Date().toISOString(),
+      points: totalPoints,
+      maxPoints,
+      correct: correctCount,
+      total: totalCards,
+      settings: {
+        forms: currentSettings.forms,
+        includeRegular: currentSettings.includeRegular,
+        irregularPopulation: currentSettings.irregularPopulation,
+        regularPopulation: currentSettings.includeRegular ? currentSettings.regularPopulation : null,
+        verbCount: currentSettings.verbCount
+      },
+      missed: missedList.map(c => ({ base: c.base, form: c.form, misses: c.misses }))
+    });
+  }
+
+  // ── HISTORY (localStorage) ──
+  // per-verb "struggle score": +1 on a wrong answer, -1 on a correct one,
+  // floored at 0. Used to weight sampling when "prioritize weak verbs" is on.
+  const VERB_STATS_KEY = 'conjugationVerbStats';
+
+  function loadVerbStats() {
+    try { return JSON.parse(localStorage.getItem(VERB_STATS_KEY)) || {}; }
+    catch { return {}; }
+  }
+
+  function saveVerbStats(stats) {
+    try { localStorage.setItem(VERB_STATS_KEY, JSON.stringify(stats)); } catch {}
+  }
+
+  function bumpVerbStat(base, form, delta) {
+    const stats = loadVerbStats();
+    const key = `${base}|${form}`;
+    const next = Math.max(0, (stats[key] || 0) + delta);
+    if (next === 0) delete stats[key]; else stats[key] = next;
+    saveVerbStats(stats);
+  }
+
+  const HISTORY_KEY = 'conjugationHistory';
+
+  function loadHistory() {
+    try { return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; }
+    catch { return []; }
+  }
+
+  function saveHistory(records) {
+    try { localStorage.setItem(HISTORY_KEY, JSON.stringify(records)); } catch {}
+  }
+
+  function logRoundResult(record) {
+    const records = loadHistory();
+    records.push(record);
+    saveHistory(records);
+  }
+
+  function summariseSettings(s) {
+    const parts = [];
+    parts.push(s.forms === 'both' ? 'both forms' : formLabel(s.forms));
+    parts.push(s.includeRegular ? 'irregular + regular' : 'irregular only');
+    parts.push(`irr: ${s.irregularPopulation === 'all' ? 'all' : 'top ' + s.irregularPopulation}`);
+    if (s.includeRegular) parts.push(`reg: ${s.regularPopulation === 'all' ? 'all' : 'top ' + s.regularPopulation}`);
+    parts.push(`${s.verbCount} questions`);
+    return parts.join(' · ');
+  }
+
+  function renderHistory() {
+    const records = [...loadHistory()].reverse();
+    const container = document.getElementById('history-content');
+
+    if (records.length === 0) {
+      container.innerHTML = '<p class="empty-state">No rounds played yet.</p>';
+      document.getElementById('clear-history-btn').style.display = 'none';
+      return;
+    }
+
+    document.getElementById('clear-history-btn').style.display = 'inline-block';
+
+    const rows = records.map(r => `
+      <tr>
+        <td class="muted-cell">${new Date(r.date).toLocaleDateString()}</td>
+        <td class="mono">${r.points}/${r.maxPoints}</td>
+        <td class="mono">${r.correct}/${r.total}</td>
+        <td class="muted-cell">${summariseSettings(r.settings)}</td>
+        <td class="muted-cell">${r.missed.length ? r.missed.map(m => `${m.base} (${formLabel(m.form)}${m.misses ? ` ×${m.misses}` : ''})`).join(', ') : '—'}</td>
+      </tr>
+    `).join('');
+
+    container.innerHTML = `
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Date</th><th>Points</th><th>Correct</th><th>Settings</th><th>Missed</th></tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  function clearHistory() {
+    if (!confirm('Clear all round history?')) return;
+    localStorage.removeItem(HISTORY_KEY);
+    renderHistory();
+  }
+
+  // ── LOOKUP ──
+  let lookupSorted = [];
+
+  function initLookup() {
+    lookupSorted = [...irregularVerbs].sort((a, b) => a.base.localeCompare(b.base));
+    renderLookupRows(lookupSorted);
+    document.getElementById('lookup-search').addEventListener('input', e => {
+      const q = e.target.value.trim().toLowerCase();
+      renderLookupRows(lookupSorted.filter(v => v.base.toLowerCase().includes(q)));
+    });
+  }
+
+  function renderLookupRows(rows) {
+    document.getElementById('lookup-table-body').innerHTML = rows.map(v =>
+      `<tr><td class="mono">${v.base}</td><td class="mono">${formatAnswer(v.pastSimple)}</td><td class="mono">${formatAnswer(v.pastParticiple)}</td></tr>`
+    ).join('');
+  }
+
+  // ── TABS / SCREENS ──
+  const PRACTICE_SCREENS = ['setup', 'quiz', 'results'];
+  let activePracticeScreen = 'setup';
+
+  function showScreen(name) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-' + name).classList.add('active');
+    if (PRACTICE_SCREENS.includes(name)) activePracticeScreen = name;
+  }
+
+  function renderReviewList() {
+    const stats = loadVerbStats();
+    const entries = Object.entries(stats)
+      .map(([key, misses]) => {
+        const [base, form] = key.split('|');
+        const entry = findVerbEntry(base);
+        return { base, form, misses, answer: entry ? entry[form] : '' };
+      })
+      .sort((a, b) => b.misses - a.misses);
+
+    const container = document.getElementById('review-list-content');
+    if (entries.length === 0) {
+      container.innerHTML = '<div class="empty-failed">✓ Nothing to review right now!</div>';
+      return;
+    }
+    container.innerHTML = entries.map(e =>
+      `<div class="failed-item">
+        <span>${e.base} — ${formLabel(e.form)}: ${formatAnswer(e.answer)}</span>
+        <span class="failed-item-misses">×${e.misses}</span>
+      </div>`
+    ).join('');
+  }
+
+  function selectTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+    if (tab === 'practice') {
+      showScreen(activePracticeScreen);
+    } else if (tab === 'review') {
+      renderReviewList();
+      showScreen('review');
+    } else if (tab === 'history') {
+      renderHistory();
+      showScreen('history');
+    } else {
+      showScreen('lookup');
+    }
+  }
+
+  // ── KEYBOARD ──
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return;
+    if (!document.getElementById('screen-quiz').classList.contains('active')) return;
+    const nextBtn = document.getElementById('next-btn');
+    const checkBtn = document.getElementById('check-btn');
+    if (nextBtn.classList.contains('show')) {
+      nextCard();
+    } else if (!checkBtn.disabled) {
+      checkAnswer();
+    }
+  });
+
+  // ── SHARED HEADER & FOOTER ──
+  fetch('https://liamteacher.com/header.html', { cache: 'no-store' })
+    .then(r => r.text())
+    .then(html => { document.getElementById('shared-header').innerHTML = html; })
+    .catch(() => {});
+  fetch('https://liamteacher.com/footer.html', { cache: 'no-store' })
+    .then(r => r.text())
+    .then(html => { document.getElementById('shared-footer').innerHTML = html; })
+    .catch(() => {});
+
+  // ── BOOT ──
+  applySettingsToForm(loadSavedSettings());
+  loadVerbData();
+</script>
+</body>
+</html>
