@@ -614,7 +614,7 @@
     #lookup-search:focus { border-color: var(--accent); }
 
     @media (max-width: 480px) {
-      .quiz-card { padding: 28px 20px; }
+      .quiz-card { padding: 24px 20px; }
       .screen-title { font-size: 1.6rem; }
       .page-title { font-size: 2rem; }
       .setting-row { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -623,6 +623,12 @@
       .feedback-verb-row .fv-label { white-space: normal; }
       .tab-bar { padding: 0 12px; gap: 0; }
       .tab-btn { font-size: 0.74rem; padding: 8px 6px 10px; text-align: center; }
+
+      /* bring the input higher up the screen - shortens how far iOS Safari
+         has to auto-scroll to reveal it above the keyboard on focus */
+      .quiz-header { margin-bottom: 16px; }
+      .quiz-instruction { margin-bottom: 10px; }
+      .quiz-base-verb { font-size: 1.9rem; margin-bottom: 16px; }
     }
   </style>
 </head>
