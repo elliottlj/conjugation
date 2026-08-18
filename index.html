@@ -317,8 +317,7 @@
     .spelling-input.wrong   { border-color: var(--red);   background: var(--red-lt);   }
 
     .check-btn {
-      margin-top: 14px;
-      width: 100%;
+      flex: 1;
       padding: 14px;
       background: var(--accent);
       color: #fff;
@@ -331,16 +330,13 @@
       transition: background 0.15s;
     }
 
-    .check-btn:hover:not(:disabled) { background: #155D60; }
-    .check-btn:disabled { opacity: 0.45; cursor: default; }
+    .check-btn:hover { background: #155D60; }
 
     .quiz-actions {
-      display: none;
+      display: flex;
       gap: 10px;
       margin-top: 14px;
     }
-
-    .quiz-actions.show { display: flex; }
 
     .end-game-btn {
       flex: 1;
@@ -394,22 +390,6 @@
       text-decoration-thickness: 2px;
       text-underline-offset: 3px;
     }
-
-    .next-btn {
-      flex: 1;
-      padding: 13px;
-      background: var(--surface);
-      color: var(--accent);
-      border: 2px solid var(--accent);
-      border-radius: var(--radius);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .next-btn:hover { background: var(--accent-lt); }
 
     /* ── RESULTS SCREEN ── */
     .results-score {
@@ -725,13 +705,12 @@
           autocapitalize="off"
           spellcheck="false"
         />
-        <button class="check-btn" id="check-btn" onclick="checkAnswer()" disabled>Check</button>
+        <div class="quiz-actions">
+          <button class="check-btn" id="check-btn" onclick="handleCheckOrNext()">Next →</button>
+          <button class="end-game-btn" onclick="endGameEarly()">End game</button>
+        </div>
         <div class="feedback" id="feedback">
           <div class="feedback-verb-row" id="feedback-verb-row"></div>
-        </div>
-        <div class="quiz-actions" id="quiz-actions">
-          <button class="next-btn" id="next-btn" onclick="nextCard()">Next →</button>
-          <button class="end-game-btn" onclick="endGameEarly()">End game</button>
         </div>
       </div>
     </div>
@@ -1017,10 +996,9 @@
     input.className = 'spelling-input';
     input.disabled = false;
 
-    document.getElementById('check-btn').disabled = false;
+    document.getElementById('check-btn').textContent = 'Next →';
     document.getElementById('feedback').className = 'feedback';
     document.getElementById('feedback-verb-row').innerHTML = '';
-    document.getElementById('quiz-actions').classList.remove('show');
 
     input.focus();
   }
@@ -1042,20 +1020,26 @@
     `;
   }
 
+  // the single action button checks the current answer if the input is
+  // still live, or advances to the next card once it's been checked
+  function handleCheckOrNext() {
+    const input = document.getElementById('answer-input');
+    if (input.disabled) nextCard();
+    else checkAnswer();
+  }
+
   function checkAnswer() {
     const input    = document.getElementById('answer-input');
     const typed    = input.value;
     const feedback = document.getElementById('feedback');
-    const nextBtn  = document.getElementById('next-btn');
+    const nextBtn  = document.getElementById('check-btn');
 
     currentCard.attempts++;
     const key = `${currentCard.base}|${currentCard.form}`;
     const correct = isCorrectAnswer(typed, currentCard.answer);
 
-    document.getElementById('check-btn').disabled = true;
     input.disabled = true;
     nextBtn.textContent = queue.length === 0 ? 'See results →' : 'Next →';
-    document.getElementById('quiz-actions').classList.add('show');
 
     if (correct) {
       correctCards.add(key);
@@ -1308,12 +1292,7 @@
   document.addEventListener('keydown', e => {
     if (e.key !== 'Enter') return;
     if (!document.getElementById('screen-quiz').classList.contains('active')) return;
-    const checkBtn = document.getElementById('check-btn');
-    if (document.getElementById('quiz-actions').classList.contains('show')) {
-      nextCard();
-    } else if (!checkBtn.disabled) {
-      checkAnswer();
-    }
+    handleCheckOrNext();
   });
 
   // ── SHARED HEADER & FOOTER ──
