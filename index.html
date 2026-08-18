@@ -1255,7 +1255,11 @@
     renderLookupRows(lookupSorted);
     document.getElementById('lookup-search').addEventListener('input', e => {
       const q = e.target.value.trim().toLowerCase();
-      renderLookupRows(lookupSorted.filter(v => v.base.toLowerCase().includes(q)));
+      renderLookupRows(lookupSorted.filter(v =>
+        v.base.toLowerCase().includes(q) ||
+        v.pastSimple.toLowerCase().includes(q) ||
+        v.pastParticiple.toLowerCase().includes(q)
+      ));
     });
   }
 
