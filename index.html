@@ -317,7 +317,8 @@
     .spelling-input.wrong   { border-color: var(--red);   background: var(--red-lt);   }
 
     .check-btn {
-      flex: 1;
+      width: 100%;
+      margin-top: 14px;
       padding: 14px;
       background: var(--accent);
       color: #fff;
@@ -332,30 +333,27 @@
 
     .check-btn:hover { background: #155D60; }
 
-    .quiz-actions {
-      display: flex;
-      gap: 10px;
+    .end-game-link {
+      display: none;
+      width: 100%;
       margin-top: 14px;
-    }
-
-    .end-game-btn {
-      flex: 1;
-      padding: 13px;
-      background: var(--surface);
+      padding: 6px;
+      background: none;
+      border: none;
       color: var(--muted);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-align: center;
       cursor: pointer;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      transition: color 0.15s;
     }
 
-    .end-game-btn:hover { background: var(--bg); color: var(--text); border-color: var(--muted); }
+    .end-game-link:hover { color: var(--text); text-decoration: underline; }
+    .end-game-link.show { display: block; }
 
     .feedback {
-      margin-top: 20px;
+      margin-top: 14px;
       padding: 14px 18px;
       border-radius: var(--radius);
       display: none;
@@ -705,13 +703,11 @@
           autocapitalize="off"
           spellcheck="false"
         />
-        <div class="quiz-actions">
-          <button class="check-btn" id="check-btn" onclick="handleCheckOrNext()">Next →</button>
-          <button class="end-game-btn" onclick="endGameEarly()">End game</button>
-        </div>
+        <button class="check-btn" id="check-btn" onclick="handleCheckOrNext()">Next →</button>
         <div class="feedback" id="feedback">
           <div class="feedback-verb-row" id="feedback-verb-row"></div>
         </div>
+        <button class="end-game-link" id="end-game-link" onclick="endGameEarly()">End game</button>
       </div>
     </div>
   </div>
@@ -999,6 +995,7 @@
     document.getElementById('check-btn').textContent = 'Next →';
     document.getElementById('feedback').className = 'feedback';
     document.getElementById('feedback-verb-row').innerHTML = '';
+    document.getElementById('end-game-link').classList.remove('show');
 
     input.focus();
   }
@@ -1040,6 +1037,7 @@
 
     input.disabled = true;
     nextBtn.textContent = queue.length === 0 ? 'See results →' : 'Next →';
+    document.getElementById('end-game-link').classList.add('show');
 
     if (correct) {
       correctCards.add(key);
