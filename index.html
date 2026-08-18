@@ -284,11 +284,13 @@
     }
 
     .quiz-base-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      text-align: center;
       margin-bottom: 28px;
+    }
+
+    .quiz-base-wrap {
+      position: relative;
+      display: inline-block;
     }
 
     .quiz-base-verb {
@@ -298,17 +300,23 @@
     }
 
     .points-badge {
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-left: 10px;
       display: none;
-      background: var(--green-lt);
-      color: var(--green);
       font-family: 'DM Mono', monospace;
       font-size: 0.85rem;
       font-weight: 700;
       padding: 3px 10px;
       border-radius: 20px;
+      white-space: nowrap;
     }
 
     .points-badge.show { display: inline-block; }
+    .points-badge.correct { background: var(--green-lt); color: var(--green); }
+    .points-badge.wrong   { background: var(--red-lt);   color: var(--red);   }
 
     .input-area { margin-top: 8px; }
 
@@ -618,6 +626,16 @@
       .quiz-instruction { margin-bottom: 10px; }
       .quiz-base-verb { font-size: 1.9rem; }
       .quiz-base-row { margin-bottom: 16px; }
+
+      /* long verb + long badge text can overflow the card side-by-side on
+         narrow screens - stack the badge below instead */
+      .points-badge {
+        position: static;
+        display: none;
+        transform: none;
+        margin: 8px auto 0;
+      }
+      .points-badge.show { display: block; width: fit-content; }
     }
   </style>
 </head>
@@ -725,8 +743,10 @@
     <div class="quiz-card">
       <p class="quiz-instruction" id="card-form-label">Past simple</p>
       <div class="quiz-base-row">
-        <p class="quiz-base-verb" id="card-base"></p>
-        <span class="points-badge" id="points-badge"></span>
+        <span class="quiz-base-wrap">
+          <span class="quiz-base-verb" id="card-base"></span>
+          <span class="points-badge" id="points-badge"></span>
+        </span>
       </div>
 
       <div class="input-area">
@@ -1024,7 +1044,7 @@
 
     document.getElementById('card-form-label').textContent = formLabel(currentCard.form);
     document.getElementById('card-base').textContent = currentCard.base;
-    document.getElementById('points-badge').classList.remove('show');
+    document.getElementById('points-badge').className = 'points-badge';
 
     const input = document.getElementById('answer-input');
     input.value = '';
@@ -1082,7 +1102,7 @@
 
       const badge = document.getElementById('points-badge');
       badge.textContent = `+${pointsEarned}`;
-      badge.classList.add('show');
+      badge.className = 'points-badge show correct';
     } else {
       input.className = 'spelling-input wrong';
       feedback.className = 'feedback wrong show';
@@ -1100,6 +1120,10 @@
         const insertAt = queue.length === 0 ? 0 : 1 + Math.floor(Math.random() * queue.length);
         queue.splice(insertAt, 0, currentCard);
       }
+
+      const badge = document.getElementById('points-badge');
+      badge.textContent = `✗ ${retriesLeft === 1 ? '1 try remaining' : `${retriesLeft} tries remaining`}`;
+      badge.className = 'points-badge show wrong';
     }
   }
 
