@@ -236,7 +236,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 28px;
+      margin-top: 20px;
       gap: 16px;
     }
 
@@ -626,7 +626,7 @@
 
       /* bring the input higher up the screen - shortens how far iOS Safari
          has to auto-scroll to reveal it above the keyboard on focus */
-      .quiz-header { margin-bottom: 16px; }
+      .quiz-header { margin-top: 14px; }
       .quiz-instruction { margin-bottom: 10px; }
       .quiz-base-verb { font-size: 1.9rem; margin-bottom: 16px; }
     }
@@ -725,14 +725,6 @@
 
   <!-- QUIZ SCREEN -->
   <div id="screen-quiz" class="screen">
-    <div class="quiz-header">
-      <button class="end-game-btn" onclick="endGameEarly()">End game</button>
-      <div class="progress-wrap">
-        <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
-        <div class="progress-label" id="progress-label">0 / 0</div>
-      </div>
-    </div>
-
     <div class="quiz-card">
       <p class="quiz-instruction" id="card-form-label">Past simple</p>
       <p class="quiz-base-verb" id="card-base"></p>
@@ -757,6 +749,14 @@
           </div>
         </div>
         <button class="next-btn" id="next-btn" onclick="nextCard()">Next →</button>
+      </div>
+    </div>
+
+    <div class="quiz-header">
+      <button class="end-game-btn" onclick="endGameEarly()">End game</button>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+        <div class="progress-label" id="progress-label">0 / 0</div>
       </div>
     </div>
   </div>
