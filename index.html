@@ -232,46 +232,23 @@
     .start-btn:hover { background: #155D60; }
 
     /* ── QUIZ SCREEN ── */
-    .quiz-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 28px;
-      gap: 16px;
-    }
-
-
-    .progress-wrap { flex: 1; }
-
-    .progress-bar {
-      height: 4px;
-      background: var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: var(--accent);
-      border-radius: 2px;
-      transition: width 0.3s ease;
-    }
-
-    .progress-label {
-      text-align: right;
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 5px;
-      font-family: 'DM Mono', monospace;
-    }
-
     .quiz-card {
+      position: relative;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 40px 36px;
       box-shadow: var(--shadow);
       text-align: center;
+    }
+
+    .quiz-progress-counter {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
     }
 
     .quiz-instruction {
@@ -357,15 +334,23 @@
     .check-btn:hover:not(:disabled) { background: #155D60; }
     .check-btn:disabled { opacity: 0.45; cursor: default; }
 
+    .quiz-actions {
+      display: none;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .quiz-actions.show { display: flex; }
+
     .end-game-btn {
-      flex-shrink: 0;
-      padding: 6px 12px;
+      flex: 1;
+      padding: 13px;
       background: var(--surface);
       color: var(--muted);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.76rem;
+      font-size: 0.95rem;
       font-weight: 600;
       cursor: pointer;
       transition: background 0.15s, color 0.15s, border-color 0.15s;
@@ -411,8 +396,7 @@
     }
 
     .next-btn {
-      margin-top: 14px;
-      width: 100%;
+      flex: 1;
       padding: 13px;
       background: var(--surface);
       color: var(--accent);
@@ -422,12 +406,10 @@
       font-size: 0.95rem;
       font-weight: 600;
       cursor: pointer;
-      display: none;
       transition: background 0.15s, color 0.15s;
     }
 
     .next-btn:hover { background: var(--accent-lt); }
-    .next-btn.show { display: block; }
 
     /* ── RESULTS SCREEN ── */
     .results-score {
@@ -622,7 +604,6 @@
 
       /* bring the input higher up the screen - shortens how far iOS Safari
          has to auto-scroll to reveal it above the keyboard on focus */
-      .quiz-header { margin-bottom: 16px; }
       .quiz-instruction { margin-bottom: 10px; }
       .quiz-base-verb { font-size: 1.9rem; }
       .quiz-base-row { margin-bottom: 16px; }
@@ -722,15 +703,8 @@
 
   <!-- QUIZ SCREEN -->
   <div id="screen-quiz" class="screen">
-    <div class="quiz-header">
-      <button class="end-game-btn" onclick="endGameEarly()">End game</button>
-      <div class="progress-wrap">
-        <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
-        <div class="progress-label" id="progress-label">0 / 0</div>
-      </div>
-    </div>
-
     <div class="quiz-card">
+      <span class="quiz-progress-counter" id="quiz-progress-counter">0 / 0</span>
       <p class="quiz-instruction" id="card-form-label">Past simple</p>
       <div class="quiz-base-row">
         <span class="quiz-base-wrap">
@@ -754,7 +728,10 @@
         <div class="feedback" id="feedback">
           <div class="feedback-verb-row" id="feedback-verb-row"></div>
         </div>
-        <button class="next-btn" id="next-btn" onclick="nextCard()">Next →</button>
+        <div class="quiz-actions" id="quiz-actions">
+          <button class="next-btn" id="next-btn" onclick="nextCard()">Next →</button>
+          <button class="end-game-btn" onclick="endGameEarly()">End game</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1028,9 +1005,7 @@
     currentCard = queue.shift();
 
     const done = totalCards - queue.length - 1;
-    const pct = (done / totalCards) * 100;
-    document.getElementById('progress-fill').style.width = pct + '%';
-    document.getElementById('progress-label').textContent = `${done} / ${totalCards}`;
+    document.getElementById('quiz-progress-counter').textContent = `${done} / ${totalCards}`;
 
     document.getElementById('card-form-label').textContent = formLabel(currentCard.form);
     document.getElementById('card-base').textContent = currentCard.base;
@@ -1044,7 +1019,7 @@
     document.getElementById('check-btn').disabled = false;
     document.getElementById('feedback').className = 'feedback';
     document.getElementById('feedback-verb-row').innerHTML = '';
-    document.getElementById('next-btn').className = 'next-btn';
+    document.getElementById('quiz-actions').classList.remove('show');
 
     input.focus();
   }
@@ -1079,7 +1054,7 @@
     document.getElementById('check-btn').disabled = true;
     input.disabled = true;
     nextBtn.textContent = queue.length === 0 ? 'See results →' : 'Next →';
-    nextBtn.className = 'next-btn show';
+    document.getElementById('quiz-actions').classList.add('show');
 
     if (correct) {
       correctCards.add(key);
@@ -1332,9 +1307,8 @@
   document.addEventListener('keydown', e => {
     if (e.key !== 'Enter') return;
     if (!document.getElementById('screen-quiz').classList.contains('active')) return;
-    const nextBtn = document.getElementById('next-btn');
     const checkBtn = document.getElementById('check-btn');
-    if (nextBtn.classList.contains('show')) {
+    if (document.getElementById('quiz-actions').classList.contains('show')) {
       nextCard();
     } else if (!checkBtn.disabled) {
       checkAnswer();
