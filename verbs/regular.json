@@ -1,202 +1,1202 @@
 [
-  { "base": "want", "pastSimple": "wanted", "pastParticiple": "wanted", "rank": 1 },
-  { "base": "use", "pastSimple": "used", "pastParticiple": "used", "rank": 2 },
-  { "base": "look", "pastSimple": "looked", "pastParticiple": "looked", "rank": 3 },
-  { "base": "need", "pastSimple": "needed", "pastParticiple": "needed", "rank": 4 },
-  { "base": "work", "pastSimple": "worked", "pastParticiple": "worked", "rank": 5 },
-  { "base": "call", "pastSimple": "called", "pastParticiple": "called", "rank": 6 },
-  { "base": "ask", "pastSimple": "asked", "pastParticiple": "asked", "rank": 7 },
-  { "base": "seem", "pastSimple": "seemed", "pastParticiple": "seemed", "rank": 8 },
-  { "base": "help", "pastSimple": "helped", "pastParticiple": "helped", "rank": 9 },
-  { "base": "talk", "pastSimple": "talked", "pastParticiple": "talked", "rank": 10 },
-  { "base": "turn", "pastSimple": "turned", "pastParticiple": "turned", "rank": 11 },
-  { "base": "start", "pastSimple": "started", "pastParticiple": "started", "rank": 12 },
-  { "base": "walk", "pastSimple": "walked", "pastParticiple": "walked", "rank": 13 },
-  { "base": "follow", "pastSimple": "followed", "pastParticiple": "followed", "rank": 14 },
-  { "base": "stop", "pastSimple": "stopped", "pastParticiple": "stopped", "rank": 15 },
-  { "base": "live", "pastSimple": "lived", "pastParticiple": "lived", "rank": 16 },
-  { "base": "believe", "pastSimple": "believed", "pastParticiple": "believed", "rank": 17 },
-  { "base": "happen", "pastSimple": "happened", "pastParticiple": "happened", "rank": 18 },
-  { "base": "add", "pastSimple": "added", "pastParticiple": "added", "rank": 19 },
-  { "base": "remain", "pastSimple": "remained", "pastParticiple": "remained", "rank": 20 },
-  { "base": "allow", "pastSimple": "allowed", "pastParticiple": "allowed", "rank": 21 },
-  { "base": "offer", "pastSimple": "offered", "pastParticiple": "offered", "rank": 22 },
-  { "base": "remember", "pastSimple": "remembered", "pastParticiple": "remembered", "rank": 23 },
-  { "base": "consider", "pastSimple": "considered", "pastParticiple": "considered", "rank": 24 },
-  { "base": "appear", "pastSimple": "appeared", "pastParticiple": "appeared", "rank": 25 },
-  { "base": "wait", "pastSimple": "waited", "pastParticiple": "waited", "rank": 26 },
-  { "base": "serve", "pastSimple": "served", "pastParticiple": "served", "rank": 27 },
-  { "base": "die", "pastSimple": "died", "pastParticiple": "died", "rank": 28 },
-  { "base": "expect", "pastSimple": "expected", "pastParticiple": "expected", "rank": 29 },
-  { "base": "suggest", "pastSimple": "suggested", "pastParticiple": "suggested", "rank": 30 },
-  { "base": "plan", "pastSimple": "planned", "pastParticiple": "planned", "rank": 31 },
-  { "base": "report", "pastSimple": "reported", "pastParticiple": "reported", "rank": 32 },
-  { "base": "watch", "pastSimple": "watched", "pastParticiple": "watched", "rank": 33 },
-  { "base": "exist", "pastSimple": "existed", "pastParticiple": "existed", "rank": 34 },
-  { "base": "fill", "pastSimple": "filled", "pastParticiple": "filled", "rank": 35 },
-  { "base": "form", "pastSimple": "formed", "pastParticiple": "formed", "rank": 36 },
-  { "base": "reduce", "pastSimple": "reduced", "pastParticiple": "reduced", "rank": 37 },
-  { "base": "join", "pastSimple": "joined", "pastParticiple": "joined", "rank": 38 },
-  { "base": "contain", "pastSimple": "contained", "pastParticiple": "contained", "rank": 39 },
-  { "base": "cover", "pastSimple": "covered", "pastParticiple": "covered", "rank": 40 },
-  { "base": "avoid", "pastSimple": "avoided", "pastParticiple": "avoided", "rank": 41 },
-  { "base": "determine", "pastSimple": "determined", "pastParticiple": "determined", "rank": 42 },
-  { "base": "involve", "pastSimple": "involved", "pastParticiple": "involved", "rank": 43 },
-  { "base": "obtain", "pastSimple": "obtained", "pastParticiple": "obtained", "rank": 44 },
-  { "base": "treat", "pastSimple": "treated", "pastParticiple": "treated", "rank": 45 },
-  { "base": "provide", "pastSimple": "provided", "pastParticiple": "provided", "rank": 46 },
-  { "base": "address", "pastSimple": "addressed", "pastParticiple": "addressed", "rank": 47 },
-  { "base": "develop", "pastSimple": "developed", "pastParticiple": "developed", "rank": 48 },
-  { "base": "control", "pastSimple": "controlled", "pastParticiple": "controlled", "rank": 49 },
-  { "base": "collect", "pastSimple": "collected", "pastParticiple": "collected", "rank": 50 },
-  { "base": "connect", "pastSimple": "connected", "pastParticiple": "connected", "rank": 51 },
-  { "base": "protect", "pastSimple": "protected", "pastParticiple": "protected", "rank": 52 },
-  { "base": "respond", "pastSimple": "responded", "pastParticiple": "responded", "rank": 53 },
-  { "base": "act", "pastSimple": "acted", "pastParticiple": "acted", "rank": 54 },
-  { "base": "indicate", "pastSimple": "indicated", "pastParticiple": "indicated", "rank": 55 },
-  { "base": "describe", "pastSimple": "described", "pastParticiple": "described", "rank": 56 },
-  { "base": "receive", "pastSimple": "received", "pastParticiple": "received", "rank": 57 },
-  { "base": "enter", "pastSimple": "entered", "pastParticiple": "entered", "rank": 58 },
-  { "base": "thank", "pastSimple": "thanked", "pastParticiple": "thanked", "rank": 59 },
-  { "base": "request", "pastSimple": "requested", "pastParticiple": "requested", "rank": 60 },
-  { "base": "present", "pastSimple": "presented", "pastParticiple": "presented", "rank": 61 },
-  { "base": "review", "pastSimple": "reviewed", "pastParticiple": "reviewed", "rank": 62 },
-  { "base": "discuss", "pastSimple": "discussed", "pastParticiple": "discussed", "rank": 63 },
-  { "base": "order", "pastSimple": "ordered", "pastParticiple": "ordered", "rank": 64 },
-  { "base": "note", "pastSimple": "noted", "pastParticiple": "noted", "rank": 65 },
-  { "base": "guess", "pastSimple": "guessed", "pastParticiple": "guessed", "rank": 66 },
-  { "base": "reach", "pastSimple": "reached", "pastParticiple": "reached", "rank": 67 },
-  { "base": "kill", "pastSimple": "killed", "pastParticiple": "killed", "rank": 68 },
-  { "base": "state", "pastSimple": "stated", "pastParticiple": "stated", "rank": 69 },
-  { "base": "attempt", "pastSimple": "attempted", "pastParticiple": "attempted", "rank": 70 },
-  { "base": "gain", "pastSimple": "gained", "pastParticiple": "gained", "rank": 71 },
-  { "base": "express", "pastSimple": "expressed", "pastParticiple": "expressed", "rank": 72 },
-  { "base": "cause", "pastSimple": "caused", "pastParticiple": "caused", "rank": 73 },
-  { "base": "remove", "pastSimple": "removed", "pastParticiple": "removed", "rank": 74 },
-  { "base": "complain", "pastSimple": "complained", "pastParticiple": "complained", "rank": 75 },
-  { "base": "save", "pastSimple": "saved", "pastParticiple": "saved", "rank": 76 },
-  { "base": "pull", "pastSimple": "pulled", "pastParticiple": "pulled", "rank": 77 },
-  { "base": "push", "pastSimple": "pushed", "pastParticiple": "pushed", "rank": 78 },
-  { "base": "roll", "pastSimple": "rolled", "pastParticiple": "rolled", "rank": 79 },
-  { "base": "jump", "pastSimple": "jumped", "pastParticiple": "jumped", "rank": 80 },
-  { "base": "dance", "pastSimple": "danced", "pastParticiple": "danced", "rank": 81 },
-  { "base": "laugh", "pastSimple": "laughed", "pastParticiple": "laughed", "rank": 82 },
-  { "base": "smile", "pastSimple": "smiled", "pastParticiple": "smiled", "rank": 83 },
-  { "base": "listen", "pastSimple": "listened", "pastParticiple": "listened", "rank": 84 },
-  { "base": "open", "pastSimple": "opened", "pastParticiple": "opened", "rank": 85 },
-  { "base": "close", "pastSimple": "closed", "pastParticiple": "closed", "rank": 86 },
-  { "base": "climb", "pastSimple": "climbed", "pastParticiple": "climbed", "rank": 87 },
-  { "base": "carry", "pastSimple": "carried", "pastParticiple": "carried", "rank": 88 },
-  { "base": "clean", "pastSimple": "cleaned", "pastParticiple": "cleaned", "rank": 89 },
-  { "base": "cook", "pastSimple": "cooked", "pastParticiple": "cooked", "rank": 90 },
-  { "base": "count", "pastSimple": "counted", "pastParticiple": "counted", "rank": 91 },
-  { "base": "cross", "pastSimple": "crossed", "pastParticiple": "crossed", "rank": 92 },
-  { "base": "cry", "pastSimple": "cried", "pastParticiple": "cried", "rank": 93 },
-  { "base": "dress", "pastSimple": "dressed", "pastParticiple": "dressed", "rank": 94 },
-  { "base": "drop", "pastSimple": "dropped", "pastParticiple": "dropped", "rank": 95 },
-  { "base": "fail", "pastSimple": "failed", "pastParticiple": "failed", "rank": 96 },
-  { "base": "fix", "pastSimple": "fixed", "pastParticiple": "fixed", "rank": 97 },
-  { "base": "hate", "pastSimple": "hated", "pastParticiple": "hated", "rank": 98 },
-  { "base": "hunt", "pastSimple": "hunted", "pastParticiple": "hunted", "rank": 99 },
-  { "base": "invite", "pastSimple": "invited", "pastParticiple": "invited", "rank": 100 },
-  { "base": "kick", "pastSimple": "kicked", "pastParticiple": "kicked", "rank": 101 },
-  { "base": "knock", "pastSimple": "knocked", "pastParticiple": "knocked", "rank": 102 },
-  { "base": "land", "pastSimple": "landed", "pastParticiple": "landed", "rank": 103 },
-  { "base": "lift", "pastSimple": "lifted", "pastParticiple": "lifted", "rank": 104 },
-  { "base": "list", "pastSimple": "listed", "pastParticiple": "listed", "rank": 105 },
-  { "base": "marry", "pastSimple": "married", "pastParticiple": "married", "rank": 106 },
-  { "base": "match", "pastSimple": "matched", "pastParticiple": "matched", "rank": 107 },
-  { "base": "mix", "pastSimple": "mixed", "pastParticiple": "mixed", "rank": 108 },
-  { "base": "move", "pastSimple": "moved", "pastParticiple": "moved", "rank": 109 },
-  { "base": "name", "pastSimple": "named", "pastParticiple": "named", "rank": 110 },
-  { "base": "owe", "pastSimple": "owed", "pastParticiple": "owed", "rank": 111 },
-  { "base": "own", "pastSimple": "owned", "pastParticiple": "owned", "rank": 112 },
-  { "base": "pack", "pastSimple": "packed", "pastParticiple": "packed", "rank": 113 },
-  { "base": "paint", "pastSimple": "painted", "pastParticiple": "painted", "rank": 114 },
-  { "base": "park", "pastSimple": "parked", "pastParticiple": "parked", "rank": 115 },
-  { "base": "pass", "pastSimple": "passed", "pastParticiple": "passed", "rank": 116 },
-  { "base": "phone", "pastSimple": "phoned", "pastParticiple": "phoned", "rank": 117 },
-  { "base": "plant", "pastSimple": "planted", "pastParticiple": "planted", "rank": 118 },
-  { "base": "play", "pastSimple": "played", "pastParticiple": "played", "rank": 119 },
-  { "base": "point", "pastSimple": "pointed", "pastParticiple": "pointed", "rank": 120 },
-  { "base": "post", "pastSimple": "posted", "pastParticiple": "posted", "rank": 121 },
-  { "base": "pour", "pastSimple": "poured", "pastParticiple": "poured", "rank": 122 },
-  { "base": "press", "pastSimple": "pressed", "pastParticiple": "pressed", "rank": 123 },
-  { "base": "pretend", "pastSimple": "pretended", "pastParticiple": "pretended", "rank": 124 },
-  { "base": "race", "pastSimple": "raced", "pastParticiple": "raced", "rank": 125 },
-  { "base": "rain", "pastSimple": "rained", "pastParticiple": "rained", "rank": 126 },
-  { "base": "realise", "pastSimple": "realised", "pastParticiple": "realised", "rank": 127 },
-  { "base": "record", "pastSimple": "recorded", "pastParticiple": "recorded", "rank": 128 },
-  { "base": "relax", "pastSimple": "relaxed", "pastParticiple": "relaxed", "rank": 129 },
-  { "base": "rely", "pastSimple": "relied", "pastParticiple": "relied", "rank": 130 },
-  { "base": "rent", "pastSimple": "rented", "pastParticiple": "rented", "rank": 131 },
-  { "base": "repair", "pastSimple": "repaired", "pastParticiple": "repaired", "rank": 132 },
-  { "base": "repeat", "pastSimple": "repeated", "pastParticiple": "repeated", "rank": 133 },
-  { "base": "rescue", "pastSimple": "rescued", "pastParticiple": "rescued", "rank": 134 },
-  { "base": "rest", "pastSimple": "rested", "pastParticiple": "rested", "rank": 135 },
-  { "base": "return", "pastSimple": "returned", "pastParticiple": "returned", "rank": 136 },
-  { "base": "rush", "pastSimple": "rushed", "pastParticiple": "rushed", "rank": 137 },
-  { "base": "scream", "pastSimple": "screamed", "pastParticiple": "screamed", "rank": 138 },
-  { "base": "search", "pastSimple": "searched", "pastParticiple": "searched", "rank": 139 },
-  { "base": "settle", "pastSimple": "settled", "pastParticiple": "settled", "rank": 140 },
-  { "base": "shout", "pastSimple": "shouted", "pastParticiple": "shouted", "rank": 141 },
-  { "base": "sign", "pastSimple": "signed", "pastParticiple": "signed", "rank": 142 },
-  { "base": "skip", "pastSimple": "skipped", "pastParticiple": "skipped", "rank": 143 },
-  { "base": "slip", "pastSimple": "slipped", "pastParticiple": "slipped", "rank": 144 },
-  { "base": "smoke", "pastSimple": "smoked", "pastParticiple": "smoked", "rank": 145 },
-  { "base": "sound", "pastSimple": "sounded", "pastParticiple": "sounded", "rank": 146 },
-  { "base": "stare", "pastSimple": "stared", "pastParticiple": "stared", "rank": 147 },
-  { "base": "stay", "pastSimple": "stayed", "pastParticiple": "stayed", "rank": 148 },
-  { "base": "step", "pastSimple": "stepped", "pastParticiple": "stepped", "rank": 149 },
-  { "base": "stir", "pastSimple": "stirred", "pastParticiple": "stirred", "rank": 150 },
-  { "base": "study", "pastSimple": "studied", "pastParticiple": "studied", "rank": 151 },
-  { "base": "suffer", "pastSimple": "suffered", "pastParticiple": "suffered", "rank": 152 },
-  { "base": "support", "pastSimple": "supported", "pastParticiple": "supported", "rank": 153 },
-  { "base": "suppose", "pastSimple": "supposed", "pastParticiple": "supposed", "rank": 154 },
-  { "base": "surprise", "pastSimple": "surprised", "pastParticiple": "surprised", "rank": 155 },
-  { "base": "survive", "pastSimple": "survived", "pastParticiple": "survived", "rank": 156 },
-  { "base": "suspect", "pastSimple": "suspected", "pastParticiple": "suspected", "rank": 157 },
-  { "base": "taste", "pastSimple": "tasted", "pastParticiple": "tasted", "rank": 158 },
-  { "base": "test", "pastSimple": "tested", "pastParticiple": "tested", "rank": 159 },
-  { "base": "touch", "pastSimple": "touched", "pastParticiple": "touched", "rank": 160 },
-  { "base": "train", "pastSimple": "trained", "pastParticiple": "trained", "rank": 161 },
-  { "base": "trust", "pastSimple": "trusted", "pastParticiple": "trusted", "rank": 162 },
-  { "base": "try", "pastSimple": "tried", "pastParticiple": "tried", "rank": 163 },
-  { "base": "type", "pastSimple": "typed", "pastParticiple": "typed", "rank": 164 },
-  { "base": "visit", "pastSimple": "visited", "pastParticiple": "visited", "rank": 165 },
-  { "base": "vote", "pastSimple": "voted", "pastParticiple": "voted", "rank": 166 },
-  { "base": "warn", "pastSimple": "warned", "pastParticiple": "warned", "rank": 167 },
-  { "base": "wash", "pastSimple": "washed", "pastParticiple": "washed", "rank": 168 },
-  { "base": "wave", "pastSimple": "waved", "pastParticiple": "waved", "rank": 169 },
-  { "base": "welcome", "pastSimple": "welcomed", "pastParticiple": "welcomed", "rank": 170 },
-  { "base": "wish", "pastSimple": "wished", "pastParticiple": "wished", "rank": 171 },
-  { "base": "wonder", "pastSimple": "wondered", "pastParticiple": "wondered", "rank": 172 },
-  { "base": "worry", "pastSimple": "worried", "pastParticiple": "worried", "rank": 173 },
-  { "base": "attack", "pastSimple": "attacked", "pastParticiple": "attacked", "rank": 174 },
-  { "base": "apply", "pastSimple": "applied", "pastParticiple": "applied", "rank": 175 },
-  { "base": "approve", "pastSimple": "approved", "pastParticiple": "approved", "rank": 176 },
-  { "base": "argue", "pastSimple": "argued", "pastParticiple": "argued", "rank": 177 },
-  { "base": "arrange", "pastSimple": "arranged", "pastParticiple": "arranged", "rank": 178 },
-  { "base": "arrest", "pastSimple": "arrested", "pastParticiple": "arrested", "rank": 179 },
-  { "base": "assume", "pastSimple": "assumed", "pastParticiple": "assumed", "rank": 180 },
-  { "base": "attend", "pastSimple": "attended", "pastParticiple": "attended", "rank": 181 },
-  { "base": "bake", "pastSimple": "baked", "pastParticiple": "baked", "rank": 182 },
-  { "base": "bathe", "pastSimple": "bathed", "pastParticiple": "bathed", "rank": 183 },
-  { "base": "beg", "pastSimple": "begged", "pastParticiple": "begged", "rank": 184 },
-  { "base": "behave", "pastSimple": "behaved", "pastParticiple": "behaved", "rank": 185 },
-  { "base": "belong", "pastSimple": "belonged", "pastParticiple": "belonged", "rank": 186 },
-  { "base": "borrow", "pastSimple": "borrowed", "pastParticiple": "borrowed", "rank": 187 },
-  { "base": "bounce", "pastSimple": "bounced", "pastParticiple": "bounced", "rank": 188 },
-  { "base": "brush", "pastSimple": "brushed", "pastParticiple": "brushed", "rank": 189 },
-  { "base": "bury", "pastSimple": "buried", "pastParticiple": "buried", "rank": 190 },
-  { "base": "calculate", "pastSimple": "calculated", "pastParticiple": "calculated", "rank": 191 },
-  { "base": "charge", "pastSimple": "charged", "pastParticiple": "charged", "rank": 192 },
-  { "base": "chase", "pastSimple": "chased", "pastParticiple": "chased", "rank": 193 },
-  { "base": "check", "pastSimple": "checked", "pastParticiple": "checked", "rank": 194 },
-  { "base": "claim", "pastSimple": "claimed", "pastParticiple": "claimed", "rank": 195 },
-  { "base": "clear", "pastSimple": "cleared", "pastParticiple": "cleared", "rank": 196 },
-  { "base": "collapse", "pastSimple": "collapsed", "pastParticiple": "collapsed", "rank": 197 },
-  { "base": "colour", "pastSimple": "coloured", "pastParticiple": "coloured", "rank": 198 },
-  { "base": "compete", "pastSimple": "competed", "pastParticiple": "competed", "rank": 199 },
-  { "base": "complete", "pastSimple": "completed", "pastParticiple": "completed", "rank": 200 }
+  {
+    "base": "want",
+    "pastSimple": "wanted",
+    "pastParticiple": "wanted",
+    "cefr": "A1"
+  },
+  {
+    "base": "use",
+    "pastSimple": "used",
+    "pastParticiple": "used",
+    "cefr": "A1"
+  },
+  {
+    "base": "look",
+    "pastSimple": "looked",
+    "pastParticiple": "looked",
+    "cefr": "A1"
+  },
+  {
+    "base": "need",
+    "pastSimple": "needed",
+    "pastParticiple": "needed",
+    "cefr": "A1"
+  },
+  {
+    "base": "work",
+    "pastSimple": "worked",
+    "pastParticiple": "worked",
+    "cefr": "A1"
+  },
+  {
+    "base": "call",
+    "pastSimple": "called",
+    "pastParticiple": "called",
+    "cefr": "A1"
+  },
+  {
+    "base": "ask",
+    "pastSimple": "asked",
+    "pastParticiple": "asked",
+    "cefr": "A1"
+  },
+  {
+    "base": "seem",
+    "pastSimple": "seemed",
+    "pastParticiple": "seemed",
+    "cefr": "A2"
+  },
+  {
+    "base": "help",
+    "pastSimple": "helped",
+    "pastParticiple": "helped",
+    "cefr": "A1"
+  },
+  {
+    "base": "talk",
+    "pastSimple": "talked",
+    "pastParticiple": "talked",
+    "cefr": "A1"
+  },
+  {
+    "base": "turn",
+    "pastSimple": "turned",
+    "pastParticiple": "turned",
+    "cefr": "A1"
+  },
+  {
+    "base": "start",
+    "pastSimple": "started",
+    "pastParticiple": "started",
+    "cefr": "A1"
+  },
+  {
+    "base": "walk",
+    "pastSimple": "walked",
+    "pastParticiple": "walked",
+    "cefr": "A1"
+  },
+  {
+    "base": "follow",
+    "pastSimple": "followed",
+    "pastParticiple": "followed",
+    "cefr": "A1"
+  },
+  {
+    "base": "stop",
+    "pastSimple": "stopped",
+    "pastParticiple": "stopped",
+    "cefr": "A1"
+  },
+  {
+    "base": "live",
+    "pastSimple": "lived",
+    "pastParticiple": "lived",
+    "cefr": "A1"
+  },
+  {
+    "base": "believe",
+    "pastSimple": "believed",
+    "pastParticiple": "believed",
+    "cefr": "A1"
+  },
+  {
+    "base": "happen",
+    "pastSimple": "happened",
+    "pastParticiple": "happened",
+    "cefr": "A1"
+  },
+  {
+    "base": "add",
+    "pastSimple": "added",
+    "pastParticiple": "added",
+    "cefr": "A1"
+  },
+  {
+    "base": "remain",
+    "pastSimple": "remained",
+    "pastParticiple": "remained",
+    "cefr": "B1"
+  },
+  {
+    "base": "allow",
+    "pastSimple": "allowed",
+    "pastParticiple": "allowed",
+    "cefr": "A2"
+  },
+  {
+    "base": "offer",
+    "pastSimple": "offered",
+    "pastParticiple": "offered",
+    "cefr": "A2"
+  },
+  {
+    "base": "remember",
+    "pastSimple": "remembered",
+    "pastParticiple": "remembered",
+    "cefr": "A1"
+  },
+  {
+    "base": "consider",
+    "pastSimple": "considered",
+    "pastParticiple": "considered",
+    "cefr": "A2"
+  },
+  {
+    "base": "appear",
+    "pastSimple": "appeared",
+    "pastParticiple": "appeared",
+    "cefr": "A2"
+  },
+  {
+    "base": "wait",
+    "pastSimple": "waited",
+    "pastParticiple": "waited",
+    "cefr": "A1"
+  },
+  {
+    "base": "serve",
+    "pastSimple": "served",
+    "pastParticiple": "served",
+    "cefr": "A2"
+  },
+  {
+    "base": "die",
+    "pastSimple": "died",
+    "pastParticiple": "died",
+    "cefr": "A1"
+  },
+  {
+    "base": "expect",
+    "pastSimple": "expected",
+    "pastParticiple": "expected",
+    "cefr": "A2"
+  },
+  {
+    "base": "suggest",
+    "pastSimple": "suggested",
+    "pastParticiple": "suggested",
+    "cefr": "A2"
+  },
+  {
+    "base": "plan",
+    "pastSimple": "planned",
+    "pastParticiple": "planned",
+    "cefr": "A1"
+  },
+  {
+    "base": "report",
+    "pastSimple": "reported",
+    "pastParticiple": "reported",
+    "cefr": "A2"
+  },
+  {
+    "base": "watch",
+    "pastSimple": "watched",
+    "pastParticiple": "watched",
+    "cefr": "A1"
+  },
+  {
+    "base": "exist",
+    "pastSimple": "existed",
+    "pastParticiple": "existed",
+    "cefr": "A2"
+  },
+  {
+    "base": "fill",
+    "pastSimple": "filled",
+    "pastParticiple": "filled",
+    "cefr": "A1"
+  },
+  {
+    "base": "form",
+    "pastSimple": "formed",
+    "pastParticiple": "formed",
+    "cefr": "A1"
+  },
+  {
+    "base": "reduce",
+    "pastSimple": "reduced",
+    "pastParticiple": "reduced",
+    "cefr": "A2"
+  },
+  {
+    "base": "join",
+    "pastSimple": "joined",
+    "pastParticiple": "joined",
+    "cefr": "A1"
+  },
+  {
+    "base": "contain",
+    "pastSimple": "contained",
+    "pastParticiple": "contained",
+    "cefr": "A2"
+  },
+  {
+    "base": "cover",
+    "pastSimple": "covered",
+    "pastParticiple": "covered",
+    "cefr": "A2"
+  },
+  {
+    "base": "avoid",
+    "pastSimple": "avoided",
+    "pastParticiple": "avoided",
+    "cefr": "A2"
+  },
+  {
+    "base": "determine",
+    "pastSimple": "determined",
+    "pastParticiple": "determined",
+    "cefr": "B1"
+  },
+  {
+    "base": "involve",
+    "pastSimple": "involved",
+    "pastParticiple": "involved",
+    "cefr": "A2"
+  },
+  {
+    "base": "obtain",
+    "pastSimple": "obtained",
+    "pastParticiple": "obtained",
+    "cefr": "B2"
+  },
+  {
+    "base": "treat",
+    "pastSimple": "treated",
+    "pastParticiple": "treated",
+    "cefr": "B1"
+  },
+  {
+    "base": "provide",
+    "pastSimple": "provided",
+    "pastParticiple": "provided",
+    "cefr": "A2"
+  },
+  {
+    "base": "address",
+    "pastSimple": "addressed",
+    "pastParticiple": "addressed",
+    "cefr": "B2"
+  },
+  {
+    "base": "develop",
+    "pastSimple": "developed",
+    "pastParticiple": "developed",
+    "cefr": "A2"
+  },
+  {
+    "base": "control",
+    "pastSimple": "controlled",
+    "pastParticiple": "controlled",
+    "cefr": "A2"
+  },
+  {
+    "base": "collect",
+    "pastSimple": "collected",
+    "pastParticiple": "collected",
+    "cefr": "A2"
+  },
+  {
+    "base": "connect",
+    "pastSimple": "connected",
+    "pastParticiple": "connected",
+    "cefr": "A2"
+  },
+  {
+    "base": "protect",
+    "pastSimple": "protected",
+    "pastParticiple": "protected",
+    "cefr": "A2"
+  },
+  {
+    "base": "respond",
+    "pastSimple": "responded",
+    "pastParticiple": "responded",
+    "cefr": "A2"
+  },
+  {
+    "base": "act",
+    "pastSimple": "acted",
+    "pastParticiple": "acted",
+    "cefr": "A2"
+  },
+  {
+    "base": "indicate",
+    "pastSimple": "indicated",
+    "pastParticiple": "indicated",
+    "cefr": "B1"
+  },
+  {
+    "base": "describe",
+    "pastSimple": "described",
+    "pastParticiple": "described",
+    "cefr": "A1"
+  },
+  {
+    "base": "receive",
+    "pastSimple": "received",
+    "pastParticiple": "received",
+    "cefr": "A2"
+  },
+  {
+    "base": "enter",
+    "pastSimple": "entered",
+    "pastParticiple": "entered",
+    "cefr": "A2"
+  },
+  {
+    "base": "thank",
+    "pastSimple": "thanked",
+    "pastParticiple": "thanked",
+    "cefr": "A1"
+  },
+  {
+    "base": "request",
+    "pastSimple": "requested",
+    "pastParticiple": "requested",
+    "cefr": "B1"
+  },
+  {
+    "base": "present",
+    "pastSimple": "presented",
+    "pastParticiple": "presented",
+    "cefr": "A2"
+  },
+  {
+    "base": "review",
+    "pastSimple": "reviewed",
+    "pastParticiple": "reviewed",
+    "cefr": "A2"
+  },
+  {
+    "base": "discuss",
+    "pastSimple": "discussed",
+    "pastParticiple": "discussed",
+    "cefr": "A1"
+  },
+  {
+    "base": "order",
+    "pastSimple": "ordered",
+    "pastParticiple": "ordered",
+    "cefr": "A1"
+  },
+  {
+    "base": "note",
+    "pastSimple": "noted",
+    "pastParticiple": "noted",
+    "cefr": "B1"
+  },
+  {
+    "base": "guess",
+    "pastSimple": "guessed",
+    "pastParticiple": "guessed",
+    "cefr": "A1"
+  },
+  {
+    "base": "reach",
+    "pastSimple": "reached",
+    "pastParticiple": "reached",
+    "cefr": "A2"
+  },
+  {
+    "base": "kill",
+    "pastSimple": "killed",
+    "pastParticiple": "killed",
+    "cefr": "A2"
+  },
+  {
+    "base": "state",
+    "pastSimple": "stated",
+    "pastParticiple": "stated",
+    "cefr": "B1"
+  },
+  {
+    "base": "attempt",
+    "pastSimple": "attempted",
+    "pastParticiple": "attempted",
+    "cefr": "B2"
+  },
+  {
+    "base": "gain",
+    "pastSimple": "gained",
+    "pastParticiple": "gained",
+    "cefr": "B2"
+  },
+  {
+    "base": "express",
+    "pastSimple": "expressed",
+    "pastParticiple": "expressed",
+    "cefr": "A2"
+  },
+  {
+    "base": "cause",
+    "pastSimple": "caused",
+    "pastParticiple": "caused",
+    "cefr": "A2"
+  },
+  {
+    "base": "remove",
+    "pastSimple": "removed",
+    "pastParticiple": "removed",
+    "cefr": "A2"
+  },
+  {
+    "base": "complain",
+    "pastSimple": "complained",
+    "pastParticiple": "complained",
+    "cefr": "A2"
+  },
+  {
+    "base": "save",
+    "pastSimple": "saved",
+    "pastParticiple": "saved",
+    "cefr": "A2"
+  },
+  {
+    "base": "pull",
+    "pastSimple": "pulled",
+    "pastParticiple": "pulled",
+    "cefr": "A2"
+  },
+  {
+    "base": "push",
+    "pastSimple": "pushed",
+    "pastParticiple": "pushed",
+    "cefr": "A2"
+  },
+  {
+    "base": "roll",
+    "pastSimple": "rolled",
+    "pastParticiple": "rolled",
+    "cefr": "B1"
+  },
+  {
+    "base": "jump",
+    "pastSimple": "jumped",
+    "pastParticiple": "jumped",
+    "cefr": "A2"
+  },
+  {
+    "base": "dance",
+    "pastSimple": "danced",
+    "pastParticiple": "danced",
+    "cefr": "A1"
+  },
+  {
+    "base": "laugh",
+    "pastSimple": "laughed",
+    "pastParticiple": "laughed",
+    "cefr": "A1"
+  },
+  {
+    "base": "smile",
+    "pastSimple": "smiled",
+    "pastParticiple": "smiled",
+    "cefr": "A2"
+  },
+  {
+    "base": "listen",
+    "pastSimple": "listened",
+    "pastParticiple": "listened",
+    "cefr": "A1"
+  },
+  {
+    "base": "open",
+    "pastSimple": "opened",
+    "pastParticiple": "opened",
+    "cefr": "A1"
+  },
+  {
+    "base": "close",
+    "pastSimple": "closed",
+    "pastParticiple": "closed",
+    "cefr": "A1"
+  },
+  {
+    "base": "climb",
+    "pastSimple": "climbed",
+    "pastParticiple": "climbed",
+    "cefr": "A1"
+  },
+  {
+    "base": "carry",
+    "pastSimple": "carried",
+    "pastParticiple": "carried",
+    "cefr": "A1"
+  },
+  {
+    "base": "clean",
+    "pastSimple": "cleaned",
+    "pastParticiple": "cleaned",
+    "cefr": "A1"
+  },
+  {
+    "base": "cook",
+    "pastSimple": "cooked",
+    "pastParticiple": "cooked",
+    "cefr": "A1"
+  },
+  {
+    "base": "count",
+    "pastSimple": "counted",
+    "pastParticiple": "counted",
+    "cefr": "A2"
+  },
+  {
+    "base": "cross",
+    "pastSimple": "crossed",
+    "pastParticiple": "crossed",
+    "cefr": "A2"
+  },
+  {
+    "base": "cry",
+    "pastSimple": "cried",
+    "pastParticiple": "cried",
+    "cefr": "A2"
+  },
+  {
+    "base": "dress",
+    "pastSimple": "dressed",
+    "pastParticiple": "dressed",
+    "cefr": "A1"
+  },
+  {
+    "base": "drop",
+    "pastSimple": "dropped",
+    "pastParticiple": "dropped",
+    "cefr": "A2"
+  },
+  {
+    "base": "fail",
+    "pastSimple": "failed",
+    "pastParticiple": "failed",
+    "cefr": "A2"
+  },
+  {
+    "base": "fix",
+    "pastSimple": "fixed",
+    "pastParticiple": "fixed",
+    "cefr": "A2"
+  },
+  {
+    "base": "hate",
+    "pastSimple": "hated",
+    "pastParticiple": "hated",
+    "cefr": "A1"
+  },
+  {
+    "base": "hunt",
+    "pastSimple": "hunted",
+    "pastParticiple": "hunted",
+    "cefr": "B1"
+  },
+  {
+    "base": "invite",
+    "pastSimple": "invited",
+    "pastParticiple": "invited",
+    "cefr": "A2"
+  },
+  {
+    "base": "kick",
+    "pastSimple": "kicked",
+    "pastParticiple": "kicked",
+    "cefr": "B1"
+  },
+  {
+    "base": "knock",
+    "pastSimple": "knocked",
+    "pastParticiple": "knocked",
+    "cefr": "A2"
+  },
+  {
+    "base": "land",
+    "pastSimple": "landed",
+    "pastParticiple": "landed",
+    "cefr": "A2"
+  },
+  {
+    "base": "lift",
+    "pastSimple": "lifted",
+    "pastParticiple": "lifted",
+    "cefr": "A2"
+  },
+  {
+    "base": "list",
+    "pastSimple": "listed",
+    "pastParticiple": "listed",
+    "cefr": "A1"
+  },
+  {
+    "base": "marry",
+    "pastSimple": "married",
+    "pastParticiple": "married",
+    "cefr": "A2"
+  },
+  {
+    "base": "match",
+    "pastSimple": "matched",
+    "pastParticiple": "matched",
+    "cefr": "A1"
+  },
+  {
+    "base": "mix",
+    "pastSimple": "mixed",
+    "pastParticiple": "mixed",
+    "cefr": "B1"
+  },
+  {
+    "base": "move",
+    "pastSimple": "moved",
+    "pastParticiple": "moved",
+    "cefr": "A1"
+  },
+  {
+    "base": "name",
+    "pastSimple": "named",
+    "pastParticiple": "named",
+    "cefr": "A1"
+  },
+  {
+    "base": "owe",
+    "pastSimple": "owed",
+    "pastParticiple": "owed",
+    "cefr": "B2"
+  },
+  {
+    "base": "own",
+    "pastSimple": "owned",
+    "pastParticiple": "owned",
+    "cefr": "A2"
+  },
+  {
+    "base": "pack",
+    "pastSimple": "packed",
+    "pastParticiple": "packed",
+    "cefr": "A2"
+  },
+  {
+    "base": "paint",
+    "pastSimple": "painted",
+    "pastParticiple": "painted",
+    "cefr": "A1"
+  },
+  {
+    "base": "park",
+    "pastSimple": "parked",
+    "pastParticiple": "parked",
+    "cefr": "A1"
+  },
+  {
+    "base": "pass",
+    "pastSimple": "passed",
+    "pastParticiple": "passed",
+    "cefr": "A2"
+  },
+  {
+    "base": "phone",
+    "pastSimple": "phoned",
+    "pastParticiple": "phoned",
+    "cefr": "A1"
+  },
+  {
+    "base": "plant",
+    "pastSimple": "planted",
+    "pastParticiple": "planted",
+    "cefr": "A2"
+  },
+  {
+    "base": "play",
+    "pastSimple": "played",
+    "pastParticiple": "played",
+    "cefr": "A1"
+  },
+  {
+    "base": "point",
+    "pastSimple": "pointed",
+    "pastParticiple": "pointed",
+    "cefr": "B1"
+  },
+  {
+    "base": "post",
+    "pastSimple": "posted",
+    "pastParticiple": "posted",
+    "cefr": "A1"
+  },
+  {
+    "base": "pour",
+    "pastSimple": "poured",
+    "pastParticiple": "poured",
+    "cefr": "B1"
+  },
+  {
+    "base": "press",
+    "pastSimple": "pressed",
+    "pastParticiple": "pressed",
+    "cefr": "B1"
+  },
+  {
+    "base": "pretend",
+    "pastSimple": "pretended",
+    "pastParticiple": "pretended",
+    "cefr": "B1"
+  },
+  {
+    "base": "race",
+    "pastSimple": "raced",
+    "pastParticiple": "raced",
+    "cefr": "A2"
+  },
+  {
+    "base": "rain",
+    "pastSimple": "rained",
+    "pastParticiple": "rained",
+    "cefr": "A1"
+  },
+  {
+    "base": "realise",
+    "pastSimple": "realised",
+    "pastParticiple": "realised",
+    "cefr": "A2"
+  },
+  {
+    "base": "record",
+    "pastSimple": "recorded",
+    "pastParticiple": "recorded",
+    "cefr": "A2"
+  },
+  {
+    "base": "relax",
+    "pastSimple": "relaxed",
+    "pastParticiple": "relaxed",
+    "cefr": "A1"
+  },
+  {
+    "base": "rely",
+    "pastSimple": "relied",
+    "pastParticiple": "relied",
+    "cefr": "B2"
+  },
+  {
+    "base": "rent",
+    "pastSimple": "rented",
+    "pastParticiple": "rented",
+    "cefr": "B1"
+  },
+  {
+    "base": "repair",
+    "pastSimple": "repaired",
+    "pastParticiple": "repaired",
+    "cefr": "A2"
+  },
+  {
+    "base": "repeat",
+    "pastSimple": "repeated",
+    "pastParticiple": "repeated",
+    "cefr": "A1"
+  },
+  {
+    "base": "rescue",
+    "pastSimple": "rescued",
+    "pastParticiple": "rescued",
+    "cefr": "B2"
+  },
+  {
+    "base": "rest",
+    "pastSimple": "rested",
+    "pastParticiple": "rested",
+    "cefr": "A2"
+  },
+  {
+    "base": "return",
+    "pastSimple": "returned",
+    "pastParticiple": "returned",
+    "cefr": "A1"
+  },
+  {
+    "base": "rush",
+    "pastSimple": "rushed",
+    "pastParticiple": "rushed",
+    "cefr": "B2"
+  },
+  {
+    "base": "scream",
+    "pastSimple": "screamed",
+    "pastParticiple": "screamed",
+    "cefr": "B2"
+  },
+  {
+    "base": "search",
+    "pastSimple": "searched",
+    "pastParticiple": "searched",
+    "cefr": "A2"
+  },
+  {
+    "base": "settle",
+    "pastSimple": "settled",
+    "pastParticiple": "settled",
+    "cefr": "B2"
+  },
+  {
+    "base": "shout",
+    "pastSimple": "shouted",
+    "pastParticiple": "shouted",
+    "cefr": "A2"
+  },
+  {
+    "base": "sign",
+    "pastSimple": "signed",
+    "pastParticiple": "signed",
+    "cefr": "A2"
+  },
+  {
+    "base": "skip",
+    "pastSimple": "skipped",
+    "pastParticiple": "skipped",
+    "cefr": "C1"
+  },
+  {
+    "base": "slip",
+    "pastSimple": "slipped",
+    "pastParticiple": "slipped",
+    "cefr": "B2"
+  },
+  {
+    "base": "smoke",
+    "pastSimple": "smoked",
+    "pastParticiple": "smoked",
+    "cefr": "A2"
+  },
+  {
+    "base": "sound",
+    "pastSimple": "sounded",
+    "pastParticiple": "sounded",
+    "cefr": "A1"
+  },
+  {
+    "base": "stare",
+    "pastSimple": "stared",
+    "pastParticiple": "stared",
+    "cefr": "B2"
+  },
+  {
+    "base": "stay",
+    "pastSimple": "stayed",
+    "pastParticiple": "stayed",
+    "cefr": "A1"
+  },
+  {
+    "base": "step",
+    "pastSimple": "stepped",
+    "pastParticiple": "stepped",
+    "cefr": "B2"
+  },
+  {
+    "base": "stir",
+    "pastSimple": "stirred",
+    "pastParticiple": "stirred",
+    "cefr": "C1"
+  },
+  {
+    "base": "study",
+    "pastSimple": "studied",
+    "pastParticiple": "studied",
+    "cefr": "A1"
+  },
+  {
+    "base": "suffer",
+    "pastSimple": "suffered",
+    "pastParticiple": "suffered",
+    "cefr": "B1"
+  },
+  {
+    "base": "support",
+    "pastSimple": "supported",
+    "pastParticiple": "supported",
+    "cefr": "A2"
+  },
+  {
+    "base": "suppose",
+    "pastSimple": "supposed",
+    "pastParticiple": "supposed",
+    "cefr": "A2"
+  },
+  {
+    "base": "surprise",
+    "pastSimple": "surprised",
+    "pastParticiple": "surprised",
+    "cefr": "A2"
+  },
+  {
+    "base": "survive",
+    "pastSimple": "survived",
+    "pastParticiple": "survived",
+    "cefr": "B1"
+  },
+  {
+    "base": "suspect",
+    "pastSimple": "suspected",
+    "pastParticiple": "suspected",
+    "cefr": "B2"
+  },
+  {
+    "base": "taste",
+    "pastSimple": "tasted",
+    "pastParticiple": "tasted",
+    "cefr": "A2"
+  },
+  {
+    "base": "test",
+    "pastSimple": "tested",
+    "pastParticiple": "tested",
+    "cefr": "A1"
+  },
+  {
+    "base": "touch",
+    "pastSimple": "touched",
+    "pastParticiple": "touched",
+    "cefr": "A2"
+  },
+  {
+    "base": "train",
+    "pastSimple": "trained",
+    "pastParticiple": "trained",
+    "cefr": "A2"
+  },
+  {
+    "base": "trust",
+    "pastSimple": "trusted",
+    "pastParticiple": "trusted",
+    "cefr": "B2"
+  },
+  {
+    "base": "try",
+    "pastSimple": "tried",
+    "pastParticiple": "tried",
+    "cefr": "A1"
+  },
+  {
+    "base": "type",
+    "pastSimple": "typed",
+    "pastParticiple": "typed",
+    "cefr": "B1"
+  },
+  {
+    "base": "visit",
+    "pastSimple": "visited",
+    "pastParticiple": "visited",
+    "cefr": "A1"
+  },
+  {
+    "base": "vote",
+    "pastSimple": "voted",
+    "pastParticiple": "voted",
+    "cefr": "B1"
+  },
+  {
+    "base": "warn",
+    "pastSimple": "warned",
+    "pastParticiple": "warned",
+    "cefr": "B1"
+  },
+  {
+    "base": "wash",
+    "pastSimple": "washed",
+    "pastParticiple": "washed",
+    "cefr": "A1"
+  },
+  {
+    "base": "wave",
+    "pastSimple": "waved",
+    "pastParticiple": "waved",
+    "cefr": "B1"
+  },
+  {
+    "base": "welcome",
+    "pastSimple": "welcomed",
+    "pastParticiple": "welcomed",
+    "cefr": "A1"
+  },
+  {
+    "base": "wish",
+    "pastSimple": "wished",
+    "pastParticiple": "wished",
+    "cefr": "A2"
+  },
+  {
+    "base": "wonder",
+    "pastSimple": "wondered",
+    "pastParticiple": "wondered",
+    "cefr": "B1"
+  },
+  {
+    "base": "worry",
+    "pastSimple": "worried",
+    "pastParticiple": "worried",
+    "cefr": "A2"
+  },
+  {
+    "base": "attack",
+    "pastSimple": "attacked",
+    "pastParticiple": "attacked",
+    "cefr": "A2"
+  },
+  {
+    "base": "apply",
+    "pastSimple": "applied",
+    "pastParticiple": "applied",
+    "cefr": "A2"
+  },
+  {
+    "base": "approve",
+    "pastSimple": "approved",
+    "pastParticiple": "approved",
+    "cefr": "B2"
+  },
+  {
+    "base": "argue",
+    "pastSimple": "argued",
+    "pastParticiple": "argued",
+    "cefr": "A2"
+  },
+  {
+    "base": "arrange",
+    "pastSimple": "arranged",
+    "pastParticiple": "arranged",
+    "cefr": "A2"
+  },
+  {
+    "base": "arrest",
+    "pastSimple": "arrested",
+    "pastParticiple": "arrested",
+    "cefr": "B1"
+  },
+  {
+    "base": "assume",
+    "pastSimple": "assumed",
+    "pastParticiple": "assumed",
+    "cefr": "B2"
+  },
+  {
+    "base": "attend",
+    "pastSimple": "attended",
+    "pastParticiple": "attended",
+    "cefr": "A2"
+  },
+  {
+    "base": "bake",
+    "pastSimple": "baked",
+    "pastParticiple": "baked",
+    "cefr": "B1"
+  },
+  {
+    "base": "bathe",
+    "pastSimple": "bathed",
+    "pastParticiple": "bathed",
+    "cefr": "C2"
+  },
+  {
+    "base": "beg",
+    "pastSimple": "begged",
+    "pastParticiple": "begged",
+    "cefr": "B2"
+  },
+  {
+    "base": "behave",
+    "pastSimple": "behaved",
+    "pastParticiple": "behaved",
+    "cefr": "A2"
+  },
+  {
+    "base": "belong",
+    "pastSimple": "belonged",
+    "pastParticiple": "belonged",
+    "cefr": "A2"
+  },
+  {
+    "base": "borrow",
+    "pastSimple": "borrowed",
+    "pastParticiple": "borrowed",
+    "cefr": "A2"
+  },
+  {
+    "base": "bounce",
+    "pastSimple": "bounced",
+    "pastParticiple": "bounced",
+    "cefr": "C1"
+  },
+  {
+    "base": "brush",
+    "pastSimple": "brushed",
+    "pastParticiple": "brushed",
+    "cefr": "A2"
+  },
+  {
+    "base": "bury",
+    "pastSimple": "buried",
+    "pastParticiple": "buried",
+    "cefr": "B1"
+  },
+  {
+    "base": "calculate",
+    "pastSimple": "calculated",
+    "pastParticiple": "calculated",
+    "cefr": "B2"
+  },
+  {
+    "base": "charge",
+    "pastSimple": "charged",
+    "pastParticiple": "charged",
+    "cefr": "B1"
+  },
+  {
+    "base": "chase",
+    "pastSimple": "chased",
+    "pastParticiple": "chased",
+    "cefr": "B2"
+  },
+  {
+    "base": "check",
+    "pastSimple": "checked",
+    "pastParticiple": "checked",
+    "cefr": "A1"
+  },
+  {
+    "base": "claim",
+    "pastSimple": "claimed",
+    "pastParticiple": "claimed",
+    "cefr": "B1"
+  },
+  {
+    "base": "clear",
+    "pastSimple": "cleared",
+    "pastParticiple": "cleared",
+    "cefr": "B1"
+  },
+  {
+    "base": "collapse",
+    "pastSimple": "collapsed",
+    "pastParticiple": "collapsed",
+    "cefr": "B2"
+  },
+  {
+    "base": "colour",
+    "pastSimple": "coloured",
+    "pastParticiple": "coloured",
+    "cefr": "A1"
+  },
+  {
+    "base": "compete",
+    "pastSimple": "competed",
+    "pastParticiple": "competed",
+    "cefr": "A2"
+  },
+  {
+    "base": "complete",
+    "pastSimple": "completed",
+    "pastParticiple": "completed",
+    "cefr": "A1"
+  }
 ]

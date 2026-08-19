@@ -24,11 +24,11 @@ Then open **http://localhost:8080** in your browser. Leave the terminal window o
 
 The "Core" pool option in the app is computed dynamically as `A1`+`A2`+`B1` (100 verbs) — see `buildPool()` in `index.html`.
 
-`verbs/regular.json` (200 entries) still uses the older frequency-tier shape (`rank`, 1 = most common), sliced into Top 25/50/100/All by the regular-verb pool selector — this hasn't had the same research pass as the irregular list yet.
+`verbs/regular.json` (200 entries) also has a `cefr` field now, tagged the same way as `irregular.json`. The array order still reflects the original frequency ranking (most common first) — the regular-verb pool selector's Top 25/50/100/All tiers slice by array position (`sliceTier()` in `index.html`), not by `cefr`, so that behaviour is unchanged. Two entries needed a judgment call rather than a direct source match: `colour` (only the noun sense "colour n." is itemized in Oxford's list, no separate verb entry — tagged `A1` to match the noun) and `bathe` (absent from both Oxford lists entirely, at any level or form — tagged `C2`, the same treatment as the irregular list's archaic tier, since British English favours "have a bath" over "to bathe").
 
 For regular verbs, `pastSimple` and `pastParticiple` are always equal — kept as separate fields so the app can treat both lists uniformly. One irregular entry ("be") has multiple accepted answers, written as `"was/were"` — `isCorrectAnswer()` in `index.html` splits on `/` and accepts any listed form.
 
 ## Known follow-up
 
-- `regular.json`'s Top 25/50/100/All tiers are still the original unverified one-pass ranking — the same Oxford 3000/5000 CEFR treatment applied to `irregular.json` could be applied there too.
+- Both verb lists now have real CEFR tags, but the practice tool still only exposes a binary Core/All split (irregular) and Top 25/50/100/All by frequency (regular) — exposing B2/C1/C2 as their own selectable tiers is a separate, not-yet-started UI task.
 - CEFR levels are per-lemma, not per-inflected-form, so a single tag applies to base/past-simple/past-participle together (e.g. "bear" is tagged by its verb sense as a whole, which doesn't capture that "borne" specifically is rarer than "bore"). "born" (the common birth-sense past participle) isn't in the dataset at all — only the formal "borne" is; adding "born" as an accepted alternate answer is a still-open data/UX decision.
