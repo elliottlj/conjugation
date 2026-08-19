@@ -178,7 +178,19 @@
 
     .checkbox-group { display: flex; gap: 16px; }
 
-    .tense-checkbox {
+    .setting-row.stacked-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .setting-row.stacked-row .checkbox-group {
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      width: 100%;
+    }
+
+    .inline-checkbox {
       display: flex;
       align-items: center;
       gap: 6px;
@@ -187,7 +199,7 @@
       cursor: pointer;
     }
 
-    .tense-checkbox input[type="checkbox"] {
+    .inline-checkbox input[type="checkbox"] {
       width: 18px;
       height: 18px;
       accent-color: var(--accent);
@@ -661,23 +673,41 @@
         <div class="setting-row">
           <span class="setting-label">Tenses to test</span>
           <span class="checkbox-group">
-            <label class="tense-checkbox">
+            <label class="inline-checkbox">
               <input type="checkbox" id="test-past-simple-toggle" checked onchange="onFormsChanged('test-past-simple-toggle')" />
               Past simple
             </label>
-            <label class="tense-checkbox">
+            <label class="inline-checkbox">
               <input type="checkbox" id="test-past-participle-toggle" checked onchange="onFormsChanged('test-past-participle-toggle')" />
               Past participle
             </label>
           </span>
         </div>
 
-        <div class="setting-row">
+        <div class="setting-row stacked-row">
           <span class="setting-label">Levels to test</span>
-          <select id="irregular-population-select" onchange="onSettingsChanged()">
-            <option value="core" selected>Core: A1-B1 (100 words)</option>
-            <option value="all">All: A1-C2 (183 words)</option>
-          </select>
+          <span class="checkbox-group">
+            <label class="inline-checkbox">
+              <input type="checkbox" id="level-a1-toggle" checked onchange="onLevelsChanged('level-a1-toggle')" />
+              A1 (64 verbs)
+            </label>
+            <label class="inline-checkbox">
+              <input type="checkbox" id="level-a2-toggle" checked onchange="onLevelsChanged('level-a2-toggle')" />
+              A2 (21 verbs)
+            </label>
+            <label class="inline-checkbox">
+              <input type="checkbox" id="level-b1-toggle" checked onchange="onLevelsChanged('level-b1-toggle')" />
+              B1 (15 verbs)
+            </label>
+            <label class="inline-checkbox">
+              <input type="checkbox" id="level-b2-toggle" onchange="onLevelsChanged('level-b2-toggle')" />
+              B2 (28 verbs)
+            </label>
+            <label class="inline-checkbox">
+              <input type="checkbox" id="level-c1-toggle" onchange="onLevelsChanged('level-c1-toggle')" />
+              C1 (30 verbs)
+            </label>
+          </span>
         </div>
 
         <div class="setting-row">
@@ -861,14 +891,31 @@
     return ['pastSimple', 'pastParticiple'];
   }
 
+  const DEFAULT_LEVELS = ['A1', 'A2', 'B1'];
+  const ALL_LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+  const LEVEL_TOGGLE_IDS = ['level-a1-toggle', 'level-a2-toggle', 'level-b1-toggle', 'level-b2-toggle', 'level-c1-toggle'];
+
+  // accepts the old 'core'/'all' single-select string from settings saved
+  // before the level checkboxes existed, as well as the current array format.
+  // old 'all' mapped to the entire dataset (including C2), so it's preserved
+  // as such here even though C2 has no checkbox of its own in the new UI.
+  function normalizeLevels(levels) {
+    if (Array.isArray(levels)) return levels.length ? levels : DEFAULT_LEVELS;
+    if (levels === 'all') return ALL_LEVELS;
+    return DEFAULT_LEVELS;
+  }
+
   function readSettings() {
     const forms = [];
     if (document.getElementById('test-past-simple-toggle').checked) forms.push('pastSimple');
     if (document.getElementById('test-past-participle-toggle').checked) forms.push('pastParticiple');
+    const levels = LEVEL_TOGGLE_IDS
+      .filter(id => document.getElementById(id).checked)
+      .map(id => id.match(/level-([a-z0-9]+)-toggle/)[1].toUpperCase());
     return {
       includeRegular: document.getElementById('include-regular-toggle').checked,
       forms,
-      irregularPopulation: document.getElementById('irregular-population-select').value, // 'core' | 'all'
+      levels,
       verbCount: parseInt(document.getElementById('verb-count-select').value, 10)
     };
   }
@@ -890,9 +937,12 @@
     const forms = normalizeForms(settings.forms);
     document.getElementById('test-past-simple-toggle').checked = forms.includes('pastSimple');
     document.getElementById('test-past-participle-toggle').checked = forms.includes('pastParticiple');
-    // guards against a stale saved value from the old numeric-tier selector (e.g. 100)
-    const irrPop = settings.irregularPopulation;
-    document.getElementById('irregular-population-select').value = (irrPop === 'core' || irrPop === 'all') ? irrPop : 'core';
+    // settings.irregularPopulation is the old field name (pre level-checkboxes)
+    const levels = normalizeLevels(settings.levels ?? settings.irregularPopulation);
+    LEVEL_TOGGLE_IDS.forEach(id => {
+      const level = id.match(/level-([a-z0-9]+)-toggle/)[1].toUpperCase();
+      document.getElementById(id).checked = levels.includes(level);
+    });
     document.getElementById('verb-count-select').value = String(settings.verbCount ?? 20);
   }
 
@@ -906,6 +956,16 @@
     const psChecked = document.getElementById('test-past-simple-toggle').checked;
     const ppChecked = document.getElementById('test-past-participle-toggle').checked;
     if (!psChecked && !ppChecked) {
+      document.getElementById(justChangedId).checked = true;
+      return;
+    }
+    onSettingsChanged();
+  }
+
+  // at least one level must stay checked — revert the change if it would leave none checked
+  function onLevelsChanged(justChangedId) {
+    const anyChecked = LEVEL_TOGGLE_IDS.some(id => document.getElementById(id).checked);
+    if (!anyChecked) {
       document.getElementById(justChangedId).checked = true;
       return;
     }
@@ -927,15 +987,13 @@
   }
 
   // ── POOL / QUEUE BUILDING ──
-  const CORE_CEFR = ['A1', 'A2', 'B1'];
 
-  // regular verbs are matched to whichever CEFR band the irregular pool uses,
-  // so "Core" only mixes in A1-B1 regular verbs and "All" mixes in every level
+  // regular verbs are matched to whichever CEFR levels are checked in the
+  // "Levels to test" list, so the mix stays at the same difficulty
   function buildPools(settings) {
-    const coreOnly = settings.irregularPopulation === 'core';
-    const irregularPool = coreOnly ? irregularVerbs.filter(v => CORE_CEFR.includes(v.cefr)) : irregularVerbs;
+    const irregularPool = irregularVerbs.filter(v => settings.levels.includes(v.cefr));
     const regularPool = settings.includeRegular
-      ? (coreOnly ? regularVerbs.filter(v => CORE_CEFR.includes(v.cefr)) : regularVerbs)
+      ? regularVerbs.filter(v => settings.levels.includes(v.cefr))
       : [];
     return { irregularPool, regularPool };
   }
@@ -1171,7 +1229,7 @@
       settings: {
         forms: currentSettings.forms,
         includeRegular: currentSettings.includeRegular,
-        irregularPopulation: currentSettings.irregularPopulation,
+        levels: currentSettings.levels,
         verbCount: currentSettings.verbCount
       },
       missed: missedList.map(c => ({ base: c.base, form: c.form, misses: c.misses }))
@@ -1222,7 +1280,7 @@
     const forms = normalizeForms(s.forms);
     parts.push(forms.length === 2 ? 'both forms' : formLabelShort(forms[0]));
     parts.push(s.includeRegular ? 'irregular + regular' : 'irregular only');
-    parts.push(`irr: ${s.irregularPopulation === 'all' ? 'all' : 'core'}`);
+    parts.push(`levels: ${normalizeLevels(s.levels ?? s.irregularPopulation).join(',')}`);
     parts.push(`${s.verbCount} questions`);
     return parts.join(' · ');
   }
