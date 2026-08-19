@@ -176,6 +176,24 @@
       cursor: pointer;
     }
 
+    .checkbox-group { display: flex; gap: 16px; }
+
+    .tense-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .tense-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
     .pool-note {
       font-size: 0.78rem;
       color: var(--must-dark);
@@ -641,19 +659,24 @@
         <summary>Advanced options</summary>
 
         <div class="setting-row">
-          <span class="setting-label">Forms to test</span>
-          <select id="forms-select" onchange="onSettingsChanged()">
-            <option value="both" selected>Both</option>
-            <option value="pastSimple">Past simple only</option>
-            <option value="pastParticiple">Past participle only</option>
-          </select>
+          <span class="setting-label">Tenses to test</span>
+          <span class="checkbox-group">
+            <label class="tense-checkbox">
+              <input type="checkbox" id="test-past-simple-toggle" checked onchange="onFormsChanged('test-past-simple-toggle')" />
+              Past simple
+            </label>
+            <label class="tense-checkbox">
+              <input type="checkbox" id="test-past-participle-toggle" checked onchange="onFormsChanged('test-past-participle-toggle')" />
+              Past participle
+            </label>
+          </span>
         </div>
 
         <div class="setting-row">
-          <span class="setting-label">Irregular verb pool</span>
+          <span class="setting-label">Levels to test</span>
           <select id="irregular-population-select" onchange="onSettingsChanged()">
             <option value="core" selected>Core: A1-B1 (100 words)</option>
-            <option value="all">All (183 words)</option>
+            <option value="all">All: A1-C2 (183 words)</option>
           </select>
         </div>
 
@@ -662,7 +685,7 @@
             <input type="checkbox" id="include-regular-toggle" onchange="onSettingsChanged()" />
             <span>
               <span class="setting-label">Include regular verbs</span><br />
-              <span class="setting-hint">Mixed in at a 60:40 irregular:regular ratio, matched to the same CEFR level as the irregular pool above</span>
+              <span class="setting-hint">Make the game more difficult by mixing in regular verbs too</span>
             </span>
           </label>
         </div>
@@ -829,10 +852,22 @@
 
   // ── SETTINGS ──
 
+  // accepts the old single-select string format ('both'/'pastSimple'/'pastParticiple')
+  // from settings saved before the tense checkboxes existed, as well as the
+  // current array format
+  function normalizeForms(forms) {
+    if (Array.isArray(forms)) return forms.length ? forms : ['pastSimple', 'pastParticiple'];
+    if (forms === 'pastSimple' || forms === 'pastParticiple') return [forms];
+    return ['pastSimple', 'pastParticiple'];
+  }
+
   function readSettings() {
+    const forms = [];
+    if (document.getElementById('test-past-simple-toggle').checked) forms.push('pastSimple');
+    if (document.getElementById('test-past-participle-toggle').checked) forms.push('pastParticiple');
     return {
       includeRegular: document.getElementById('include-regular-toggle').checked,
-      forms: document.getElementById('forms-select').value,
+      forms,
       irregularPopulation: document.getElementById('irregular-population-select').value, // 'core' | 'all'
       verbCount: parseInt(document.getElementById('verb-count-select').value, 10)
     };
@@ -852,7 +887,9 @@
   function applySettingsToForm(settings) {
     if (!settings) return;
     document.getElementById('include-regular-toggle').checked = !!settings.includeRegular;
-    document.getElementById('forms-select').value = settings.forms || 'both';
+    const forms = normalizeForms(settings.forms);
+    document.getElementById('test-past-simple-toggle').checked = forms.includes('pastSimple');
+    document.getElementById('test-past-participle-toggle').checked = forms.includes('pastParticiple');
     // guards against a stale saved value from the old numeric-tier selector (e.g. 100)
     const irrPop = settings.irregularPopulation;
     document.getElementById('irregular-population-select').value = (irrPop === 'core' || irrPop === 'all') ? irrPop : 'core';
@@ -862,6 +899,17 @@
   function onSettingsChanged() {
     updatePoolNote();
     saveSettings(readSettings());
+  }
+
+  // at least one tense must stay checked — revert the change if it would leave both off
+  function onFormsChanged(justChangedId) {
+    const psChecked = document.getElementById('test-past-simple-toggle').checked;
+    const ppChecked = document.getElementById('test-past-participle-toggle').checked;
+    if (!psChecked && !ppChecked) {
+      document.getElementById(justChangedId).checked = true;
+      return;
+    }
+    onSettingsChanged();
   }
 
   function updatePoolNote() {
@@ -913,7 +961,7 @@
   // same pair twice.
   function buildAllPairs(settings) {
     const { irregularPool, regularPool } = buildPools(settings);
-    const formList = settings.forms === 'both' ? ['pastSimple', 'pastParticiple'] : [settings.forms];
+    const formList = settings.forms;
     return {
       irregularPairs: toPairs(irregularPool, formList),
       regularPairs: toPairs(regularPool, formList)
@@ -1171,7 +1219,8 @@
 
   function summariseSettings(s) {
     const parts = [];
-    parts.push(s.forms === 'both' ? 'both forms' : formLabelShort(s.forms));
+    const forms = normalizeForms(s.forms);
+    parts.push(forms.length === 2 ? 'both forms' : formLabelShort(forms[0]));
     parts.push(s.includeRegular ? 'irregular + regular' : 'irregular only');
     parts.push(`irr: ${s.irregularPopulation === 'all' ? 'all' : 'core'}`);
     parts.push(`${s.verbCount} questions`);
