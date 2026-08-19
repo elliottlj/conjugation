@@ -8,7 +8,7 @@ const path = require('path');
 
 const root = __dirname;
 const port = 8080;
-const mime = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.css': 'text/css' };
+const mime = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.css': 'text/css', '.pdf': 'application/pdf' };
 
 http.createServer((req, res) => {
   const urlPath = decodeURIComponent(req.url.split('?')[0]);

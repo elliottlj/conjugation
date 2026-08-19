@@ -640,9 +640,32 @@
 
     #lookup-search:focus { border-color: var(--accent); }
 
-    #screen-lookup .screen-title,
+    #screen-lookup .screen-title-row,
     #screen-history .screen-title,
     #screen-review .screen-title { margin-bottom: 16px; }
+
+    .screen-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .screen-title-row .screen-title { margin-bottom: 0; }
+
+    .pdf-downloads {
+      font-size: 0.78rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .pdf-downloads a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .pdf-downloads a:hover { text-decoration: underline; }
     #screen-review .screen-sub { margin-bottom: 16px; }
     #screen-lookup #lookup-search { margin-bottom: 0; }
     #screen-lookup .advanced-options { margin-top: 2px; margin-bottom: 2px; }
@@ -657,6 +680,7 @@
       .page-title { font-size: 2rem; }
       .setting-row { flex-direction: column; align-items: flex-start; gap: 8px; }
       .setting-row.stacked-row .checkbox-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .screen-title-row { flex-direction: column; align-items: flex-start; gap: 4px; }
       select { width: 100%; }
       table.data-table { font-size: 0.78rem; }
       .feedback-verb-row .fv-label { white-space: normal; }
@@ -835,7 +859,15 @@
 
   <!-- LOOKUP SCREEN -->
   <div id="screen-lookup" class="screen">
-    <h2 class="screen-title">Irregular verb table</h2>
+    <div class="screen-title-row">
+      <h2 class="screen-title">Irregular verb table</h2>
+      <span class="pdf-downloads">
+        Download Printable PDF:
+        <a href="pdf/irregular-verbs-core.pdf" download>Core Verbs</a>
+        &middot;
+        <a href="pdf/irregular-verbs-all.pdf" download>All Verbs</a>
+      </span>
+    </div>
 
     <input type="text" id="lookup-search" placeholder="Search to filter" />
 
