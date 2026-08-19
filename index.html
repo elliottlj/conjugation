@@ -831,7 +831,7 @@
     <div class="data-table-wrap">
       <table class="data-table">
         <thead>
-          <tr><th>Base</th><th>Level</th><th>Past simple</th><th>Past participle</th></tr>
+          <tr><th>Base</th><th>Past simple</th><th>Past participle</th><th>Level</th></tr>
         </thead>
         <tbody id="lookup-table-body"></tbody>
       </table>
@@ -1401,9 +1401,9 @@
     document.getElementById('lookup-table-body').innerHTML = rows.map(v => `
       <tr>
         <td class="mono">${wordCell(v.base)}</td>
-        <td><span class="cefr-badge">${v.cefr}</span></td>
         <td class="mono">${wordCell(formatAnswer(v.pastSimple), TTS_HINTS[`${v.base}|pastSimple`])}</td>
         <td class="mono">${wordCell(formatAnswer(v.pastParticiple), TTS_HINTS[`${v.base}|pastParticiple`])}</td>
+        <td><span class="cefr-badge">${v.cefr}</span></td>
       </tr>
     `).join('');
   }
