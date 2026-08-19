@@ -30,6 +30,16 @@ When "Include regular verbs" is on, the regular pool is filtered to whichever CE
 
 For regular verbs, `pastSimple` and `pastParticiple` are always equal — kept as separate fields so the app can treat both lists uniformly. One irregular entry ("be") has multiple accepted answers, written as `"was/were"` — `isCorrectAnswer()` in `index.html` splits on `/` and accepts any listed form.
 
+## Printable verb table
+
+`pdf/irregular-verbs-core.pdf` is a static, pre-generated one-page PDF of the 100 Core (A1-B1) irregular verbs, two columns, no CEFR column (it's meant for printing/reference, not as a mirror of the on-site table). Not generated on the fly by the app — it's a build-time artifact, regenerated manually when the verb data changes:
+
+```
+node pdf/generate.js
+```
+
+This writes `pdf/irregular-verbs-core.html` from `verbs/irregular.json`; render that to the final PDF with Playwright (`npx playwright pdf pdf/irregular-verbs-core.html pdf/irregular-verbs-core.pdf`) or a browser's own "Print to PDF". Not yet linked from the site - where to put a download button is still an open decision.
+
 ## Known follow-up
 
 - CEFR levels are per-lemma, not per-inflected-form, so a single tag applies to base/past-simple/past-participle together (e.g. "bear" is tagged by its verb sense as a whole, which doesn't capture that "borne" specifically is rarer than "bore"). "born" (the common birth-sense past participle) isn't in the dataset at all — only the formal "borne" is; adding "born" as an accepted alternate answer is a still-open data/UX decision.
