@@ -300,13 +300,28 @@
 
     .quiz-base-wrap {
       position: relative;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .quiz-base-verb {
       font-family: 'DM Serif Display', serif;
       font-size: 2.4rem;
       color: var(--text);
+    }
+
+    .cefr-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      padding: 2px 6px;
+      border-radius: 20px;
+      background: var(--accent-lt);
+      color: var(--accent);
+      white-space: nowrap;
     }
 
     .points-badge {
@@ -743,6 +758,7 @@
       <div class="quiz-base-row">
         <span class="quiz-base-wrap">
           <span class="quiz-base-verb" id="card-base"></span>
+          <span class="cefr-badge" id="cefr-badge"></span>
           <span class="points-badge" id="points-badge"></span>
         </span>
       </div>
@@ -1103,6 +1119,7 @@
 
     document.getElementById('card-form-label').textContent = formLabel(currentCard.form);
     document.getElementById('card-base').textContent = currentCard.base;
+    document.getElementById('cefr-badge').textContent = findVerbEntry(currentCard.base)?.cefr || '';
     document.getElementById('points-badge').className = 'points-badge';
 
     const input = document.getElementById('answer-input');
