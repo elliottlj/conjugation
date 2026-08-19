@@ -1,185 +1,1100 @@
 [
-  { "base": "be", "pastSimple": "was/were", "pastParticiple": "been", "core": true },
-  { "base": "have", "pastSimple": "had", "pastParticiple": "had", "core": true },
-  { "base": "do", "pastSimple": "did", "pastParticiple": "done", "core": true },
-  { "base": "say", "pastSimple": "said", "pastParticiple": "said", "core": true },
-  { "base": "go", "pastSimple": "went", "pastParticiple": "gone", "core": true },
-  { "base": "get", "pastSimple": "got", "pastParticiple": "got", "core": true },
-  { "base": "make", "pastSimple": "made", "pastParticiple": "made", "core": true },
-  { "base": "know", "pastSimple": "knew", "pastParticiple": "known", "core": true },
-  { "base": "think", "pastSimple": "thought", "pastParticiple": "thought", "core": true },
-  { "base": "take", "pastSimple": "took", "pastParticiple": "taken", "core": true },
-  { "base": "see", "pastSimple": "saw", "pastParticiple": "seen", "core": true },
-  { "base": "come", "pastSimple": "came", "pastParticiple": "come", "core": true },
-  { "base": "give", "pastSimple": "gave", "pastParticiple": "given", "core": true },
-  { "base": "find", "pastSimple": "found", "pastParticiple": "found", "core": true },
-  { "base": "tell", "pastSimple": "told", "pastParticiple": "told", "core": true },
-  { "base": "become", "pastSimple": "became", "pastParticiple": "become", "core": true },
-  { "base": "leave", "pastSimple": "left", "pastParticiple": "left", "core": true },
-  { "base": "feel", "pastSimple": "felt", "pastParticiple": "felt", "core": true },
-  { "base": "put", "pastSimple": "put", "pastParticiple": "put", "core": true },
-  { "base": "bring", "pastSimple": "brought", "pastParticiple": "brought", "core": true },
-  { "base": "begin", "pastSimple": "began", "pastParticiple": "begun", "core": true },
-  { "base": "keep", "pastSimple": "kept", "pastParticiple": "kept", "core": true },
-  { "base": "hold", "pastSimple": "held", "pastParticiple": "held", "core": true },
-  { "base": "write", "pastSimple": "wrote", "pastParticiple": "written", "core": true },
-  { "base": "stand", "pastSimple": "stood", "pastParticiple": "stood", "core": true },
-  { "base": "hear", "pastSimple": "heard", "pastParticiple": "heard", "core": true },
-  { "base": "let", "pastSimple": "let", "pastParticiple": "let", "core": true },
-  { "base": "mean", "pastSimple": "meant", "pastParticiple": "meant", "core": true },
-  { "base": "set", "pastSimple": "set", "pastParticiple": "set", "core": true },
-  { "base": "meet", "pastSimple": "met", "pastParticiple": "met", "core": true },
-  { "base": "run", "pastSimple": "ran", "pastParticiple": "run", "core": true },
-  { "base": "pay", "pastSimple": "paid", "pastParticiple": "paid", "core": true },
-  { "base": "sit", "pastSimple": "sat", "pastParticiple": "sat", "core": true },
-  { "base": "speak", "pastSimple": "spoke", "pastParticiple": "spoken", "core": true },
-  { "base": "lie", "pastSimple": "lay", "pastParticiple": "lain", "core": true },
-  { "base": "lead", "pastSimple": "led", "pastParticiple": "led", "core": true },
-  { "base": "read", "pastSimple": "read", "pastParticiple": "read", "core": true },
-  { "base": "grow", "pastSimple": "grew", "pastParticiple": "grown", "core": true },
-  { "base": "lose", "pastSimple": "lost", "pastParticiple": "lost", "core": true },
-  { "base": "fall", "pastSimple": "fell", "pastParticiple": "fallen", "core": true },
-  { "base": "send", "pastSimple": "sent", "pastParticiple": "sent", "core": true },
-  { "base": "build", "pastSimple": "built", "pastParticiple": "built", "core": true },
-  { "base": "understand", "pastSimple": "understood", "pastParticiple": "understood", "core": true },
-  { "base": "draw", "pastSimple": "drew", "pastParticiple": "drawn", "core": true },
-  { "base": "break", "pastSimple": "broke", "pastParticiple": "broken", "core": true },
-  { "base": "spend", "pastSimple": "spent", "pastParticiple": "spent", "core": true },
-  { "base": "cut", "pastSimple": "cut", "pastParticiple": "cut", "core": true },
-  { "base": "rise", "pastSimple": "rose", "pastParticiple": "risen", "core": true },
-  { "base": "drive", "pastSimple": "drove", "pastParticiple": "driven", "core": true },
-  { "base": "buy", "pastSimple": "bought", "pastParticiple": "bought", "core": true },
-  { "base": "wear", "pastSimple": "wore", "pastParticiple": "worn", "core": true },
-  { "base": "choose", "pastSimple": "chose", "pastParticiple": "chosen", "core": true },
-  { "base": "seek", "pastSimple": "sought", "pastParticiple": "sought", "core": true },
-  { "base": "throw", "pastSimple": "threw", "pastParticiple": "thrown", "core": true },
-  { "base": "catch", "pastSimple": "caught", "pastParticiple": "caught", "core": true },
-  { "base": "teach", "pastSimple": "taught", "pastParticiple": "taught", "core": true },
-  { "base": "fly", "pastSimple": "flew", "pastParticiple": "flown", "core": true },
-  { "base": "forgive", "pastSimple": "forgave", "pastParticiple": "forgiven", "core": true },
-  { "base": "win", "pastSimple": "won", "pastParticiple": "won", "core": true },
-  { "base": "shoot", "pastSimple": "shot", "pastParticiple": "shot", "core": true },
-  { "base": "fight", "pastSimple": "fought", "pastParticiple": "fought", "core": true },
-  { "base": "sell", "pastSimple": "sold", "pastParticiple": "sold", "core": true },
-  { "base": "lay", "pastSimple": "laid", "pastParticiple": "laid", "core": true },
-  { "base": "sing", "pastSimple": "sang", "pastParticiple": "sung", "core": true },
-  { "base": "eat", "pastSimple": "ate", "pastParticiple": "eaten", "core": true },
-  { "base": "strike", "pastSimple": "struck", "pastParticiple": "struck", "core": true },
-  { "base": "drink", "pastSimple": "drank", "pastParticiple": "drunk", "core": true },
-  { "base": "shake", "pastSimple": "shook", "pastParticiple": "shaken", "core": true },
-  { "base": "forget", "pastSimple": "forgot", "pastParticiple": "forgotten", "core": true },
-  { "base": "hide", "pastSimple": "hid", "pastParticiple": "hidden", "core": true },
-  { "base": "ride", "pastSimple": "rode", "pastParticiple": "ridden", "core": true },
-  { "base": "swim", "pastSimple": "swam", "pastParticiple": "swum", "core": true },
-  { "base": "arise", "pastSimple": "arose", "pastParticiple": "arisen", "core": false },
-  { "base": "sleep", "pastSimple": "slept", "pastParticiple": "slept", "core": true },
-  { "base": "shine", "pastSimple": "shone", "pastParticiple": "shone", "core": true },
-  { "base": "steal", "pastSimple": "stole", "pastParticiple": "stolen", "core": true },
-  { "base": "deal", "pastSimple": "dealt", "pastParticiple": "dealt", "core": true },
-  { "base": "blow", "pastSimple": "blew", "pastParticiple": "blown", "core": true },
-  { "base": "hurt", "pastSimple": "hurt", "pastParticiple": "hurt", "core": true },
-  { "base": "hang", "pastSimple": "hung", "pastParticiple": "hung", "core": true },
-  { "base": "feed", "pastSimple": "fed", "pastParticiple": "fed", "core": true },
-  { "base": "dig", "pastSimple": "dug", "pastParticiple": "dug", "core": true },
-  { "base": "stick", "pastSimple": "stuck", "pastParticiple": "stuck", "core": true },
-  { "base": "swear", "pastSimple": "swore", "pastParticiple": "sworn", "core": true },
-  { "base": "bear", "pastSimple": "bore", "pastParticiple": "borne", "core": false },
-  { "base": "bend", "pastSimple": "bent", "pastParticiple": "bent", "core": true },
-  { "base": "breed", "pastSimple": "bred", "pastParticiple": "bred", "core": false },
-  { "base": "burst", "pastSimple": "burst", "pastParticiple": "burst", "core": true },
-  { "base": "cast", "pastSimple": "cast", "pastParticiple": "cast", "core": false },
-  { "base": "bind", "pastSimple": "bound", "pastParticiple": "bound", "core": false },
-  { "base": "bite", "pastSimple": "bit", "pastParticiple": "bitten", "core": true },
-  { "base": "bleed", "pastSimple": "bled", "pastParticiple": "bled", "core": false },
-  { "base": "broadcast", "pastSimple": "broadcast", "pastParticiple": "broadcast", "core": false },
-  { "base": "creep", "pastSimple": "crept", "pastParticiple": "crept", "core": false },
-  { "base": "dream", "pastSimple": "dreamt", "pastParticiple": "dreamt", "core": false },
-  { "base": "flee", "pastSimple": "fled", "pastParticiple": "fled", "core": false },
-  { "base": "fling", "pastSimple": "flung", "pastParticiple": "flung", "core": false },
-  { "base": "forbid", "pastSimple": "forbade", "pastParticiple": "forbidden", "core": false },
-  { "base": "forecast", "pastSimple": "forecast", "pastParticiple": "forecast", "core": false },
-  { "base": "freeze", "pastSimple": "froze", "pastParticiple": "frozen", "core": true },
-  { "base": "grind", "pastSimple": "ground", "pastParticiple": "ground", "core": false },
-  { "base": "hit", "pastSimple": "hit", "pastParticiple": "hit", "core": true },
-  { "base": "kneel", "pastSimple": "knelt", "pastParticiple": "knelt", "core": false },
-  { "base": "lean", "pastSimple": "leant", "pastParticiple": "leant", "core": false },
-  { "base": "leap", "pastSimple": "leapt", "pastParticiple": "leapt", "core": false },
-  { "base": "learn", "pastSimple": "learnt", "pastParticiple": "learnt", "core": false },
-  { "base": "lend", "pastSimple": "lent", "pastParticiple": "lent", "core": false },
-  { "base": "light", "pastSimple": "lit", "pastParticiple": "lit", "core": true },
-  { "base": "mistake", "pastSimple": "mistook", "pastParticiple": "mistaken", "core": false },
-  { "base": "mow", "pastSimple": "mowed", "pastParticiple": "mown", "core": false },
-  { "base": "offset", "pastSimple": "offset", "pastParticiple": "offset", "core": false },
-  { "base": "overcome", "pastSimple": "overcame", "pastParticiple": "overcome", "core": false },
-  { "base": "overtake", "pastSimple": "overtook", "pastParticiple": "overtaken", "core": false },
-  { "base": "quit", "pastSimple": "quit", "pastParticiple": "quit", "core": false },
-  { "base": "rid", "pastSimple": "rid", "pastParticiple": "rid", "core": false },
-  { "base": "ring", "pastSimple": "rang", "pastParticiple": "rung", "core": true },
-  { "base": "saw", "pastSimple": "sawed", "pastParticiple": "sawn", "core": false },
-  { "base": "shed", "pastSimple": "shed", "pastParticiple": "shed", "core": false },
-  { "base": "shrink", "pastSimple": "shrank", "pastParticiple": "shrunk", "core": false },
-  { "base": "shut", "pastSimple": "shut", "pastParticiple": "shut", "core": true },
-  { "base": "sink", "pastSimple": "sank", "pastParticiple": "sunk", "core": false },
-  { "base": "slay", "pastSimple": "slew", "pastParticiple": "slain", "core": false },
-  { "base": "sling", "pastSimple": "slung", "pastParticiple": "slung", "core": false },
-  { "base": "slink", "pastSimple": "slunk", "pastParticiple": "slunk", "core": false },
-  { "base": "slit", "pastSimple": "slit", "pastParticiple": "slit", "core": false },
-  { "base": "smell", "pastSimple": "smelt", "pastParticiple": "smelt", "core": false },
-  { "base": "sow", "pastSimple": "sowed", "pastParticiple": "sown", "core": false },
-  { "base": "speed", "pastSimple": "sped", "pastParticiple": "sped", "core": false },
-  { "base": "spell", "pastSimple": "spelt", "pastParticiple": "spelt", "core": false },
-  { "base": "spill", "pastSimple": "spilt", "pastParticiple": "spilt", "core": false },
-  { "base": "spin", "pastSimple": "spun", "pastParticiple": "spun", "core": false },
-  { "base": "spit", "pastSimple": "spat", "pastParticiple": "spat", "core": false },
-  { "base": "split", "pastSimple": "split", "pastParticiple": "split", "core": true },
-  { "base": "spoil", "pastSimple": "spoilt", "pastParticiple": "spoilt", "core": false },
-  { "base": "spread", "pastSimple": "spread", "pastParticiple": "spread", "core": true },
-  { "base": "spring", "pastSimple": "sprang", "pastParticiple": "sprung", "core": false },
-  { "base": "sting", "pastSimple": "stung", "pastParticiple": "stung", "core": false },
-  { "base": "stink", "pastSimple": "stank", "pastParticiple": "stunk", "core": false },
-  { "base": "stride", "pastSimple": "strode", "pastParticiple": "stridden", "core": false },
-  { "base": "string", "pastSimple": "strung", "pastParticiple": "strung", "core": false },
-  { "base": "strive", "pastSimple": "strove", "pastParticiple": "striven", "core": false },
-  { "base": "swell", "pastSimple": "swelled", "pastParticiple": "swollen", "core": false },
-  { "base": "swing", "pastSimple": "swung", "pastParticiple": "swung", "core": false },
-  { "base": "tear", "pastSimple": "tore", "pastParticiple": "torn", "core": false },
-  { "base": "thrust", "pastSimple": "thrust", "pastParticiple": "thrust", "core": false },
-  { "base": "tread", "pastSimple": "trod", "pastParticiple": "trodden", "core": false },
-  { "base": "undergo", "pastSimple": "underwent", "pastParticiple": "undergone", "core": false },
-  { "base": "undertake", "pastSimple": "undertook", "pastParticiple": "undertaken", "core": false },
-  { "base": "upset", "pastSimple": "upset", "pastParticiple": "upset", "core": false },
-  { "base": "wake", "pastSimple": "woke", "pastParticiple": "woken", "core": true },
-  { "base": "weave", "pastSimple": "wove", "pastParticiple": "woven", "core": false },
-  { "base": "weep", "pastSimple": "wept", "pastParticiple": "wept", "core": false },
-  { "base": "wind", "pastSimple": "wound", "pastParticiple": "wound", "core": false },
-  { "base": "withdraw", "pastSimple": "withdrew", "pastParticiple": "withdrawn", "core": false },
-  { "base": "withhold", "pastSimple": "withheld", "pastParticiple": "withheld", "core": false },
-  { "base": "withstand", "pastSimple": "withstood", "pastParticiple": "withstood", "core": false },
-  { "base": "wring", "pastSimple": "wrung", "pastParticiple": "wrung", "core": false },
-  { "base": "beat", "pastSimple": "beat", "pastParticiple": "beaten", "core": true },
-  { "base": "bet", "pastSimple": "bet", "pastParticiple": "bet", "core": true },
-  { "base": "bid", "pastSimple": "bid", "pastParticiple": "bid", "core": false },
-  { "base": "dwell", "pastSimple": "dwelt", "pastParticiple": "dwelt", "core": false },
-  { "base": "foresee", "pastSimple": "foresaw", "pastParticiple": "foreseen", "core": false },
-  { "base": "misunderstand", "pastSimple": "misunderstood", "pastParticiple": "misunderstood", "core": false },
-  { "base": "mislead", "pastSimple": "misled", "pastParticiple": "misled", "core": false },
-  { "base": "outdo", "pastSimple": "outdid", "pastParticiple": "outdone", "core": false },
-  { "base": "overdo", "pastSimple": "overdid", "pastParticiple": "overdone", "core": false },
-  { "base": "overhear", "pastSimple": "overheard", "pastParticiple": "overheard", "core": false },
-  { "base": "override", "pastSimple": "overrode", "pastParticiple": "overridden", "core": false },
-  { "base": "overthrow", "pastSimple": "overthrew", "pastParticiple": "overthrown", "core": false },
-  { "base": "partake", "pastSimple": "partook", "pastParticiple": "partaken", "core": false },
-  { "base": "rebuild", "pastSimple": "rebuilt", "pastParticiple": "rebuilt", "core": false },
-  { "base": "redo", "pastSimple": "redid", "pastParticiple": "redone", "core": false },
-  { "base": "remake", "pastSimple": "remade", "pastParticiple": "remade", "core": false },
-  { "base": "repay", "pastSimple": "repaid", "pastParticiple": "repaid", "core": false },
-  { "base": "rewrite", "pastSimple": "rewrote", "pastParticiple": "rewritten", "core": false },
-  { "base": "show", "pastSimple": "showed", "pastParticiple": "shown", "core": true },
-  { "base": "uphold", "pastSimple": "upheld", "pastParticiple": "upheld", "core": false },
-  { "base": "forgo", "pastSimple": "forwent", "pastParticiple": "forgone", "core": false },
-  { "base": "outgrow", "pastSimple": "outgrew", "pastParticiple": "outgrown", "core": false },
-  { "base": "resell", "pastSimple": "resold", "pastParticiple": "resold", "core": false },
-  { "base": "cost", "pastSimple": "cost", "pastParticiple": "cost", "core": true },
-  { "base": "prove", "pastSimple": "proved", "pastParticiple": "proven", "core": true },
-  { "base": "slide", "pastSimple": "slid", "pastParticiple": "slid", "core": true }
+  {
+    "base": "be",
+    "pastSimple": "was/were",
+    "pastParticiple": "been",
+    "cefr": "A1"
+  },
+  {
+    "base": "have",
+    "pastSimple": "had",
+    "pastParticiple": "had",
+    "cefr": "A1"
+  },
+  {
+    "base": "do",
+    "pastSimple": "did",
+    "pastParticiple": "done",
+    "cefr": "A1"
+  },
+  {
+    "base": "say",
+    "pastSimple": "said",
+    "pastParticiple": "said",
+    "cefr": "A1"
+  },
+  {
+    "base": "go",
+    "pastSimple": "went",
+    "pastParticiple": "gone",
+    "cefr": "A1"
+  },
+  {
+    "base": "get",
+    "pastSimple": "got",
+    "pastParticiple": "got",
+    "cefr": "A1"
+  },
+  {
+    "base": "make",
+    "pastSimple": "made",
+    "pastParticiple": "made",
+    "cefr": "A1"
+  },
+  {
+    "base": "know",
+    "pastSimple": "knew",
+    "pastParticiple": "known",
+    "cefr": "A1"
+  },
+  {
+    "base": "think",
+    "pastSimple": "thought",
+    "pastParticiple": "thought",
+    "cefr": "A1"
+  },
+  {
+    "base": "take",
+    "pastSimple": "took",
+    "pastParticiple": "taken",
+    "cefr": "A1"
+  },
+  {
+    "base": "see",
+    "pastSimple": "saw",
+    "pastParticiple": "seen",
+    "cefr": "A1"
+  },
+  {
+    "base": "come",
+    "pastSimple": "came",
+    "pastParticiple": "come",
+    "cefr": "A1"
+  },
+  {
+    "base": "give",
+    "pastSimple": "gave",
+    "pastParticiple": "given",
+    "cefr": "A1"
+  },
+  {
+    "base": "find",
+    "pastSimple": "found",
+    "pastParticiple": "found",
+    "cefr": "A1"
+  },
+  {
+    "base": "tell",
+    "pastSimple": "told",
+    "pastParticiple": "told",
+    "cefr": "A1"
+  },
+  {
+    "base": "become",
+    "pastSimple": "became",
+    "pastParticiple": "become",
+    "cefr": "A1"
+  },
+  {
+    "base": "leave",
+    "pastSimple": "left",
+    "pastParticiple": "left",
+    "cefr": "A1"
+  },
+  {
+    "base": "feel",
+    "pastSimple": "felt",
+    "pastParticiple": "felt",
+    "cefr": "A1"
+  },
+  {
+    "base": "put",
+    "pastSimple": "put",
+    "pastParticiple": "put",
+    "cefr": "A1"
+  },
+  {
+    "base": "bring",
+    "pastSimple": "brought",
+    "pastParticiple": "brought",
+    "cefr": "A1"
+  },
+  {
+    "base": "begin",
+    "pastSimple": "began",
+    "pastParticiple": "begun",
+    "cefr": "A1"
+  },
+  {
+    "base": "keep",
+    "pastSimple": "kept",
+    "pastParticiple": "kept",
+    "cefr": "A1"
+  },
+  {
+    "base": "hold",
+    "pastSimple": "held",
+    "pastParticiple": "held",
+    "cefr": "A2"
+  },
+  {
+    "base": "write",
+    "pastSimple": "wrote",
+    "pastParticiple": "written",
+    "cefr": "A1"
+  },
+  {
+    "base": "stand",
+    "pastSimple": "stood",
+    "pastParticiple": "stood",
+    "cefr": "A1"
+  },
+  {
+    "base": "hear",
+    "pastSimple": "heard",
+    "pastParticiple": "heard",
+    "cefr": "A1"
+  },
+  {
+    "base": "let",
+    "pastSimple": "let",
+    "pastParticiple": "let",
+    "cefr": "A1"
+  },
+  {
+    "base": "mean",
+    "pastSimple": "meant",
+    "pastParticiple": "meant",
+    "cefr": "A1"
+  },
+  {
+    "base": "set",
+    "pastSimple": "set",
+    "pastParticiple": "set",
+    "cefr": "B1"
+  },
+  {
+    "base": "meet",
+    "pastSimple": "met",
+    "pastParticiple": "met",
+    "cefr": "A1"
+  },
+  {
+    "base": "run",
+    "pastSimple": "ran",
+    "pastParticiple": "run",
+    "cefr": "A1"
+  },
+  {
+    "base": "pay",
+    "pastSimple": "paid",
+    "pastParticiple": "paid",
+    "cefr": "A1"
+  },
+  {
+    "base": "sit",
+    "pastSimple": "sat",
+    "pastParticiple": "sat",
+    "cefr": "A1"
+  },
+  {
+    "base": "speak",
+    "pastSimple": "spoke",
+    "pastParticiple": "spoken",
+    "cefr": "A1"
+  },
+  {
+    "base": "lie",
+    "pastSimple": "lay",
+    "pastParticiple": "lain",
+    "cefr": "A1"
+  },
+  {
+    "base": "lead",
+    "pastSimple": "led",
+    "pastParticiple": "led",
+    "cefr": "A2"
+  },
+  {
+    "base": "read",
+    "pastSimple": "read",
+    "pastParticiple": "read",
+    "cefr": "A1"
+  },
+  {
+    "base": "grow",
+    "pastSimple": "grew",
+    "pastParticiple": "grown",
+    "cefr": "A1"
+  },
+  {
+    "base": "lose",
+    "pastSimple": "lost",
+    "pastParticiple": "lost",
+    "cefr": "A1"
+  },
+  {
+    "base": "fall",
+    "pastSimple": "fell",
+    "pastParticiple": "fallen",
+    "cefr": "A1"
+  },
+  {
+    "base": "send",
+    "pastSimple": "sent",
+    "pastParticiple": "sent",
+    "cefr": "A1"
+  },
+  {
+    "base": "build",
+    "pastSimple": "built",
+    "pastParticiple": "built",
+    "cefr": "A1"
+  },
+  {
+    "base": "understand",
+    "pastSimple": "understood",
+    "pastParticiple": "understood",
+    "cefr": "A1"
+  },
+  {
+    "base": "draw",
+    "pastSimple": "drew",
+    "pastParticiple": "drawn",
+    "cefr": "A1"
+  },
+  {
+    "base": "break",
+    "pastSimple": "broke",
+    "pastParticiple": "broken",
+    "cefr": "A1"
+  },
+  {
+    "base": "spend",
+    "pastSimple": "spent",
+    "pastParticiple": "spent",
+    "cefr": "A1"
+  },
+  {
+    "base": "cut",
+    "pastSimple": "cut",
+    "pastParticiple": "cut",
+    "cefr": "A1"
+  },
+  {
+    "base": "rise",
+    "pastSimple": "rose",
+    "pastParticiple": "risen",
+    "cefr": "A2"
+  },
+  {
+    "base": "drive",
+    "pastSimple": "drove",
+    "pastParticiple": "driven",
+    "cefr": "A1"
+  },
+  {
+    "base": "buy",
+    "pastSimple": "bought",
+    "pastParticiple": "bought",
+    "cefr": "A1"
+  },
+  {
+    "base": "wear",
+    "pastSimple": "wore",
+    "pastParticiple": "worn",
+    "cefr": "A1"
+  },
+  {
+    "base": "choose",
+    "pastSimple": "chose",
+    "pastParticiple": "chosen",
+    "cefr": "A1"
+  },
+  {
+    "base": "seek",
+    "pastSimple": "sought",
+    "pastParticiple": "sought",
+    "cefr": "B2"
+  },
+  {
+    "base": "throw",
+    "pastSimple": "threw",
+    "pastParticiple": "thrown",
+    "cefr": "A2"
+  },
+  {
+    "base": "catch",
+    "pastSimple": "caught",
+    "pastParticiple": "caught",
+    "cefr": "A2"
+  },
+  {
+    "base": "teach",
+    "pastSimple": "taught",
+    "pastParticiple": "taught",
+    "cefr": "A1"
+  },
+  {
+    "base": "fly",
+    "pastSimple": "flew",
+    "pastParticiple": "flown",
+    "cefr": "A1"
+  },
+  {
+    "base": "forgive",
+    "pastSimple": "forgave",
+    "pastParticiple": "forgiven",
+    "cefr": "B2"
+  },
+  {
+    "base": "win",
+    "pastSimple": "won",
+    "pastParticiple": "won",
+    "cefr": "A1"
+  },
+  {
+    "base": "shoot",
+    "pastSimple": "shot",
+    "pastParticiple": "shot",
+    "cefr": "B1"
+  },
+  {
+    "base": "fight",
+    "pastSimple": "fought",
+    "pastParticiple": "fought",
+    "cefr": "A2"
+  },
+  {
+    "base": "sell",
+    "pastSimple": "sold",
+    "pastParticiple": "sold",
+    "cefr": "A1"
+  },
+  {
+    "base": "lay",
+    "pastSimple": "laid",
+    "pastParticiple": "laid",
+    "cefr": "B1"
+  },
+  {
+    "base": "sing",
+    "pastSimple": "sang",
+    "pastParticiple": "sung",
+    "cefr": "A1"
+  },
+  {
+    "base": "eat",
+    "pastSimple": "ate",
+    "pastParticiple": "eaten",
+    "cefr": "A1"
+  },
+  {
+    "base": "strike",
+    "pastSimple": "struck",
+    "pastParticiple": "struck",
+    "cefr": "B2"
+  },
+  {
+    "base": "drink",
+    "pastSimple": "drank",
+    "pastParticiple": "drunk",
+    "cefr": "A1"
+  },
+  {
+    "base": "shake",
+    "pastSimple": "shook",
+    "pastParticiple": "shaken",
+    "cefr": "A2"
+  },
+  {
+    "base": "forget",
+    "pastSimple": "forgot",
+    "pastParticiple": "forgotten",
+    "cefr": "A1"
+  },
+  {
+    "base": "hide",
+    "pastSimple": "hid",
+    "pastParticiple": "hidden",
+    "cefr": "A2"
+  },
+  {
+    "base": "ride",
+    "pastSimple": "rode",
+    "pastParticiple": "ridden",
+    "cefr": "A1"
+  },
+  {
+    "base": "swim",
+    "pastSimple": "swam",
+    "pastParticiple": "swum",
+    "cefr": "A1"
+  },
+  {
+    "base": "arise",
+    "pastSimple": "arose",
+    "pastParticiple": "arisen",
+    "cefr": "B2"
+  },
+  {
+    "base": "sleep",
+    "pastSimple": "slept",
+    "pastParticiple": "slept",
+    "cefr": "A1"
+  },
+  {
+    "base": "shine",
+    "pastSimple": "shone",
+    "pastParticiple": "shone",
+    "cefr": "B1"
+  },
+  {
+    "base": "steal",
+    "pastSimple": "stole",
+    "pastParticiple": "stolen",
+    "cefr": "A2"
+  },
+  {
+    "base": "deal",
+    "pastSimple": "dealt",
+    "pastParticiple": "dealt",
+    "cefr": "A2"
+  },
+  {
+    "base": "blow",
+    "pastSimple": "blew",
+    "pastParticiple": "blown",
+    "cefr": "A2"
+  },
+  {
+    "base": "hurt",
+    "pastSimple": "hurt",
+    "pastParticiple": "hurt",
+    "cefr": "A2"
+  },
+  {
+    "base": "hang",
+    "pastSimple": "hung",
+    "pastParticiple": "hung",
+    "cefr": "B1"
+  },
+  {
+    "base": "feed",
+    "pastSimple": "fed",
+    "pastParticiple": "fed",
+    "cefr": "A2"
+  },
+  {
+    "base": "dig",
+    "pastSimple": "dug",
+    "pastParticiple": "dug",
+    "cefr": "B2"
+  },
+  {
+    "base": "stick",
+    "pastSimple": "stuck",
+    "pastParticiple": "stuck",
+    "cefr": "B1"
+  },
+  {
+    "base": "swear",
+    "pastSimple": "swore",
+    "pastParticiple": "sworn",
+    "cefr": "B2"
+  },
+  {
+    "base": "bear",
+    "pastSimple": "bore",
+    "pastParticiple": "borne",
+    "cefr": "B2"
+  },
+  {
+    "base": "bend",
+    "pastSimple": "bent",
+    "pastParticiple": "bent",
+    "cefr": "B1"
+  },
+  {
+    "base": "breed",
+    "pastSimple": "bred",
+    "pastParticiple": "bred",
+    "cefr": "C1"
+  },
+  {
+    "base": "burst",
+    "pastSimple": "burst",
+    "pastParticiple": "burst",
+    "cefr": "C1"
+  },
+  {
+    "base": "cast",
+    "pastSimple": "cast",
+    "pastParticiple": "cast",
+    "cefr": "B2"
+  },
+  {
+    "base": "bind",
+    "pastSimple": "bound",
+    "pastParticiple": "bound",
+    "cefr": "C1"
+  },
+  {
+    "base": "bite",
+    "pastSimple": "bit",
+    "pastParticiple": "bitten",
+    "cefr": "B1"
+  },
+  {
+    "base": "bleed",
+    "pastSimple": "bled",
+    "pastParticiple": "bled",
+    "cefr": "C1"
+  },
+  {
+    "base": "broadcast",
+    "pastSimple": "broadcast",
+    "pastParticiple": "broadcast",
+    "cefr": "B2"
+  },
+  {
+    "base": "creep",
+    "pastSimple": "crept",
+    "pastParticiple": "crept",
+    "cefr": "C1"
+  },
+  {
+    "base": "dream",
+    "pastSimple": "dreamt",
+    "pastParticiple": "dreamt",
+    "cefr": "A2"
+  },
+  {
+    "base": "flee",
+    "pastSimple": "fled",
+    "pastParticiple": "fled",
+    "cefr": "C1"
+  },
+  {
+    "base": "fling",
+    "pastSimple": "flung",
+    "pastParticiple": "flung",
+    "cefr": "C2"
+  },
+  {
+    "base": "forbid",
+    "pastSimple": "forbade",
+    "pastParticiple": "forbidden",
+    "cefr": "B2"
+  },
+  {
+    "base": "forecast",
+    "pastSimple": "forecast",
+    "pastParticiple": "forecast",
+    "cefr": "B2"
+  },
+  {
+    "base": "freeze",
+    "pastSimple": "froze",
+    "pastParticiple": "frozen",
+    "cefr": "B1"
+  },
+  {
+    "base": "grind",
+    "pastSimple": "ground",
+    "pastParticiple": "ground",
+    "cefr": "C1"
+  },
+  {
+    "base": "hit",
+    "pastSimple": "hit",
+    "pastParticiple": "hit",
+    "cefr": "A2"
+  },
+  {
+    "base": "kneel",
+    "pastSimple": "knelt",
+    "pastParticiple": "knelt",
+    "cefr": "C2"
+  },
+  {
+    "base": "lean",
+    "pastSimple": "leant",
+    "pastParticiple": "leant",
+    "cefr": "B2"
+  },
+  {
+    "base": "leap",
+    "pastSimple": "leapt",
+    "pastParticiple": "leapt",
+    "cefr": "C1"
+  },
+  {
+    "base": "learn",
+    "pastSimple": "learnt",
+    "pastParticiple": "learnt",
+    "cefr": "A1"
+  },
+  {
+    "base": "lend",
+    "pastSimple": "lent",
+    "pastParticiple": "lent",
+    "cefr": "A2"
+  },
+  {
+    "base": "light",
+    "pastSimple": "lit",
+    "pastParticiple": "lit",
+    "cefr": "A2"
+  },
+  {
+    "base": "mistake",
+    "pastSimple": "mistook",
+    "pastParticiple": "mistaken",
+    "cefr": "B2"
+  },
+  {
+    "base": "mow",
+    "pastSimple": "mowed",
+    "pastParticiple": "mown",
+    "cefr": "C2"
+  },
+  {
+    "base": "offset",
+    "pastSimple": "offset",
+    "pastParticiple": "offset",
+    "cefr": "C1"
+  },
+  {
+    "base": "overcome",
+    "pastSimple": "overcame",
+    "pastParticiple": "overcome",
+    "cefr": "B2"
+  },
+  {
+    "base": "overtake",
+    "pastSimple": "overtook",
+    "pastParticiple": "overtaken",
+    "cefr": "C1"
+  },
+  {
+    "base": "quit",
+    "pastSimple": "quit",
+    "pastParticiple": "quit",
+    "cefr": "B1"
+  },
+  {
+    "base": "rid",
+    "pastSimple": "rid",
+    "pastParticiple": "rid",
+    "cefr": "B2"
+  },
+  {
+    "base": "ring",
+    "pastSimple": "rang",
+    "pastParticiple": "rung",
+    "cefr": "A2"
+  },
+  {
+    "base": "saw",
+    "pastSimple": "sawed",
+    "pastParticiple": "sawn",
+    "cefr": "C2"
+  },
+  {
+    "base": "shed",
+    "pastSimple": "shed",
+    "pastParticiple": "shed",
+    "cefr": "C1"
+  },
+  {
+    "base": "shrink",
+    "pastSimple": "shrank",
+    "pastParticiple": "shrunk",
+    "cefr": "C1"
+  },
+  {
+    "base": "shut",
+    "pastSimple": "shut",
+    "pastParticiple": "shut",
+    "cefr": "A2"
+  },
+  {
+    "base": "sink",
+    "pastSimple": "sank",
+    "pastParticiple": "sunk",
+    "cefr": "B1"
+  },
+  {
+    "base": "slay",
+    "pastSimple": "slew",
+    "pastParticiple": "slain",
+    "cefr": "C2"
+  },
+  {
+    "base": "sling",
+    "pastSimple": "slung",
+    "pastParticiple": "slung",
+    "cefr": "C2"
+  },
+  {
+    "base": "slink",
+    "pastSimple": "slunk",
+    "pastParticiple": "slunk",
+    "cefr": "C2"
+  },
+  {
+    "base": "slit",
+    "pastSimple": "slit",
+    "pastParticiple": "slit",
+    "cefr": "C2"
+  },
+  {
+    "base": "smell",
+    "pastSimple": "smelt",
+    "pastParticiple": "smelt",
+    "cefr": "A2"
+  },
+  {
+    "base": "sow",
+    "pastSimple": "sowed",
+    "pastParticiple": "sown",
+    "cefr": "C2"
+  },
+  {
+    "base": "speed",
+    "pastSimple": "sped",
+    "pastParticiple": "sped",
+    "cefr": "B2"
+  },
+  {
+    "base": "spell",
+    "pastSimple": "spelt",
+    "pastParticiple": "spelt",
+    "cefr": "A1"
+  },
+  {
+    "base": "spill",
+    "pastSimple": "spilt",
+    "pastParticiple": "spilt",
+    "cefr": "B2"
+  },
+  {
+    "base": "spin",
+    "pastSimple": "spun",
+    "pastParticiple": "spun",
+    "cefr": "C1"
+  },
+  {
+    "base": "spit",
+    "pastSimple": "spat",
+    "pastParticiple": "spat",
+    "cefr": "C2"
+  },
+  {
+    "base": "split",
+    "pastSimple": "split",
+    "pastParticiple": "split",
+    "cefr": "B2"
+  },
+  {
+    "base": "spoil",
+    "pastSimple": "spoilt",
+    "pastParticiple": "spoilt",
+    "cefr": "B2"
+  },
+  {
+    "base": "spread",
+    "pastSimple": "spread",
+    "pastParticiple": "spread",
+    "cefr": "B1"
+  },
+  {
+    "base": "spring",
+    "pastSimple": "sprang",
+    "pastParticiple": "sprung",
+    "cefr": "B1"
+  },
+  {
+    "base": "sting",
+    "pastSimple": "stung",
+    "pastParticiple": "stung",
+    "cefr": "C2"
+  },
+  {
+    "base": "stink",
+    "pastSimple": "stank",
+    "pastParticiple": "stunk",
+    "cefr": "C2"
+  },
+  {
+    "base": "stride",
+    "pastSimple": "strode",
+    "pastParticiple": "stridden",
+    "cefr": "C2"
+  },
+  {
+    "base": "string",
+    "pastSimple": "strung",
+    "pastParticiple": "strung",
+    "cefr": "C2"
+  },
+  {
+    "base": "strive",
+    "pastSimple": "strove",
+    "pastParticiple": "striven",
+    "cefr": "C1"
+  },
+  {
+    "base": "swell",
+    "pastSimple": "swelled",
+    "pastParticiple": "swollen",
+    "cefr": "C2"
+  },
+  {
+    "base": "swing",
+    "pastSimple": "swung",
+    "pastParticiple": "swung",
+    "cefr": "C1"
+  },
+  {
+    "base": "tear",
+    "pastSimple": "tore",
+    "pastParticiple": "torn",
+    "cefr": "B2"
+  },
+  {
+    "base": "thrust",
+    "pastSimple": "thrust",
+    "pastParticiple": "thrust",
+    "cefr": "C2"
+  },
+  {
+    "base": "tread",
+    "pastSimple": "trod",
+    "pastParticiple": "trodden",
+    "cefr": "C2"
+  },
+  {
+    "base": "undergo",
+    "pastSimple": "underwent",
+    "pastParticiple": "undergone",
+    "cefr": "B2"
+  },
+  {
+    "base": "undertake",
+    "pastSimple": "undertook",
+    "pastParticiple": "undertaken",
+    "cefr": "B2"
+  },
+  {
+    "base": "upset",
+    "pastSimple": "upset",
+    "pastParticiple": "upset",
+    "cefr": "B1"
+  },
+  {
+    "base": "wake",
+    "pastSimple": "woke",
+    "pastParticiple": "woken",
+    "cefr": "A1"
+  },
+  {
+    "base": "weave",
+    "pastSimple": "wove",
+    "pastParticiple": "woven",
+    "cefr": "C1"
+  },
+  {
+    "base": "weep",
+    "pastSimple": "wept",
+    "pastParticiple": "wept",
+    "cefr": "C2"
+  },
+  {
+    "base": "wind",
+    "pastSimple": "wound",
+    "pastParticiple": "wound",
+    "cefr": "B2"
+  },
+  {
+    "base": "withdraw",
+    "pastSimple": "withdrew",
+    "pastParticiple": "withdrawn",
+    "cefr": "B2"
+  },
+  {
+    "base": "withhold",
+    "pastSimple": "withheld",
+    "pastParticiple": "withheld",
+    "cefr": "C2"
+  },
+  {
+    "base": "withstand",
+    "pastSimple": "withstood",
+    "pastParticiple": "withstood",
+    "cefr": "C2"
+  },
+  {
+    "base": "wring",
+    "pastSimple": "wrung",
+    "pastParticiple": "wrung",
+    "cefr": "C2"
+  },
+  {
+    "base": "beat",
+    "pastSimple": "beat",
+    "pastParticiple": "beaten",
+    "cefr": "A2"
+  },
+  {
+    "base": "bet",
+    "pastSimple": "bet",
+    "pastParticiple": "bet",
+    "cefr": "B2"
+  },
+  {
+    "base": "bid",
+    "pastSimple": "bid",
+    "pastParticiple": "bid",
+    "cefr": "B2"
+  },
+  {
+    "base": "dwell",
+    "pastSimple": "dwelt",
+    "pastParticiple": "dwelt",
+    "cefr": "C2"
+  },
+  {
+    "base": "foresee",
+    "pastSimple": "foresaw",
+    "pastParticiple": "foreseen",
+    "cefr": "C2"
+  },
+  {
+    "base": "misunderstand",
+    "pastSimple": "misunderstood",
+    "pastParticiple": "misunderstood",
+    "cefr": "C1"
+  },
+  {
+    "base": "mislead",
+    "pastSimple": "misled",
+    "pastParticiple": "misled",
+    "cefr": "C1"
+  },
+  {
+    "base": "outdo",
+    "pastSimple": "outdid",
+    "pastParticiple": "outdone",
+    "cefr": "C1"
+  },
+  {
+    "base": "overdo",
+    "pastSimple": "overdid",
+    "pastParticiple": "overdone",
+    "cefr": "C1"
+  },
+  {
+    "base": "overhear",
+    "pastSimple": "overheard",
+    "pastParticiple": "overheard",
+    "cefr": "C1"
+  },
+  {
+    "base": "override",
+    "pastSimple": "overrode",
+    "pastParticiple": "overridden",
+    "cefr": "C1"
+  },
+  {
+    "base": "overthrow",
+    "pastSimple": "overthrew",
+    "pastParticiple": "overthrown",
+    "cefr": "C1"
+  },
+  {
+    "base": "partake",
+    "pastSimple": "partook",
+    "pastParticiple": "partaken",
+    "cefr": "C2"
+  },
+  {
+    "base": "rebuild",
+    "pastSimple": "rebuilt",
+    "pastParticiple": "rebuilt",
+    "cefr": "B2"
+  },
+  {
+    "base": "redo",
+    "pastSimple": "redid",
+    "pastParticiple": "redone",
+    "cefr": "C1"
+  },
+  {
+    "base": "remake",
+    "pastSimple": "remade",
+    "pastParticiple": "remade",
+    "cefr": "C1"
+  },
+  {
+    "base": "repay",
+    "pastSimple": "repaid",
+    "pastParticiple": "repaid",
+    "cefr": "C1"
+  },
+  {
+    "base": "rewrite",
+    "pastSimple": "rewrote",
+    "pastParticiple": "rewritten",
+    "cefr": "C1"
+  },
+  {
+    "base": "show",
+    "pastSimple": "showed",
+    "pastParticiple": "shown",
+    "cefr": "A1"
+  },
+  {
+    "base": "uphold",
+    "pastSimple": "upheld",
+    "pastParticiple": "upheld",
+    "cefr": "C1"
+  },
+  {
+    "base": "forgo",
+    "pastSimple": "forwent",
+    "pastParticiple": "forgone",
+    "cefr": "C2"
+  },
+  {
+    "base": "outgrow",
+    "pastSimple": "outgrew",
+    "pastParticiple": "outgrown",
+    "cefr": "C1"
+  },
+  {
+    "base": "resell",
+    "pastSimple": "resold",
+    "pastParticiple": "resold",
+    "cefr": "C1"
+  },
+  {
+    "base": "cost",
+    "pastSimple": "cost",
+    "pastParticiple": "cost",
+    "cefr": "A1"
+  },
+  {
+    "base": "prove",
+    "pastSimple": "proved",
+    "pastParticiple": "proven",
+    "cefr": "B1"
+  },
+  {
+    "base": "slide",
+    "pastSimple": "slid",
+    "pastParticiple": "slid",
+    "cefr": "B2"
+  }
 ]

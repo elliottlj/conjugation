@@ -913,7 +913,7 @@
 
   // ── POOL / QUEUE BUILDING ──
   function buildPool(settings) {
-    let pool = settings.irregularPopulation === 'core' ? irregularVerbs.filter(v => v.core) : irregularVerbs;
+    let pool = settings.irregularPopulation === 'core' ? irregularVerbs.filter(v => ['A1','A2','B1'].includes(v.cefr)) : irregularVerbs;
     if (settings.includeRegular) {
       pool = pool.concat(sliceTier(regularVerbs, settings.regularPopulation));
     }
