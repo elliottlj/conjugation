@@ -815,11 +815,11 @@
 
   <!-- REVIEW SCREEN -->
   <div id="screen-review" class="screen">
-    <p class="screen-label">Review</p>
     <h2 class="screen-title">Verbs to review</h2>
-    <p class="screen-sub">Ordered by how many times you've gotten them wrong.</p>
+    <p class="screen-sub">Ordered by how many times you've gotten them wrong. Verbs are automatically removed once you get them right as many times as you got them wrong.</p>
 
     <div class="failed-list" id="review-list-content"></div>
+    <button class="clear-history-btn" id="clear-review-btn" onclick="clearReviewList()">Clear review list</button>
   </div>
 
   <!-- HISTORY SCREEN -->
@@ -1465,14 +1465,22 @@
     const container = document.getElementById('review-list-content');
     if (entries.length === 0) {
       container.innerHTML = '<div class="empty-failed">✓ Nothing to review right now!</div>';
+      document.getElementById('clear-review-btn').style.display = 'none';
       return;
     }
+    document.getElementById('clear-review-btn').style.display = 'inline-block';
     container.innerHTML = entries.map(e =>
       `<div class="failed-item">
         <span>${e.base} — ${formLabelShort(e.form)}: ${formatAnswer(e.answer)}</span>
         <span class="failed-item-misses">×${e.misses}</span>
       </div>`
     ).join('');
+  }
+
+  function clearReviewList() {
+    if (!confirm('Clear the verb review list?')) return;
+    localStorage.removeItem(VERB_STATS_KEY);
+    renderReviewList();
   }
 
   function selectTab(tab) {
