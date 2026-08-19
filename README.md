@@ -32,13 +32,13 @@ For regular verbs, `pastSimple` and `pastParticiple` are always equal — kept a
 
 ## Printable verb table
 
-`pdf/irregular-verbs-core.pdf` is a static, pre-generated one-page PDF of the 100 Core (A1-B1) irregular verbs, two columns, no CEFR column (it's meant for printing/reference, not as a mirror of the on-site table). Not generated on the fly by the app — it's a build-time artifact, regenerated manually when the verb data changes:
+`pdf/irregular-verbs-core.pdf` and `pdf/irregular-verbs-all.pdf` are static, pre-generated PDFs of the irregular verb list — Core (A1-B1, 100 verbs, fits one page) and All (183 verbs, two pages), both two equal-width columns per page, no CEFR column (meant for printing/reference, not a mirror of the on-site table). Not generated on the fly by the app — they're build-time artifacts, regenerated manually when the verb data changes:
 
 ```
 node pdf/generate.js
 ```
 
-This writes `pdf/irregular-verbs-core.html` from `verbs/irregular.json`; render that to the final PDF with Playwright (`npx playwright pdf pdf/irregular-verbs-core.html pdf/irregular-verbs-core.pdf`) or a browser's own "Print to PDF". Not yet linked from the site - where to put a download button is still an open decision.
+This writes `pdf/irregular-verbs-core.html` and `pdf/irregular-verbs-all.html` from `verbs/irregular.json` (100 verbs per page cap, so All automatically spills onto a second page's worth of two columns rather than cramming more columns onto one page — see `VERBS_PER_PDF_PAGE` in `pdf/generate.js`). Render each to its final PDF with Playwright (`npx playwright pdf pdf/irregular-verbs-core.html pdf/irregular-verbs-core.pdf`, same for `-all`) or a browser's own "Print to PDF". Not yet linked from the site - where to put a download button is still an open decision.
 
 ## Known follow-up
 
