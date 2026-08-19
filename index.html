@@ -652,7 +652,7 @@
         <div class="setting-row">
           <span class="setting-label">Irregular verb pool</span>
           <select id="irregular-population-select" onchange="onSettingsChanged()">
-            <option value="core" selected>Core (100 words)</option>
+            <option value="core" selected>Core: A1-B1 (100 words)</option>
             <option value="all">All (183 words)</option>
           </select>
         </div>
@@ -662,27 +662,7 @@
             <input type="checkbox" id="include-regular-toggle" onchange="onSettingsChanged()" />
             <span>
               <span class="setting-label">Include regular verbs</span><br />
-              <span class="setting-hint">Mix regular verbs in with the irregular ones</span>
-            </span>
-          </label>
-        </div>
-
-        <div class="setting-row">
-          <span class="setting-label">Regular verb pool</span>
-          <select id="regular-population-select" onchange="onSettingsChanged()" disabled>
-            <option value="25">Top 25</option>
-            <option value="50" selected>Top 50</option>
-            <option value="100">Top 100</option>
-            <option value="all">All (200)</option>
-          </select>
-        </div>
-
-        <div class="setting-row">
-          <label class="toggle-wrap" for="prioritize-weak-toggle">
-            <input type="checkbox" id="prioritize-weak-toggle" checked onchange="onSettingsChanged()" />
-            <span>
-              <span class="setting-label">Prioritize verbs I've struggled with</span><br />
-              <span class="setting-hint">Verbs you've missed before are more likely to come up</span>
+              <span class="setting-hint">Mixed in at a 60:40 irregular:regular ratio, matched to the same CEFR level as the irregular pool above</span>
             </span>
           </label>
         </div>
@@ -748,7 +728,7 @@
   <div id="screen-review" class="screen">
     <p class="screen-label">Review</p>
     <h2 class="screen-title">Verbs to review</h2>
-    <p class="screen-sub">Ordered by how many times you've gotten them wrong — these are also the verbs prioritized when "Prioritize verbs I've struggled with" is on.</p>
+    <p class="screen-sub">Ordered by how many times you've gotten them wrong.</p>
 
     <div class="failed-list" id="review-list-content"></div>
   </div>
@@ -848,21 +828,12 @@
   }
 
   // ── SETTINGS ──
-  function sliceTier(list, tier) {
-    return tier === 'all' ? list : list.slice(0, tier);
-  }
-
-  function parsePopulation(v) {
-    return v === 'all' ? 'all' : parseInt(v, 10);
-  }
 
   function readSettings() {
     return {
       includeRegular: document.getElementById('include-regular-toggle').checked,
-      prioritizeWeak: document.getElementById('prioritize-weak-toggle').checked,
       forms: document.getElementById('forms-select').value,
       irregularPopulation: document.getElementById('irregular-population-select').value, // 'core' | 'all'
-      regularPopulation: parsePopulation(document.getElementById('regular-population-select').value),
       verbCount: parseInt(document.getElementById('verb-count-select').value, 10)
     };
   }
@@ -881,19 +852,14 @@
   function applySettingsToForm(settings) {
     if (!settings) return;
     document.getElementById('include-regular-toggle').checked = !!settings.includeRegular;
-    document.getElementById('prioritize-weak-toggle').checked = settings.prioritizeWeak !== false;
     document.getElementById('forms-select').value = settings.forms || 'both';
     // guards against a stale saved value from the old numeric-tier selector (e.g. 100)
     const irrPop = settings.irregularPopulation;
     document.getElementById('irregular-population-select').value = (irrPop === 'core' || irrPop === 'all') ? irrPop : 'core';
-    document.getElementById('regular-population-select').value = String(settings.regularPopulation ?? 50);
-    document.getElementById('regular-population-select').disabled = !settings.includeRegular;
     document.getElementById('verb-count-select').value = String(settings.verbCount ?? 20);
   }
 
   function onSettingsChanged() {
-    const includeRegular = document.getElementById('include-regular-toggle').checked;
-    document.getElementById('regular-population-select').disabled = !includeRegular;
     updatePoolNote();
     saveSettings(readSettings());
   }
@@ -901,7 +867,8 @@
   function updatePoolNote() {
     if (irregularVerbs.length === 0) return; // data not loaded yet
     const settings = readSettings();
-    const maxPairs = buildAllPairs(settings).length;
+    const { irregularPairs, regularPairs } = buildAllPairs(settings);
+    const maxPairs = irregularPairs.length + regularPairs.length;
     const note = document.getElementById('pool-note');
     if (settings.verbCount > maxPairs) {
       note.textContent = `Only ${maxPairs} question${maxPairs === 1 ? '' : 's'} available with these settings — the round will use all of them.`;
@@ -912,12 +879,17 @@
   }
 
   // ── POOL / QUEUE BUILDING ──
-  function buildPool(settings) {
-    let pool = settings.irregularPopulation === 'core' ? irregularVerbs.filter(v => ['A1','A2','B1'].includes(v.cefr)) : irregularVerbs;
-    if (settings.includeRegular) {
-      pool = pool.concat(sliceTier(regularVerbs, settings.regularPopulation));
-    }
-    return pool;
+  const CORE_CEFR = ['A1', 'A2', 'B1'];
+
+  // regular verbs are matched to whichever CEFR band the irregular pool uses,
+  // so "Core" only mixes in A1-B1 regular verbs and "All" mixes in every level
+  function buildPools(settings) {
+    const coreOnly = settings.irregularPopulation === 'core';
+    const irregularPool = coreOnly ? irregularVerbs.filter(v => CORE_CEFR.includes(v.cefr)) : irregularVerbs;
+    const regularPool = settings.includeRegular
+      ? (coreOnly ? regularVerbs.filter(v => CORE_CEFR.includes(v.cefr)) : regularVerbs)
+      : [];
+    return { irregularPool, regularPool };
   }
 
   function shuffle(arr) {
@@ -927,12 +899,7 @@
     }
   }
 
-  // every (verb, form) combination the current settings could test — a verb
-  // contributes one pair per active form, so it can be drawn more than once
-  // in a round (once per form), just never the same pair twice.
-  function buildAllPairs(settings) {
-    const pool = buildPool(settings);
-    const formList = settings.forms === 'both' ? ['pastSimple', 'pastParticiple'] : [settings.forms];
+  function toPairs(pool, formList) {
     const pairs = [];
     pool.forEach(v => {
       formList.forEach(f => pairs.push({ base: v.base, form: f, answer: v[f] }));
@@ -940,27 +907,48 @@
     return pairs;
   }
 
-  // Efraimidis-Spirakis weighted sampling: assign each item a key of
-  // random()^(1/weight), then sort descending — equivalent to a weighted
-  // Fisher-Yates shuffle, picking heavier items first on average.
-  function weightedShuffle(arr, weightFn) {
-    return arr
-      .map(item => ({ item, key: Math.pow(Math.random(), 1 / weightFn(item)) }))
-      .sort((a, b) => b.key - a.key)
-      .map(x => x.item);
+  // every (verb, form) combination the current settings could test, split by
+  // irregular/regular — a verb contributes one pair per active form, so it
+  // can be drawn more than once in a round (once per form), just never the
+  // same pair twice.
+  function buildAllPairs(settings) {
+    const { irregularPool, regularPool } = buildPools(settings);
+    const formList = settings.forms === 'both' ? ['pastSimple', 'pastParticiple'] : [settings.forms];
+    return {
+      irregularPairs: toPairs(irregularPool, formList),
+      regularPairs: toPairs(regularPool, formList)
+    };
   }
 
+  const IRREGULAR_RATIO = 0.6;
+
   function buildQueue(settings) {
-    const pairs = [...buildAllPairs(settings)];
-    let ordered;
-    if (settings.prioritizeWeak) {
-      const stats = loadVerbStats();
-      ordered = weightedShuffle(pairs, p => 1 + (stats[`${p.base}|${p.form}`] || 0));
+    const { irregularPairs, regularPairs } = buildAllPairs(settings);
+    shuffle(irregularPairs);
+    shuffle(regularPairs);
+
+    let selected;
+    if (settings.includeRegular && regularPairs.length > 0) {
+      const irrTarget = Math.round(settings.verbCount * IRREGULAR_RATIO);
+      const regTarget = settings.verbCount - irrTarget;
+      const irrTake = Math.min(irrTarget, irregularPairs.length);
+      const regTake = Math.min(regTarget, regularPairs.length);
+      selected = irregularPairs.slice(0, irrTake).concat(regularPairs.slice(0, regTake));
+
+      // one pool couldn't fill its share of the ratio — top off from the
+      // other pool's remainder so the round still hits verbCount if possible
+      const shortfall = Math.min(settings.verbCount, irregularPairs.length + regularPairs.length) - selected.length;
+      if (shortfall > 0) {
+        const leftover = irregularPairs.slice(irrTake).concat(regularPairs.slice(regTake));
+        shuffle(leftover);
+        selected = selected.concat(leftover.slice(0, shortfall));
+      }
+      shuffle(selected);
     } else {
-      ordered = pairs;
-      shuffle(ordered);
+      selected = irregularPairs;
     }
-    return ordered.slice(0, Math.min(settings.verbCount, ordered.length))
+
+    return selected.slice(0, Math.min(settings.verbCount, selected.length))
       .map(p => ({ ...p, attempts: 0 }));
   }
 
@@ -1136,7 +1124,6 @@
         forms: currentSettings.forms,
         includeRegular: currentSettings.includeRegular,
         irregularPopulation: currentSettings.irregularPopulation,
-        regularPopulation: currentSettings.includeRegular ? currentSettings.regularPopulation : null,
         verbCount: currentSettings.verbCount
       },
       missed: missedList.map(c => ({ base: c.base, form: c.form, misses: c.misses }))
@@ -1186,8 +1173,7 @@
     const parts = [];
     parts.push(s.forms === 'both' ? 'both forms' : formLabelShort(s.forms));
     parts.push(s.includeRegular ? 'irregular + regular' : 'irregular only');
-    parts.push(`irr: ${s.irregularPopulation === 'all' ? 'all' : s.irregularPopulation === 'core' ? 'core' : 'top ' + s.irregularPopulation}`);
-    if (s.includeRegular) parts.push(`reg: ${s.regularPopulation === 'all' ? 'all' : 'top ' + s.regularPopulation}`);
+    parts.push(`irr: ${s.irregularPopulation === 'all' ? 'all' : 'core'}`);
     parts.push(`${s.verbCount} questions`);
     return parts.join(' · ');
   }
