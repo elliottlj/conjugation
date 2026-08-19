@@ -184,14 +184,19 @@
       gap: 10px;
     }
 
-    /* fixed-width columns shared by every stacked checkbox row, so the
-       Tenses row's 2 items and the Levels row's 6 items land in the same
-       column positions instead of each row sizing to its own content */
-    .setting-row.stacked-row .checkbox-group,
-    .advanced-options .checkbox-group {
+    /* fixed-width columns shared by the practice screen's stacked checkbox
+       rows, so the Tenses row's 2 items and the Levels row's 6 items land in
+       the same column positions instead of each row sizing to its own content */
+    .setting-row.stacked-row .checkbox-group {
       display: grid;
       grid-template-columns: repeat(3, 150px);
       gap: 10px 16px;
+    }
+
+    /* lookup filter: pack tightly on one row, only wrap if it doesn't fit */
+    .filter-content .checkbox-group {
+      flex-wrap: wrap;
+      gap: 6px 14px;
     }
 
     .inline-checkbox {
@@ -634,7 +639,8 @@
 
     #lookup-search:focus { border-color: var(--accent); }
 
-    #screen-lookup .advanced-options { margin-bottom: 16px; }
+    #screen-lookup .advanced-options { margin-bottom: 2px; }
+    #screen-lookup .advanced-options[open] { margin-bottom: 16px; }
     #screen-lookup .filter-content { padding-bottom: 14px; }
 
     @media (max-width: 480px) {
@@ -643,8 +649,7 @@
       .screen-title { font-size: 1.6rem; }
       .page-title { font-size: 2rem; }
       .setting-row { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .setting-row.stacked-row .checkbox-group,
-      .advanced-options .checkbox-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .setting-row.stacked-row .checkbox-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       select { width: 100%; }
       table.data-table { font-size: 0.78rem; }
       .feedback-verb-row .fv-label { white-space: normal; }
