@@ -187,7 +187,8 @@
     /* fixed-width columns shared by every stacked checkbox row, so the
        Tenses row's 2 items and the Levels row's 6 items land in the same
        column positions instead of each row sizing to its own content */
-    .setting-row.stacked-row .checkbox-group {
+    .setting-row.stacked-row .checkbox-group,
+    .advanced-options .checkbox-group {
       display: grid;
       grid-template-columns: repeat(3, 150px);
       gap: 10px 16px;
@@ -633,13 +634,17 @@
 
     #lookup-search:focus { border-color: var(--accent); }
 
+    #screen-lookup .advanced-options { margin-bottom: 16px; }
+    #screen-lookup .filter-content { padding-bottom: 14px; }
+
     @media (max-width: 480px) {
       .quiz-card { padding: 24px 20px; }
       .quiz-progress-counter { top: 24px; right: 20px; }
       .screen-title { font-size: 1.6rem; }
       .page-title { font-size: 2rem; }
       .setting-row { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .setting-row.stacked-row .checkbox-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .setting-row.stacked-row .checkbox-group,
+      .advanced-options .checkbox-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       select { width: 100%; }
       table.data-table { font-size: 0.78rem; }
       .feedback-verb-row .fv-label { white-space: normal; }
@@ -827,6 +832,20 @@
     <p class="screen-sub">All irregular verbs, A–Z. Search to filter.</p>
 
     <input type="text" id="lookup-search" placeholder="Search verbs…" />
+
+    <details class="advanced-options">
+      <summary>Filter by level</summary>
+      <div class="filter-content">
+        <span class="checkbox-group">
+          <label class="inline-checkbox"><input type="checkbox" class="lookup-level-toggle" value="A1" checked /> A1</label>
+          <label class="inline-checkbox"><input type="checkbox" class="lookup-level-toggle" value="A2" checked /> A2</label>
+          <label class="inline-checkbox"><input type="checkbox" class="lookup-level-toggle" value="B1" checked /> B1</label>
+          <label class="inline-checkbox"><input type="checkbox" class="lookup-level-toggle" value="B2" checked /> B2</label>
+          <label class="inline-checkbox"><input type="checkbox" class="lookup-level-toggle" value="C1" checked /> C1</label>
+          <label class="inline-checkbox"><input type="checkbox" class="lookup-level-toggle" value="C2" checked /> C2</label>
+        </span>
+      </div>
+    </details>
 
     <div class="data-table-wrap">
       <table class="data-table">
@@ -1382,19 +1401,28 @@
 
   function initLookup() {
     lookupSorted = [...irregularVerbs].sort((a, b) => a.base.localeCompare(b.base));
-    renderLookupRows(lookupSorted);
-    document.getElementById('lookup-search').addEventListener('input', e => {
-      const q = e.target.value.trim().toLowerCase();
-      renderLookupRows(lookupSorted.filter(v =>
-        v.base.toLowerCase().includes(q) ||
-        v.pastSimple.toLowerCase().includes(q) ||
-        v.pastParticiple.toLowerCase().includes(q)
-      ));
+    applyLookupFilter();
+    document.getElementById('lookup-search').addEventListener('input', applyLookupFilter);
+    document.querySelectorAll('.lookup-level-toggle').forEach(cb => {
+      cb.addEventListener('change', applyLookupFilter);
     });
     document.getElementById('lookup-table-body').addEventListener('click', e => {
       const btn = e.target.closest('.speak-btn');
       if (btn) speakWord(btn.dataset.word);
     });
+  }
+
+  function applyLookupFilter() {
+    const q = document.getElementById('lookup-search').value.trim().toLowerCase();
+    const activeLevels = new Set(
+      Array.from(document.querySelectorAll('.lookup-level-toggle:checked')).map(cb => cb.value)
+    );
+    renderLookupRows(lookupSorted.filter(v =>
+      activeLevels.has(v.cefr) &&
+      (v.base.toLowerCase().includes(q) ||
+       v.pastSimple.toLowerCase().includes(q) ||
+       v.pastParticiple.toLowerCase().includes(q))
+    ));
   }
 
   function renderLookupRows(rows) {
