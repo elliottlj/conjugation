@@ -676,7 +676,7 @@
   <button class="tab-btn active" data-tab="practice" onclick="selectTab('practice')">Practice</button>
   <button class="tab-btn" data-tab="review" onclick="selectTab('review')">Verbs to review</button>
   <button class="tab-btn" data-tab="history" onclick="selectTab('history')">History</button>
-  <button class="tab-btn" data-tab="lookup" onclick="selectTab('lookup')">Lookup</button>
+  <button class="tab-btn" data-tab="lookup" onclick="selectTab('lookup')">Irregular Verb Table</button>
 </nav>
 
 <main>
@@ -824,9 +824,7 @@
 
   <!-- HISTORY SCREEN -->
   <div id="screen-history" class="screen">
-    <p class="screen-label">History</p>
-    <h2 class="screen-title">Past rounds</h2>
-    <p class="screen-sub">Most recent first.</p>
+    <h2 class="screen-title">History</h2>
 
     <div id="history-content"></div>
     <button class="clear-history-btn" id="clear-history-btn" onclick="clearHistory()">Clear history</button>
@@ -834,7 +832,6 @@
 
   <!-- LOOKUP SCREEN -->
   <div id="screen-lookup" class="screen">
-    <p class="screen-label">Lookup</p>
     <h2 class="screen-title">Irregular verb table</h2>
 
     <input type="text" id="lookup-search" placeholder="Search to filter" />
