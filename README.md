@@ -22,7 +22,7 @@ Then open **http://localhost:8080** in your browser. Leave the terminal window o
 { "base": "go", "pastSimple": "went", "pastParticiple": "gone", "cefr": "A1" }
 ```
 
-The setup screen's "Levels to test" checkboxes (A1/A2/B1/B2/C1, defaulting to A1+A2+B1 = 100 verbs) select directly by `cefr` — see `buildPools()` in `index.html`. There's no checkbox for C2; it's the small "genuinely archaic" tier (dwell, partake, slay, etc. — see above) that isn't exposed in the UI, though a settings blob saved from before this checkbox existed that had the old "All" pool selected still maps to every level including C2 (`normalizeLevels()`).
+The setup screen's "Levels to test" checkboxes (A1/A2/B1/B2/C1/C2, defaulting to A1+A2+B1 = 100 verbs) select directly by `cefr` — see `buildPools()` in `index.html`.
 
 `verbs/regular.json` (200 entries) also has a `cefr` field now, tagged the same way as `irregular.json`. The array order still reflects the original frequency ranking (most common first), though nothing in the app currently depends on that order — regular verbs are now selected by `cefr` rather than by frequency tier (see below). Two entries needed a judgment call rather than a direct source match: `colour` (only the noun sense "colour n." is itemized in Oxford's list, no separate verb entry — tagged `A1` to match the noun) and `bathe` (absent from both Oxford lists entirely, at any level or form — tagged `C2`, the same treatment as the irregular list's archaic tier, since British English favours "have a bath" over "to bathe").
 
@@ -32,5 +32,4 @@ For regular verbs, `pastSimple` and `pastParticiple` are always equal — kept a
 
 ## Known follow-up
 
-- The "Levels to test" checkboxes don't include C2 (see above) — worth a decision at some point on whether to expose it too, or keep it deliberately hidden as a "fun advanced" easter egg.
 - CEFR levels are per-lemma, not per-inflected-form, so a single tag applies to base/past-simple/past-participle together (e.g. "bear" is tagged by its verb sense as a whole, which doesn't capture that "borne" specifically is rarer than "bore"). "born" (the common birth-sense past participle) isn't in the dataset at all — only the formal "borne" is; adding "born" as an accepted alternate answer is a still-open data/UX decision.

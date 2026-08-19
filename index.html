@@ -184,10 +184,13 @@
       gap: 10px;
     }
 
+    /* fixed-width columns shared by every stacked checkbox row, so the
+       Tenses row's 2 items and the Levels row's 6 items land in the same
+       column positions instead of each row sizing to its own content */
     .setting-row.stacked-row .checkbox-group {
-      flex-wrap: wrap;
-      gap: 10px 20px;
-      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 150px);
+      gap: 10px 16px;
     }
 
     .inline-checkbox {
@@ -621,6 +624,7 @@
       .screen-title { font-size: 1.6rem; }
       .page-title { font-size: 2rem; }
       .setting-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .setting-row.stacked-row .checkbox-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       select { width: 100%; }
       table.data-table { font-size: 0.78rem; }
       .feedback-verb-row .fv-label { white-space: normal; }
@@ -670,7 +674,7 @@
       <details class="advanced-options">
         <summary>Advanced options</summary>
 
-        <div class="setting-row">
+        <div class="setting-row stacked-row">
           <span class="setting-label">Tenses to test</span>
           <span class="checkbox-group">
             <label class="inline-checkbox">
@@ -706,6 +710,10 @@
             <label class="inline-checkbox">
               <input type="checkbox" id="level-c1-toggle" onchange="onLevelsChanged('level-c1-toggle')" />
               C1 (30 verbs)
+            </label>
+            <label class="inline-checkbox">
+              <input type="checkbox" id="level-c2-toggle" onchange="onLevelsChanged('level-c2-toggle')" />
+              C2 (25 verbs)
             </label>
           </span>
         </div>
@@ -893,7 +901,7 @@
 
   const DEFAULT_LEVELS = ['A1', 'A2', 'B1'];
   const ALL_LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-  const LEVEL_TOGGLE_IDS = ['level-a1-toggle', 'level-a2-toggle', 'level-b1-toggle', 'level-b2-toggle', 'level-c1-toggle'];
+  const LEVEL_TOGGLE_IDS = ['level-a1-toggle', 'level-a2-toggle', 'level-b1-toggle', 'level-b2-toggle', 'level-c1-toggle', 'level-c2-toggle'];
 
   // accepts the old 'core'/'all' single-select string from settings saved
   // before the level checkboxes existed, as well as the current array format.
