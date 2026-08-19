@@ -663,8 +663,8 @@
       <div class="setting-row" id="questions-row">
         <span class="setting-label">Questions per round</span>
         <select id="verb-count-select" onchange="onSettingsChanged()">
-          <option value="10">10</option>
-          <option value="20" selected>20</option>
+          <option value="10" selected>10</option>
+          <option value="20">20</option>
           <option value="30">30</option>
           <option value="50">50</option>
           <option value="100">100</option>
@@ -951,7 +951,7 @@
       const level = id.match(/level-([a-z0-9]+)-toggle/)[1].toUpperCase();
       document.getElementById(id).checked = levels.includes(level);
     });
-    document.getElementById('verb-count-select').value = String(settings.verbCount ?? 20);
+    document.getElementById('verb-count-select').value = String(settings.verbCount ?? 10);
   }
 
   function onSettingsChanged() {
